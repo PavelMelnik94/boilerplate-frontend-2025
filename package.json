@@ -26,9 +26,10 @@
     "format": "prettier --write \"**/*.{ts,tsx,css,md,json}\"",
     "style:check": "stylelint \"**/*.css\"",
     "style:fix": "stylelint \"**/*.css\" --fix",
-    "prepare": "husky install",
     "type-check": "tsc --noEmit",
-    "analyze": "vite build --mode analyze"
+    "analyze": "vite build --mode analyze",
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.23.0",
@@ -44,8 +45,8 @@
     "eslint-plugin-sonarjs": "^3.0.1",
     "eslint-plugin-unicorn": "^56.0.1",
     "globals": "^15.14.0",
-    "husky": "^9.0.10",
-    "lint-staged": "^15.2.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
     "postcss": "^8.4.35",
     "postcss-preset-env": "^10.1.3",
     "prettier": "^3.2.5",
@@ -58,14 +59,15 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
+      "prettier --write",
       "eslint --fix",
-      "prettier --write"
+      "npm run type-check"
     ],
     "*.css": [
-      "stylelint --fix",
-      "prettier --write"
+      "prettier --write",
+      "stylelint --fix"
     ],
-    "*.{json,md}": [
+    "*.{json,md,yml,yaml}": [
       "prettier --write"
     ]
   },
