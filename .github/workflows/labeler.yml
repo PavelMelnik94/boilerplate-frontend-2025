@@ -1,7 +1,7 @@
-name: Labeler
+name: 'Pull Request Labeler'
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, reopened]
   push:
     branches:
@@ -9,23 +9,14 @@ on:
       - develop
 
 jobs:
-  label:
-    runs-on: ubuntu-latest
+  triage:
     permissions:
       contents: read
       pull-requests: write
-
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Debug changed files
-        run: |
-          echo "Changed files:"
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }}
-
-      - name: Run labeler
-        uses: actions/labeler@v4
+      - uses: actions/labeler@v4
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          configuration-path: .github/labeler.yml
           sync-labels: true

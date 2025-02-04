@@ -1,37 +1,26 @@
 documentation:
-  - 'docs/**'
-  - '*.md'
+  - any: ['docs/**/*', '**/*.md']
 
 bug:
-  - 'src/**/*.ts'
-  - 'src/**/*.tsx'
+  - any: ['src/**/*.ts', 'src/**/*.tsx']
 
 enhancement:
-  - 'src/**'
+  - any: ['src/**/*']
 
 dependencies:
-  - 'package.json'
-  - 'pnpm-lock.yaml'
-  - 'yarn.lock'
-  - 'package-lock.json'
+  - any: ['package.json', 'pnpm-lock.yaml', 'yarn.lock', 'package-lock.json']
 
 tests:
-  - 'tests/**'
-  - 'src/**/*.test.ts'
-  - 'src/**/*.test.tsx'
+  - any: ['tests/**/*', 'src/**/*.test.ts', 'src/**/*.test.tsx']
 
 config:
-  - '*.yml'
-  - '*.yaml'
-  - '.github/**'
+  - any: ['*.yml', '*.yaml', '.github/**/*']
 
 ci:
-  - '.github/workflows/**'
+  - any: ['.github/workflows/**/*']
 
 styles:
-  - 'src/**/*.css'
-  - 'src/**/*.scss'
+  - any: ['src/**/*.css', 'src/**/*.scss', 'src/**/*.sass']
 
 refactor:
-  - 'src/**/*.ts'
-  - 'src/**/*.tsx'
+  - any: ['src/**/*.ts', 'src/**/*.tsx']
