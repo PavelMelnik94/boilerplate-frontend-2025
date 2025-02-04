@@ -1,7 +1,18 @@
 {
   "name": "vite-typescript-starter",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "A starter project for Vite with TypeScript",
+  "author": "Pavel Melnik",
+  "license": "MIT",
+  "homepage": "https://github.com/PavelMelnik94/vite-typescript-starter#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PavelMelnik94/vite-typescript-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PavelMelnik94/vite-typescript-starter/issues"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -19,7 +30,7 @@
     "type-check": "tsc --noEmit",
     "analyze": "vite build --mode analyze"
   },
-  "dependencies": {},
+  "dependencies": { },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
@@ -67,5 +78,27 @@
     "Safari >= 12",
     "iOS >= 12",
     "not IE 11"
-  ]
+  ],
+  "keywords": [
+    "vite",
+    "typescript",
+    "starter",
+    "template",
+    "frontend",
+    "web development",
+    "javascript",
+    "react",
+    "esbuild",
+    "vitejs",
+    "project template",
+    "scss",
+    "css"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "generatedBy": {
+    "tool": "Bolt",
+    "assistant": "GitHub Copilot"
+  }
 }
