@@ -1,3 +1,3 @@
-const test = 'test';
+const testValue = 'test'; // или любое другое имя вместо 'test'
 
-console.log(test);
+console.log(testValue);
