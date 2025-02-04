@@ -1,7 +1,7 @@
 {
   "name": "vite-typescript-starter",
   "private": false,
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A starter project for Vite with TypeScript",
   "author": "Pavel Melnik",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{ts,tsx,css,md,json}\"",
     "style:check": "stylelint \"**/*.css\"",
     "style:fix": "stylelint \"**/*.css\" --fix",
