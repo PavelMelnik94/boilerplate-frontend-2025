@@ -1,0 +1,6 @@
+# Example configuration for GitHub Labeler
+
+# Apply the "frontend" label to any changes within the "src" or "public" directories
+frontend:
+  - src/**
+  - public/**
