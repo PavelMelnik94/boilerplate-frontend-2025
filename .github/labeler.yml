@@ -1,5 +1,5 @@
 documentation:
-  - any: ['docs/**/*', '**/*.md']
+  - any: ['docs/**/*', '**/*.md', '**/*.markdown', '**/*.mdx']
 
 bug:
   - any: ['src/**/*.ts', 'src/**/*.tsx']
@@ -8,16 +8,52 @@ enhancement:
   - any: ['src/**/*']
 
 dependencies:
-  - any: ['package.json', 'pnpm-lock.yaml', 'yarn.lock', 'package-lock.json']
+  - any:
+      [
+        'package.json',
+        'pnpm-lock.yaml',
+        'yarn.lock',
+        'package-lock.json',
+        'pnpmfile.js',
+        'pnpm-workspace.yaml',
+      ]
 
 tests:
-  - any: ['tests/**/*', 'src/**/*.test.ts', 'src/**/*.test.tsx']
+  - any:
+      [
+        'tests/**/*',
+        'src/**/*.test.ts',
+        'src/**/*.test.tsx',
+        'src/**/*.spec.ts',
+        'src/**/*.spec.tsx',
+      ]
 
 config:
-  - any: ['*.yml', '*.yaml', '.github/**/*']
+  - any:
+      [
+        '*.yml',
+        '*.yaml',
+        '.github/**/*',
+        '.gitignore',
+        '.editorconfig',
+        '.prettierrc',
+        '.prettierignore',
+        '.eslintrc',
+        '.eslintignore',
+        '.stylelintrc',
+        '.stylelintignore',
+        'tsconfig.json',
+      ]
 
 ci:
-  - any: ['.github/workflows/**/*']
+  - any:
+      [
+        '.github/workflows/**/*',
+        '.github/actions/**/*',
+        '.github/labeler.yml',
+        '.github/pull_request_template.md',
+        '.github/ISSUE_TEMPLATE/**/*',
+      ]
 
 styles:
   - any: ['src/**/*.css', 'src/**/*.scss', 'src/**/*.sass']
