@@ -4,5 +4,6 @@
   },
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-  "eslint.format.enable": true
+  "eslint.format.enable": true,
+  "stylelint.validate": ["css", "scss"]
 }
