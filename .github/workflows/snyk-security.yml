@@ -47,6 +47,12 @@ jobs:
       # Run Snyk Open Source (SCA) analysis for frontend dependencies
       - name: Snyk Open Source monitor
         run: snyk monitor
+        
+      # Run Snyk monitor with explicit authentication
+      - name: Snyk Open Source monitor
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: snyk monitor
 
       # Upload results to GitHub Code Scanning
       - name: Upload result to GitHub Code Scanning
