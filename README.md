@@ -2,22 +2,6 @@
 
 Welcome to **Vite TypeScript Starter**! 🎉 A modern starter template for frontend development using cutting-edge tools and configurations. 🛠️
 
-## 📋 Table of Contents
-
-- [Features](#features)
-- [Installation](#installation)
-- [Scripts](#scripts)
-- [Project Structure](#project-structure)
-- [Development Dependencies](#development-dependencies)
-- [Testing](#testing)
-- [Type Checking](#type-checking)
-- [Linting & Formatting](#linting--formatting)
-- [Browser Compatibility](#browser-compatibility)
-- [Pre-commit Hooks](#pre-commit-hooks)
-- [CI/CD](#cicd)
-- [Author](#author)
-- [License](#license)
-
 ## 🌟 Features
 
 - **TypeScript**: Static typing for better code reliability
