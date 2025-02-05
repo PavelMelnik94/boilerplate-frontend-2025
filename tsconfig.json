@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     // base settings
-    "target": "ES2022",
+    "target": "ES5",
     "useDefineForClassFields": true,
     "module": "ESNext",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
