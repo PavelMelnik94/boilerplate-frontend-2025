@@ -1,175 +1,98 @@
-# 🚀 Vite TypeScript Starter
+# 🚀 Boilerplate Frontend 2025
 
-Welcome to **Vite TypeScript Starter**! 🎉 A modern starter template for frontend development using cutting-edge tools and configurations. 🛠️
-
-## 🌟 Features
-
-- **TypeScript**: Static typing for better code reliability
-- **Vite 6**: Super-fast build and dev server
-- **Testing Suite**:
-  - Vitest for fast unit testing
-  - Testing Library with Jest DOM for component testing
-  - UI test interface and coverage reports
-- **Comprehensive Linting**:
-  - ESLint with advanced configuration
-  - Browser compatibility checks
-  - Security plugins
-  - Performance optimization rules
-  - Code quality plugins (sonarjs, unicorn)
-- **Style Management**:
-  - Stylelint with modern configuration
-  - High-performance animation linting
-  - Module resolution checking
-  - PostCSS processing
-- **Code Quality Tools**:
-  - Prettier for consistent formatting
-  - Husky for git hooks
-  - Automated pre-commit checks
-
-## 🛠️ Installation
-
-1. **Clone the repository:**
-
-   ```
-   git clone https://github.com/PavelMelnik94/vite-typescript-starter.git
-   cd vite-typescript-starter
-   ```
-
-2. **Install dependencies:**
-
-   ```
-   npm install
-   ```
-
-## 🚀 Scripts
-
-- **Development:**
-  ```
-  npm run dev          # Start dev server
-  npm run build        # Build for production
-  npm run preview      # Preview production build
-  ```
-
-- **Testing:**
-  ```
-  npm run test         # Run tests in watch mode
-  npm run test:ui      # Run tests with UI
-  npm run test:run     # Run tests once
-  npm run test:coverage # Run tests with coverage
-  npm run test:watch   # Watch mode for tests
-  ```
-
-- **Type Checking:**
-  ```
-  npm run type-check        # Check types
-  npm run type-check:watch  # Watch mode for type checking
-  ```
-
-- **Linting & Formatting:**
-  ```
-  npm run lint         # Run ESLint
-  npm run lint:fix     # Fix ESLint issues
-  npm run format       # Run Prettier
-  npm run style:check  # Check styles
-  npm run style:fix    # Fix style issues
-  ```
+Welcome to **Boilerplate Frontend 2025**! This project provides a modern starter template for frontend development using TypeScript, Vite, Vitest, ESLint, Prettier, Stylelint, PostCSS, Husky, pre-commit hooks, and GitHub Actions.
 
 ## 📂 Project Structure
 
-```
-vite-typescript-starter/
-├── .github/
-│   └── workflows/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── styles/
-│   ├── App.tsx
-│   └── main.tsx
-├── tests/
-├── .eslintrc.json
-├── .prettierrc
-├── .stylelintrc.json
-├── index.html
-├── package.json
-├── tsconfig.json
-└── vite.config.ts
-```
+The repository is organized as follows:
 
-## 🛠️ Development Dependencies
+- `.bolt/`: Configuration files for Bolt.
+- `.github/`: GitHub-specific configurations, including workflows.
+- `.husky/`: Husky hooks for managing Git hooks.
+- `.vscode/`: Visual Studio Code settings and extensions recommendations.
+- `src/`: Main source code directory containing application components and assets.
+- `.editorconfig`: EditorConfig file to maintain consistent coding styles.
+- `.gitattributes`: Git attributes file.
+- `.gitignore`: Specifies files and directories to be ignored by Git.
+- `.lintstagedrc.json`: Configuration for lint-staged to run linters on staged Git files.
+- `.prettierrc`: Configuration file for Prettier code formatter.
+- `.stylelintignore`: Specifies files and directories to be ignored by Stylelint.
+- `.stylelintrc.json`: Configuration file for Stylelint.
+- `LICENSE`: MIT License file.
+- `README.md`: Project documentation (this file).
+- `eslint.config.js`: Configuration file for ESLint.
+- `index.html`: Main HTML file.
+- `jsconfig.json`: Configuration file for JavaScript projects.
+- `package-lock.json`: Automatically generated file for locking dependencies.
+- `package.json`: Contains project metadata and dependencies.
+- `postcss.config.js`: Configuration file for PostCSS.
+- `stylelint-report.json`: JSON report file for Stylelint.
+- `tsconfig.json`: TypeScript configuration file.
+- `vite.config.ts`: Configuration file for Vite.
+- `vitest.config.ts`: Configuration file for Vitest.
 
-- Vite: ^6.0.11
-- TypeScript: ^5.7.3
-- PostCSS: ^8.4.35
-- Vitest: ^3.0.5
-- ESLint: ^9.19.0
-- Stylelint: ^16.14.1
-- Testing Library/Jest DOM: ^6.6.3
+## 🛠️ Key Features
 
-## 🧪 Testing
+- **TypeScript**: Enhances JavaScript with static typing for improved developer experience.
+- **Vite**: A fast build tool that offers rapid development and hot module replacement.
+- **Vitest**: A blazing-fast unit testing framework.
+- **ESLint**: A linter tool to identify and fix problems in JavaScript/TypeScript code.
+- **Prettier**: An opinionated code formatter to ensure consistent code style.
+- **Stylelint**: A linter for stylesheets to enforce consistent conventions and avoid errors.
+- **PostCSS**: A tool for transforming CSS with JavaScript plugins.
+- **Husky**: Git hooks made easy, enabling pre-commit hooks to run linters and tests.
+- **Lint-staged**: Runs linters on staged Git files to ensure code quality before commits.
+- **GitHub Actions**: Automates workflows, including continuous integration and deployment.
 
-Comprehensive testing suite powered by Vitest and Testing Library:
+## 🚀 Getting Started
 
-```
-npm run test           # Interactive testing
-npm run test:ui        # Visual test interface
-npm run test:coverage  # Generate coverage report
-```
+To get started with this project, follow these steps:
 
-## 📘 Type Checking
+1. **Clone the repository**:
 
-TypeScript type checking with watch mode support:
+   ```bash
+   git clone https://github.com/PavelMelnik94/boilerplate-frontend-2025.git
+   cd boilerplate-frontend-2025
+   ```
 
-```
-npm run type-check
-npm run type-check:watch
-```
+2. **Install dependencies**:
 
-## 📏 Linting & Formatting
+   ```bash
+   npm install
+   ```
 
-Advanced linting configuration with:
+3. **Start the development server**:
 
-- ESLint for TypeScript and React
-- Security and performance plugins
-- SonarJS for code quality
-- Stylelint for CSS best practices
-- Prettier for code formatting
+   ```bash
+   npm run dev
+   ```
 
-Run all checks:
-```
-npm run lint && npm run style:check && npm run format
-```
+   The application will be available at `http://localhost:3000`.
 
-## 🌐 Browser Compatibility
+## 📦 Available Scripts
 
-Built-in browser compatibility checking through eslint-plugin-compat. Configure target browsers in \`.browserslistrc\`.
+- `npm run dev`: Starts the development server with hot module replacement.
+- `npm run build`: Builds the application for production.
+- `npm run preview`: Previews the production build locally.
+- `npm run lint`: Runs ESLint to analyze code for potential errors.
+- `npm run format`: Formats code using Prettier.
+- `npm run stylelint`: Lints CSS/SCSS files using Stylelint.
+- `npm run test`: Runs unit tests using Vitest.
 
-## 🎯 Pre-commit Hooks
+## ✅ Pre-commit Hooks
 
-Automated quality checks on commit:
+This project uses Husky and lint-staged to enforce code quality. Before each commit, the following checks are performed:
 
-- Type checking
-- Linting and formatting
-- Unit tests
-- Style validation
+- Linting of staged JavaScript/TypeScript files using ESLint.
+- Formatting of staged files using Prettier.
+- Linting of staged CSS/SCSS files using Stylelint.
 
-## 🚀 CI/CD
+If any of these checks fail, the commit will be aborted to maintain code quality.
 
-GitHub Actions workflow for automated:
+## 🛡️ License
 
-- Code quality checks
-- Test execution
-- Build verification
-- Type checking
-
-## 👨‍💻 Author
-
-- Pavel Melnik
-
-## 📜 License
-
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more information.
 
 ---
 
-*Last Updated: 2025-02-05*
+Happy coding! 🎉
