@@ -67,7 +67,7 @@ To get started with this project, follow these steps:
    npm run dev
    ```
 
-   The application will be available at `http://localhost:3000`.
+   The application will be available at `http://localhost:3010`.
 
 ## 📦 Available Scripts
 
@@ -105,7 +105,7 @@ To build and run the project with Docker, follow these steps:
    docker-compose up
    ```
 
-   The application will be available at `http://localhost:3000`.
+   The application will be available at `http://localhost:3010`.
 
 3. **Stop the Docker container**:
 
