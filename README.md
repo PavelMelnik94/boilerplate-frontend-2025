@@ -89,6 +89,30 @@ This project uses Husky and lint-staged to enforce code quality. Before each com
 
 If any of these checks fail, the commit will be aborted to maintain code quality.
 
+## 🐳 Docker
+
+To build and run the project with Docker, follow these steps:
+
+1. **Build the Docker image**:
+
+   ```bash
+   docker-compose build
+   ```
+
+2. **Run the Docker container**:
+
+   ```bash
+   docker-compose up
+   ```
+
+   The application will be available at `http://localhost:3000`.
+
+3. **Stop the Docker container**:
+
+   ```bash
+   docker-compose down
+   ```
+
 ## 🛡️ License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more information.
