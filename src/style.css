@@ -2,10 +2,12 @@
   background-color: #242424;
   color: rgb(255 255 255 / 87%);
   color-scheme: light dark;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-synthesis: none;
+
   font-weight: 400;
   line-height: 1.5;
   text-rendering: optimizelegibility;
@@ -13,6 +15,7 @@
 
 a {
   color: #646cff;
+
   font-weight: 500;
   text-decoration: inherit;
 
@@ -37,6 +40,7 @@ h1 {
 .logo {
   height: 6em;
   padding: 1.5em;
+
   transition: filter 300ms;
   will-change: filter;
 
@@ -59,12 +63,15 @@ h1 {
 
 button {
   padding: 0.6em 1.2em;
+
   background-color: #1a1a1a;
   border: 1px solid transparent;
   border-radius: 8px;
+
   font-family: inherit;
   font-size: 1em;
   font-weight: 500;
+
   transition: border-color 0.25s;
   cursor: pointer;
 
@@ -79,6 +86,7 @@ button {
 }
 
 @media (prefers-color-scheme: light) {
+
   :root {
     background-color: #fff;
     color: #213547;

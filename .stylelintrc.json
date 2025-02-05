@@ -15,9 +15,13 @@
     "color-hex-length": "short",
     "color-named": "never",
     "selector-max-id": 0,
+    "selector-class-pattern": null,
     "function-url-quotes": "always",
     "comment-whitespace-inside": "always",
     "selector-pseudo-element-colon-notation": "double",
+    "declaration-empty-line-before": null,
+    "rule-empty-line-before": "always",
+    "no-descending-specificity": null,
 
     "color-function-notation": "modern",
     "alpha-value-notation": "percentage",
@@ -66,10 +70,14 @@
     "order/properties-order": [
       {
         "groupName": "Positioning",
-        "properties": ["position", "top", "right", "bottom", "left", "z-index"]
+        "emptyLineBefore": "always",
+        "noEmptyLineBetween": true,
+        "properties": ["position", "z-index", "top", "right", "bottom", "left"]
       },
       {
         "groupName": "Display & Box Model",
+        "emptyLineBefore": "always",
+        "noEmptyLineBetween": true,
         "properties": [
           "display",
           "flex",
@@ -114,6 +122,8 @@
       },
       {
         "groupName": "Visual",
+        "emptyLineBefore": "always",
+        "noEmptyLineBetween": true,
         "properties": [
           "background",
           "background-color",
@@ -131,6 +141,8 @@
       },
       {
         "groupName": "Typography",
+        "emptyLineBefore": "always",
+        "noEmptyLineBetween": true,
         "properties": [
           "font-family",
           "font-size",
@@ -145,6 +157,8 @@
       },
       {
         "groupName": "Animation",
+        "emptyLineBefore": "always",
+        "noEmptyLineBetween": true,
         "properties": ["transform", "transition", "animation"]
       }
     ]
