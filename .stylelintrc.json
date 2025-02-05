@@ -10,7 +10,14 @@
   ],
   "customSyntax": "postcss-scss",
   "extends": ["stylelint-config-standard"],
+  "overrides": [
+    {
+      "files": ["**/*.scss"],
+      "customSyntax": "postcss-scss"
+    }
+  ],
   "rules": {
+    "at-rule-no-unknown": null,
     "no-duplicate-selectors": true,
     "color-hex-length": "short",
     "color-named": "never",
@@ -36,7 +43,6 @@
     "scss/selector-no-redundant-nesting-selector": true,
     "scss/no-duplicate-dollar-variables": true,
     "scss/no-global-function-names": true,
-    "scss/dollar-variable-pattern": "^[a-z][a-zA-Z0-9]+$",
     "scss/at-extend-no-missing-placeholder": true,
 
     "plugin/no-low-performance-animation-properties": [
