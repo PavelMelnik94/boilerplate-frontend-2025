@@ -1,6 +1,6 @@
-# 🚀 Boilerplate Frontend 2025
+# 🚀 Vite TypeScript Starter
 
-Welcome to **Boilerplate Frontend 2025**! 🎉 This project provides a modern starter template for frontend development using cutting-edge tools and configurations. 🛠️
+Welcome to **Vite TypeScript Starter**! 🎉 A modern starter template for frontend development using cutting-edge tools and configurations. 🛠️
 
 ## 📋 Table of Contents
 
@@ -8,128 +8,184 @@ Welcome to **Boilerplate Frontend 2025**! 🎉 This project provides a modern st
 - [Installation](#installation)
 - [Scripts](#scripts)
 - [Project Structure](#project-structure)
+- [Development Dependencies](#development-dependencies)
+- [Testing](#testing)
+- [Type Checking](#type-checking)
 - [Linting & Formatting](#linting--formatting)
+- [Browser Compatibility](#browser-compatibility)
 - [Pre-commit Hooks](#pre-commit-hooks)
 - [CI/CD](#cicd)
+- [Author](#author)
 - [License](#license)
 
 ## 🌟 Features
 
-- **TypeScript**: Static typing for better code reliability.
-- **Vite**: Super-fast build and dev server.
-- **Vitest**: Powerful and fast testing framework.
-- **ESLint**: Customizable linter to maintain code quality.
-- **Prettier**: Automatic code formatting for consistency.
-- **Stylelint**: Linter for CSS to enforce best practices.
-- **PostCSS**: Tool for CSS transformation using plugins.
-- **Husky**: Git hooks management.
-- **Pre-commit Hooks**: Automated scripts before commits.
-- **GitHub Actions**: CI/CD workflows.
+- **TypeScript**: Static typing for better code reliability
+- **Vite 6**: Super-fast build and dev server
+- **Testing Suite**:
+  - Vitest for fast unit testing
+  - Testing Library with Jest DOM for component testing
+  - UI test interface and coverage reports
+- **Comprehensive Linting**:
+  - ESLint with advanced configuration
+  - Browser compatibility checks
+  - Security plugins
+  - Performance optimization rules
+  - Code quality plugins (sonarjs, unicorn)
+- **Style Management**:
+  - Stylelint with modern configuration
+  - High-performance animation linting
+  - Module resolution checking
+  - PostCSS processing
+- **Code Quality Tools**:
+  - Prettier for consistent formatting
+  - Husky for git hooks
+  - Automated pre-commit checks
 
 ## 🛠️ Installation
 
 1. **Clone the repository:**
 
-   ```bash
-   git clone https://github.com/PavelMelnik94/boilerplate-frontend-2025.git
-   cd boilerplate-frontend-2025
+   ```
+   git clone https://github.com/PavelMelnik94/vite-typescript-starter.git
+   cd vite-typescript-starter
    ```
 
 2. **Install dependencies:**
 
-   ```bash
+   ```
    npm install
    ```
 
 ## 🚀 Scripts
 
-- **Run development server:**
-
-  ```bash
-  npm run dev
+- **Development:**
+  ```
+  npm run dev          # Start dev server
+  npm run build        # Build for production
+  npm run preview      # Preview production build
   ```
 
-- **Build for production:**
-
-  ```bash
-  npm run build
+- **Testing:**
+  ```
+  npm run test         # Run tests in watch mode
+  npm run test:ui      # Run tests with UI
+  npm run test:run     # Run tests once
+  npm run test:coverage # Run tests with coverage
+  npm run test:watch   # Watch mode for tests
   ```
 
-- **Preview the built project:**
-
-  ```bash
-  npm run preview
+- **Type Checking:**
+  ```
+  npm run type-check        # Check types
+  npm run type-check:watch  # Watch mode for type checking
   ```
 
-- **Run tests:**
-
-  ```bash
-  npm run test
+- **Linting & Formatting:**
   ```
-
-- **Run linting:**
-
-  ```bash
-  npm run lint
-  ```
-
-- **Format code:**
-
-  ```bash
-  npm run format
+  npm run lint         # Run ESLint
+  npm run lint:fix     # Fix ESLint issues
+  npm run format       # Run Prettier
+  npm run style:check  # Check styles
+  npm run style:fix    # Fix style issues
   ```
 
 ## 📂 Project Structure
 
-```bash
-boilerplate-frontend-2025/
-├── .bolt/
+```
+vite-typescript-starter/
 ├── .github/
 │   └── workflows/
-├── public/
 ├── src/
 │   ├── assets/
 │   ├── components/
 │   ├── styles/
 │   ├── App.tsx
 │   └── main.tsx
-├── .editorconfig
+├── tests/
 ├── .eslintrc.json
-├── .gitignore
 ├── .prettierrc
-├── .stylelintrc
+├── .stylelintrc.json
 ├── index.html
 ├── package.json
 ├── tsconfig.json
 └── vite.config.ts
 ```
 
+## 🛠️ Development Dependencies
+
+- Vite: ^6.0.11
+- TypeScript: ^5.7.3
+- PostCSS: ^8.4.35
+- Vitest: ^3.0.5
+- ESLint: ^9.19.0
+- Stylelint: ^16.14.1
+- Testing Library/Jest DOM: ^6.6.3
+
+## 🧪 Testing
+
+Comprehensive testing suite powered by Vitest and Testing Library:
+
+```
+npm run test           # Interactive testing
+npm run test:ui        # Visual test interface
+npm run test:coverage  # Generate coverage report
+```
+
+## 📘 Type Checking
+
+TypeScript type checking with watch mode support:
+
+```
+npm run type-check
+npm run type-check:watch
+```
+
 ## 📏 Linting & Formatting
 
-This project uses:
+Advanced linting configuration with:
 
-- **ESLint** for JavaScript/TypeScript linting.
-- **Prettier** for code formatting.
-- **Stylelint** for CSS linting.
+- ESLint for TypeScript and React
+- Security and performance plugins
+- SonarJS for code quality
+- Stylelint for CSS best practices
+- Prettier for code formatting
 
-Run linting and formatting with:
-
-```bash
-npm run lint && npm run format
+Run all checks:
 ```
+npm run lint && npm run style:check && npm run format
+```
+
+## 🌐 Browser Compatibility
+
+Built-in browser compatibility checking through eslint-plugin-compat. Configure target browsers in \`.browserslistrc\`.
 
 ## 🎯 Pre-commit Hooks
 
-We use **Husky** and **lint-staged** to enforce code quality before commits. Hooks include:
+Automated quality checks on commit:
 
-- Running ESLint and Prettier.
-- Running tests.
+- Type checking
+- Linting and formatting
+- Unit tests
+- Style validation
 
 ## 🚀 CI/CD
 
-GitHub Actions automate testing and deployment.
+GitHub Actions workflow for automated:
+
+- Code quality checks
+- Test execution
+- Build verification
+- Type checking
+
+## 👨‍💻 Author
+
+- Pavel Melnik
 
 ## 📜 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License.
 
+---
+
+*Last Updated: 2025-02-05*
