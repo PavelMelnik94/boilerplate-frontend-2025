@@ -1,0 +1,13 @@
+version: 2
+updates:
+  - package-ecosystem: "npm" # Specifies the package manager (e.g., npm, yarn, pip, etc.)
+    directory: "/" # Root directory where the package manifests (e.g., package.json) are located
+    schedule:
+      interval: "weekly" # Checks for updates every week
+    open-pull-requests-limit: 10 # Limits the number of open PRs from Dependabot
+    assignees:
+      - "@PavelMelnik94" # Assign PRs to a specific user
+    reviewers:
+      - "@PavelMelnik94" # Request reviews from a team
+    labels:
+      - "dependencies" # Labels applied to PRs
