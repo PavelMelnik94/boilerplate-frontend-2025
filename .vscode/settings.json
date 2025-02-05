@@ -1,27 +1,62 @@
 {
-  "workbench.colorCustomizations": {
-    "editorError.foreground": "#FF0000",
-    "editorWarning.foreground": "#FF9933",
-    "editorInfo.foreground": "#00AA00",
-    "terminal.background": "#031A16",
-    "terminal.foreground": "#81B5AC",
-    "terminalCursor.background": "#81B5AC",
-    "terminalCursor.foreground": "#81B5AC",
-    "terminal.ansiBlack": "#031A16",
-    "terminal.ansiBlue": "#96883E",
-    "terminal.ansiBrightBlack": "#2B685E",
-    "terminal.ansiBrightBlue": "#96883E",
-    "terminal.ansiBrightCyan": "#963E4C",
-    "terminal.ansiBrightGreen": "#883E96",
-    "terminal.ansiBrightMagenta": "#4C963E",
-    "terminal.ansiBrightRed": "#3E9688",
-    "terminal.ansiBrightWhite": "#D2E7E4",
-    "terminal.ansiBrightYellow": "#3E4C96",
-    "terminal.ansiCyan": "#963E4C",
-    "terminal.ansiGreen": "#883E96",
-    "terminal.ansiMagenta": "#4C963E",
-    "terminal.ansiRed": "#3E9688",
-    "terminal.ansiWhite": "#81B5AC",
-    "terminal.ansiYellow": "#3E4C96"
-  }
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/coverage": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/coverage": true
+  },
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "stylelint.validate": ["css", "scss"],
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  "javascript.validate.enable": false,
+  "typescript.surveys.enabled": false
 }
