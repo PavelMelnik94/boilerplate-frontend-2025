@@ -62,7 +62,6 @@ export default [
       // Sonarjs
       ...sonarjsPlugin.configs.recommended.rules,
       'sonarjs/cognitive-complexity': ['error', 15],
-      'sonarjs/no-duplicate-string': ['error', 3],
 
       // Unicorn
       ...unicornPlugin.configs.recommended.rules,
