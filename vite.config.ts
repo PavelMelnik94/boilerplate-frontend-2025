@@ -69,7 +69,7 @@ export default defineConfig(({ mode }) => ({
   // Development server configuration
   // Settings for the development server
   server: {
-    port: 3000,
+    port: 3010,
     strictPort: true,
     host: true,
     open: true,
@@ -82,7 +82,7 @@ export default defineConfig(({ mode }) => ({
   // Preview server configuration
   // Settings for previewing production builds
   preview: {
-    port: 3000,
+    port: 3011,
     strictPort: true,
     host: true,
     open: true,
