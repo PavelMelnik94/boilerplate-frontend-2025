@@ -1,0 +1,33 @@
+@import url('reset.css');
+@import url('mapper.scss');
+@import url('variables.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Base HTML Setup */
+
+html {
+  height: 100%;
+
+  font-size: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+  overscroll-behavior-y: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100%;
+
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+
+  font-family: var(--font-roboto);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+  -webkit-overflow-scrolling: touch;
+  text-size-adjust: 100%;
+  touch-action: manipulation;
+}

@@ -1,0 +1,134 @@
+// Spacing utilities
+$spacing-mapper: (
+  'xxs': var(--spacing-xxs),
+  'xs': var(--spacing-xs),
+  's': var(--spacing-s),
+  'm': var(--spacing-m),
+  'l': var(--spacing-l),
+  'xl': var(--spacing-xl),
+  'xxl': var(--spacing-xxl),
+  'xxxl': var(--spacing-xxxl),
+);
+
+// Margin and Padding
+@each $key, $value in $spacing-mapper {
+  .m-#{$key} {
+    margin: $value;
+  }
+  .mx-#{$key} {
+    margin-right: $value;
+    margin-left: $value;
+  }
+  .my-#{$key} {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+  .p-#{$key} {
+    padding: $value;
+  }
+  .px-#{$key} {
+    padding-right: $value;
+    padding-left: $value;
+  }
+  .py-#{$key} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+}
+
+// Border radius utilities
+$radius-mapper: (
+  'xs': var(--radii-xs),
+  's': var(--radii-s),
+  'm': var(--radii-m),
+  'l': var(--radii-l),
+  'xl': var(--radii-xl),
+  'round': var(--radii-round),
+);
+
+@each $key, $value in $radius-mapper {
+  .radius-#{$key} {
+    border-radius: $value;
+  }
+}
+
+// Font sizes
+$font-sizes-mapper: (
+  'xs': var(--font-size-xs),
+  'sm': var(--font-size-sm),
+  'base': var(--font-size-base),
+  'lg': var(--font-size-lg),
+  'xl': var(--font-size-xl),
+);
+
+@each $key, $value in $font-sizes-mapper {
+  .fz-#{$key} {
+    font-size: $value;
+  }
+}
+
+// Colors mapper
+$colors-mapper: (
+  'primary': var(--color-primary),
+  'secondary': var(--color-secondary),
+  'success': var(--color-success),
+  'danger': var(--color-danger),
+  'warning': var(--color-warning),
+  'info': var(--color-info),
+  'light': var(--color-light),
+  'dark': var(--color-dark),
+  'white': var(--color-white),
+);
+
+@each $key, $value in $colors-mapper {
+  .color-#{$key} {
+    color: $value;
+  }
+  .bg-#{$key} {
+    background-color: $value;
+  }
+}
+
+// Shadows mapper
+$shadows-mapper: (
+  'xs': var(--shadow-xs),
+  'sm': var(--shadow-sm),
+  'md': var(--shadow-md),
+  'lg': var(--shadow-lg),
+  'xl': var(--shadow-xl),
+);
+
+@each $key, $value in $shadows-mapper {
+  .shadow-#{$key} {
+    box-shadow: $value;
+  }
+}
+
+// Line heights mapper
+$line-heights-mapper: (
+  'tight': var(--line-height-tight),
+  'base': var(--line-height-base),
+  'loose': var(--line-height-loose),
+);
+
+@each $key, $value in $line-heights-mapper {
+  .lh-#{$key} {
+    line-height: $value;
+  }
+}
+
+// Z-index mapper
+$z-index-mapper: (
+  'dropdown': var(--z-index-dropdown),
+  'sticky': var(--z-index-sticky),
+  'fixed': var(--z-index-fixed),
+  'modal': var(--z-index-modal),
+  'popover': var(--z-index-popover),
+  'tooltip': var(--z-index-tooltip),
+);
+
+@each $key, $value in $z-index-mapper {
+  .z-#{$key} {
+    z-index: $value;
+  }
+}

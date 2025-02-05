@@ -1,0 +1,136 @@
+:root {
+  /* Colors - Main */
+  --color-primary: #1890ff;
+  --color-secondary: #8c8c8c;
+  --color-success: #52c41a;
+  --color-danger: #ff4d4f;
+  --color-warning: #faad14;
+  --color-info: #1890ff;
+  --color-light: #fafafa;
+  --color-dark: #141414;
+  --color-white: #fff;
+
+  /* Colors - Text and UI */
+  --color-text-primary: rgb(0 0 0 / 85%);
+  --color-text-secondary: rgb(0 0 0 / 45%);
+  --color-text-disabled: rgb(0 0 0 / 25%);
+  --color-border: #d9d9d9;
+  --color-split: #f0f0f0;
+  --color-background: #fff;
+  --color-table-header: #fafafa;
+  --color-disabled: rgb(0 0 0 / 4%);
+  --color-hover: rgb(0 0 0 / 2%);
+
+  /* Colors - Component States */
+  --color-primary-hover: #40a9ff;
+  --color-primary-active: #096dd9;
+  --color-primary-outline: rgb(24 144 255 / 20%);
+  --color-danger-hover: #ff7875;
+  --color-danger-active: #d9363e;
+  --color-success-hover: #73d13d;
+  --color-success-active: #389e0d;
+
+  /* Typography */
+  --regular: 400;
+  --bold: 700;
+  --font-roboto: 'Roboto', sans-serif;
+  --font-size-xs: 0.75rem;
+
+  /* 12px */
+  --font-size-sm: 0.875rem;
+
+  /* 14px */
+  --font-size-base: 1rem;
+
+  /* 16px */
+  --font-size-lg: 1.125rem;
+
+  /* 18px */
+  --font-size-xl: 1.25rem;
+
+  /* 20px */
+
+  /* Line Heights */
+  --line-height-tight: 1.4;
+  --line-height-base: 1.5715;
+  --line-height-loose: 1.7142;
+
+  /* Spacing */
+  --spacing-xxs: 0.25rem;
+
+  /* 4px */
+  --spacing-xs: 0.5rem;
+
+  /* 8px */
+  --spacing-s: 0.75rem;
+
+  /* 12px */
+  --spacing-m: 1rem;
+
+  /* 16px */
+  --spacing-l: 1.5rem;
+
+  /* 24px */
+  --spacing-xl: 2rem;
+
+  /* 32px */
+  --spacing-xxl: 3rem;
+
+  /* 48px */
+  --spacing-xxxl: 4rem;
+
+  /* 64px */
+
+  /* Border Radius */
+  --radii-xs: 0.125rem;
+
+  /* 2px */
+  --radii-s: 0.25rem;
+
+  /* 4px */
+  --radii-m: 0.5rem;
+
+  /* 8px */
+  --radii-l: 1rem;
+
+  /* 16px */
+  --radii-xl: 2rem;
+
+  /* 32px */
+  --radii-round: 50%;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 3%);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+
+  /* Transitions */
+  --transition-duration: 0.2s;
+  --transition-duration-slow: 0.3s;
+  --transition-duration-fast: 0.1s;
+  --transition-timing: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  /* Z-index Scale */
+  --z-index-dropdown: 1050;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1060;
+  --z-index-popover: 1070;
+  --z-index-tooltip: 1080;
+
+  /* Grid */
+  --grid-columns: 24;
+  --grid-gutter: 0.5rem;
+  --container-padding: 1rem;
+
+  /* Breakpoints */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1600px;
+}
