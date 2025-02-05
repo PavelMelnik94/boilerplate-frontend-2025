@@ -19,7 +19,7 @@ export default [
     languageOptions: {
       parser,
       parserOptions: {
-        project: ['./tsconfig.json', './tsconfig.node.json'],
+        project: ['./tsconfig.json'],
         tsconfigRootDir: import.meta.dirname,
       },
       globals: {
@@ -38,6 +38,7 @@ export default [
       security: securityPlugin,
       sonarjs: sonarjsPlugin,
       unicorn: unicornPlugin,
+      compat: compat,
     },
     rules: {
       // TypeScript
@@ -74,8 +75,12 @@ export default [
       // Security
       ...securityPlugin.configs.recommended.rules,
 
-      //Compat compat.configs["flat/recommended"]
-      ...compat.configs['flat/recommended'],
+      // Compat - Browser compatibility checking
+      'compat/compat': 'error',
+    },
+    settings: {
+      // Configure browser targets for compat plugin
+      polyfills: [],
     },
   },
 ];

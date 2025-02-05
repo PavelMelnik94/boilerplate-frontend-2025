@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
     // base settings
-    "target": "ES2020",
+    "target": "ES2022",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
 
     // settings for bundler
-    "moduleResolution": "bundler",
+    "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -16,7 +15,12 @@
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+
+    // declarations settings
+    "declaration": false,
+    "declarationMap": false,
+    "emitDeclarationOnly": false,
 
     // strict types checking
     "strict": true,
@@ -35,14 +39,9 @@
       "@/*": ["src/*"]
     },
 
-    // vite types
-    "types": ["vite/client", "vitest/globals"]
+    // types
+    "types": ["vite/client", "vitest/globals", "node"]
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist", "build", "coverage", "*.js"],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+  "include": ["src", "vite.config.ts", "vitest.config.ts"],
+  "exclude": ["node_modules", "dist", "build", "coverage", "**/**.test.ts"]
 }

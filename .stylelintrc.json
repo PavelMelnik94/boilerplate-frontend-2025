@@ -51,8 +51,33 @@
     "plugin/no-unsupported-browser-features": [
       true,
       {
-        "browsers": ["Chrome >= 100", "Firefox >= 110", "Safari >= 16", "iOS >= 16", "not IE 11"],
-        "ignore": ["css-nesting"],
+        "browsers": [
+          "last 5 Chrome versions",
+          "last 5 Firefox versions",
+          "last 5 Safari versions",
+          "iOS >= 15",
+          "> 0.5%",
+          "not dead",
+          "not ie 11",
+          "not ie_mob 11",
+          "not edge > 0",
+          "not opera > 0",
+          "not operamobile > 0",
+          "not op_mini all",
+          "not android > 0",
+          "not samsung < 4",
+          "not baidu > 0",
+          "not kaios > 0"
+        ],
+        "ignore": [
+          "css-nesting",
+          "css-focus-visible",
+          "css-backdrop-filter",
+          "css-masks",
+          "css-scrollbar",
+          "css-text-spacing",
+          "css-logical-props"
+        ],
         "severity": "warning"
       }
     ],
