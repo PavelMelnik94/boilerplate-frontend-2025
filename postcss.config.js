@@ -1,6 +1,5 @@
 export default {
   plugins: {
-    'autoprefixer': {},
     'postcss-preset-env': {
       stage: 3,
       features: {
@@ -12,11 +11,11 @@ export default {
         'last 2 versions',
         '> 1%',
         'not dead',
-        'Chrome >= 60',
-        'Firefox >= 60',
-        'Safari >= 12',
-        'iOS >= 12',
-        'not IE 11'
+        'Chrome >= 100',
+        'Firefox >= 110',
+        'Safari >= 16',
+        'iOS >= 16',
+        'not IE 11',
       ],
     },
   },

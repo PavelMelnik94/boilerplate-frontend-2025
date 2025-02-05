@@ -1,0 +1,152 @@
+{
+  "plugins": [
+    "stylelint-high-performance-animation",
+    "stylelint-scss",
+    "stylelint-order",
+    "stylelint-use-nesting",
+    "stylelint-no-unresolved-module",
+    "stylelint-no-unsupported-browser-features",
+    "stylelint-selector-bem-pattern"
+  ],
+  "customSyntax": "postcss-scss",
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "no-duplicate-selectors": true,
+    "color-hex-length": "short",
+    "color-named": "never",
+    "selector-max-id": 0,
+    "function-url-quotes": "always",
+    "comment-whitespace-inside": "always",
+    "selector-pseudo-element-colon-notation": "double",
+
+    "color-function-notation": "modern",
+    "alpha-value-notation": "percentage",
+    "value-keyword-case": "lower",
+    "property-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "selector-no-vendor-prefix": true,
+    "media-feature-name-no-vendor-prefix": true,
+    "at-rule-no-vendor-prefix": true,
+
+    "scss/at-rule-no-unknown": true,
+    "scss/selector-no-redundant-nesting-selector": true,
+    "scss/no-duplicate-dollar-variables": true,
+    "scss/no-global-function-names": true,
+    "scss/dollar-variable-pattern": "^[a-z][a-zA-Z0-9]+$",
+    "scss/at-extend-no-missing-placeholder": true,
+
+    "plugin/no-low-performance-animation-properties": [
+      true,
+      {
+        "ignoreProperties": ["color", "background-color", "border-color", "opacity"]
+      }
+    ],
+
+    "csstools/use-nesting": "always",
+
+    "plugin/no-unsupported-browser-features": [
+      true,
+      {
+        "browsers": ["Chrome >= 100", "Firefox >= 110", "Safari >= 16", "iOS >= 16", "not IE 11"],
+        "ignore": ["css-nesting"],
+        "severity": "warning"
+      }
+    ],
+
+    "plugin/selector-bem-pattern": {
+      "componentName": "[A-Z]+[A-Za-z0-9]*",
+      "componentSelectors": {
+        "initial": "^\\.{componentName}(?:-[a-z0-9]+)?$",
+        "combined": "^\\.{componentName}(?:-[a-z0-9]+)?(?:__[a-z0-9]+(?:-[a-z0-9]+)*)?(?:--[a-z0-9]+(?:-[a-z0-9]+)*)?$"
+      },
+      "utilitySelectors": "^\\.u-[a-z0-9]+$"
+    },
+
+    "order/order": ["custom-properties", "dollar-variables", "declarations", "at-rules", "rules"],
+    "order/properties-order": [
+      {
+        "groupName": "Positioning",
+        "properties": ["position", "top", "right", "bottom", "left", "z-index"]
+      },
+      {
+        "groupName": "Display & Box Model",
+        "properties": [
+          "display",
+          "flex",
+          "flex-basis",
+          "flex-direction",
+          "flex-flow",
+          "flex-grow",
+          "flex-shrink",
+          "flex-wrap",
+          "grid",
+          "grid-area",
+          "grid-template",
+          "grid-template-areas",
+          "grid-template-rows",
+          "grid-template-columns",
+          "grid-row",
+          "grid-column",
+          "grid-gap",
+          "gap",
+          "justify-content",
+          "align-items",
+          "align-content",
+          "order",
+          "box-sizing",
+          "width",
+          "min-width",
+          "max-width",
+          "height",
+          "min-height",
+          "max-height",
+          "margin",
+          "margin-top",
+          "margin-right",
+          "margin-bottom",
+          "margin-left",
+          "padding",
+          "padding-top",
+          "padding-right",
+          "padding-bottom",
+          "padding-left"
+        ]
+      },
+      {
+        "groupName": "Visual",
+        "properties": [
+          "background",
+          "background-color",
+          "background-image",
+          "background-repeat",
+          "background-position",
+          "background-size",
+          "color",
+          "border",
+          "border-radius",
+          "opacity",
+          "box-shadow",
+          "outline"
+        ]
+      },
+      {
+        "groupName": "Typography",
+        "properties": [
+          "font-family",
+          "font-size",
+          "font-weight",
+          "line-height",
+          "letter-spacing",
+          "text-align",
+          "text-decoration",
+          "text-transform",
+          "white-space"
+        ]
+      },
+      {
+        "groupName": "Animation",
+        "properties": ["transform", "transition", "animation"]
+      }
+    ]
+  }
+}

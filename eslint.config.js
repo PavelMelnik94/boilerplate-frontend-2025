@@ -1,5 +1,6 @@
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';
+import compat from 'eslint-plugin-compat';
 import importPlugin from 'eslint-plugin-import';
 import optimizeRegexPlugin from 'eslint-plugin-optimize-regex';
 import promisePlugin from 'eslint-plugin-promise';
@@ -72,6 +73,9 @@ export default [
 
       // Security
       ...securityPlugin.configs.recommended.rules,
+
+      //Compat compat.configs["flat/recommended"]
+      ...compat.configs['flat/recommended'],
     },
   },
 ];

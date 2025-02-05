@@ -1,5 +1,8 @@
 {
-  "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
-  "*.{css,scss}": ["stylelint --fix", "prettier --write"],
-  "*.{json,md,yml,yaml}": "prettier --write"
+  "*.{ts,tsx}": ["prettier --write", "eslint --fix", "npm run type-check --"],
+  "*.{css,scss}": [
+    "prettier --write",
+    "stylelint \"**/*.{css,scss}\" --fix --config .stylelintrc.json --custom-formatter=@csstools/stylelint-formatter-github"
+  ],
+  "*.{json,md,yml,yaml}": ["prettier --write"]
 }

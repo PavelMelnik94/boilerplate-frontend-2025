@@ -1,0 +1,83 @@
+[
+  {
+    "source": "C:\\Users\\recyc\\Downloads\\project-bolt-sb1-huaw4gee\\project\\src\\style.css",
+    "deprecations": [],
+    "invalidOptionWarnings": [],
+    "parseErrors": [],
+    "errored": true,
+    "warnings": [
+      {
+        "line": 1,
+        "column": 1,
+        "endLine": 101,
+        "endColumn": 3,
+        "rule": "indentation",
+        "severity": "error",
+        "text": "Unknown rule indentation."
+      },
+      {
+        "line": 1,
+        "column": 1,
+        "endLine": 101,
+        "endColumn": 3,
+        "rule": "string-quotes",
+        "severity": "error",
+        "text": "Unknown rule string-quotes."
+      },
+      {
+        "line": 1,
+        "column": 1,
+        "endLine": 101,
+        "endColumn": 3,
+        "rule": "color-hex-case",
+        "severity": "error",
+        "text": "Unknown rule color-hex-case. Did you mean color-hex-alpha, color-hex-length?"
+      },
+      {
+        "line": 1,
+        "column": 1,
+        "endLine": 101,
+        "endColumn": 3,
+        "rule": "selector-combinator-space-after",
+        "severity": "error",
+        "text": "Unknown rule selector-combinator-space-after."
+      },
+      {
+        "line": 1,
+        "column": 1,
+        "endLine": 101,
+        "endColumn": 3,
+        "rule": "declaration-block-trailing-semicolon",
+        "severity": "error",
+        "text": "Unknown rule declaration-block-trailing-semicolon."
+      },
+      {
+        "line": 1,
+        "column": 1,
+        "endLine": 101,
+        "endColumn": 3,
+        "rule": "declaration-colon-space-before",
+        "severity": "error",
+        "text": "Unknown rule declaration-colon-space-before."
+      },
+      {
+        "line": 1,
+        "column": 1,
+        "endLine": 101,
+        "endColumn": 3,
+        "rule": "declaration-colon-space-after",
+        "severity": "error",
+        "text": "Unknown rule declaration-colon-space-after."
+      },
+      {
+        "line": 1,
+        "column": 1,
+        "endLine": 101,
+        "endColumn": 3,
+        "rule": "number-leading-zero",
+        "severity": "error",
+        "text": "Unknown rule number-leading-zero."
+      }
+    ]
+  }
+]
