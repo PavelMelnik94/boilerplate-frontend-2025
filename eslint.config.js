@@ -60,13 +60,14 @@ export default [
       'optimize-regex/optimize-regex': 'warn',
 
       // Sonarjs
+      ...sonarjsPlugin.configs.recommended.rules,
       'sonarjs/cognitive-complexity': ['error', 15],
       'sonarjs/no-duplicate-string': ['error', 3],
-      ...sonarjsPlugin.configs.recommended.rules,
 
       // Unicorn
-      'unicorn/prevent-abbreviations': 'off',
       ...unicornPlugin.configs.recommended.rules,
+      'unicorn/prevent-abbreviations': 'off',
+      'unicorn/no-array-for-each': 'off',
 
       // Promise
       ...promisePlugin.configs.recommended.rules,
