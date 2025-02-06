@@ -61,7 +61,11 @@ To get started with this project, follow these steps:
    npm install
    ```
 
-3. **Start the development server**:
+3. **Find all and replace "ANCHOR"**:
+
+   - Find all "\*ANCHOR" in the project and replace them with your own values.
+
+4. **Start the development server**:
 
    ```bash
    npm run dev
@@ -71,13 +75,27 @@ To get started with this project, follow these steps:
 
 ## 📦 Available Scripts
 
+- `npm run prepare`: Installs Husky Git hooks.
+- `npm run lint-staged`: Runs lint-staged to check staged files.
+
 - `npm run dev`: Starts the development server with hot module replacement.
 - `npm run build`: Builds the application for production.
 - `npm run preview`: Previews the production build locally.
+
 - `npm run lint`: Runs ESLint to analyze code for potential errors.
+- `npm run lint:fix`: Fixes ESLint errors automatically.
 - `npm run format`: Formats code using Prettier.
+
+- `npm run style:check`: Lints CSS/SCSS files using Stylelint.
 - `npm run stylelint`: Lints CSS/SCSS files using Stylelint.
+
+- `npm run type-check`: Checks TypeScript types without emitting files.
+- `npm run type-check:watch`: Checks TypeScript types in watch mode.
+
 - `npm run test`: Runs unit tests using Vitest.
+- `npm run test:ui`: Opens the Vitest UI for interactive test running.
+- `npm run test:run`: Runs unit tests in watch mode.
+- `npm run test:coverage`: Generates test coverage reports.
 
 ## ✅ Pre-commit Hooks
 
