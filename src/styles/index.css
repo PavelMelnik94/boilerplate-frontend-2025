@@ -1,4 +1,4 @@
-@import url('reset.css');
+@import url('_normalize.css');
 @import url('mapper.scss');
 @import url('variables.css');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
