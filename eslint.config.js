@@ -67,6 +67,7 @@ export default [
       ...unicornPlugin.configs.recommended.rules,
       'unicorn/prevent-abbreviations': 'off',
       'unicorn/no-array-for-each': 'off',
+      'unicorn/no-null': 'off',
 
       // Promise
       ...promisePlugin.configs.recommended.rules,

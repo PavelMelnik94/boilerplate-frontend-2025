@@ -43,6 +43,6 @@
     // types
     "types": ["vite/client", "vitest/globals", "node"]
   },
-  "include": ["src", "vite.config.ts", "vitest.config.ts", "src/.test.ts"],
+  "include": ["src", "vite.config.ts", "vitest.config.ts", "src/.test.ts", "configs/**/*"],
   "exclude": ["node_modules", "dist", "build", "coverage"]
 }
