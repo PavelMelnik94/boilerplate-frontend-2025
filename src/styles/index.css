@@ -3,11 +3,13 @@
 @import url('variables.css');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/* Base HTML Setup */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html {
-  height: 100%;
-
   font-size: 100%;
   text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
