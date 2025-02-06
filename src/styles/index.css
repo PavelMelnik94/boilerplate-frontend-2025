@@ -1,3 +1,5 @@
+/* stylelint-disable plugin/no-unsupported-browser-features */
+/* stylelint-disable no-duplicate-selectors */
 @import url('_normalize.css');
 @import url('mapper.scss');
 @import url('variables.css');
@@ -11,10 +13,7 @@
 
 html {
   font-size: 100%;
-  text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
-  overscroll-behavior-y: none;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -30,6 +29,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizelegibility;
   -webkit-overflow-scrolling: touch;
-  text-size-adjust: 100%;
   touch-action: manipulation;
+}
+
+/* For browsers that support scroll-behavior */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* For browsers that support overscroll-behavior */
+
+body {
+  overscroll-behavior-y: none;
+}
+
+/* Media queries for Safari on iOS to exclude unsupported properties for older versions */
+@supports not (scroll-behavior: smooth) {
+
+  html {
+    /* Use default scroll behavior for older browsers */
+    scroll-behavior: auto;
+  }
+}
+
+@supports not (overscroll-behavior-y: none) {
+
+  body {
+    /* Use default scroll behavior for older browsers */
+    overscroll-behavior-y: auto;
+  }
 }
