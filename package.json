@@ -74,13 +74,12 @@
     "vitest": "^3.0.5"
   },
   "browserslist": [
-    "last 5 Chrome versions",
-    "last 5 Firefox versions",
-    "last 5 Safari versions",
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 10 Safari versions",
     "iOS >= 15",
     "> 0.5%",
-    "not dead",
-    "not ie 11"
+    "not dead"
   ],
   "keywords": [
     "vite",

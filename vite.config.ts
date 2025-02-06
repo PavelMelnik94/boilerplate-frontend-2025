@@ -56,7 +56,7 @@ export default defineConfig(({ mode }) => ({
     // Defines how assets are optimized and handled
     assetsInlineLimit: 4096,
     emptyOutDir: true,
-    cssTarget: ['chrome100', 'firefox100', 'safari15', 'ios15'],
+    cssTarget: ['chrome120', 'firefox120', 'safari17', 'ios15'],
   },
 
   // Dependency optimization configuration
