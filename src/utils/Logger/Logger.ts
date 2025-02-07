@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 class Logger {
   private static instance: Logger;
   private isEnabled: boolean;
@@ -62,4 +63,6 @@ function withLogging<T extends (...args: unknown[]) => unknown>(fn: T): T {
   }) as T;
 }
 
-export { Logger, withLogging };
+const logger = Logger.getInstance();
+
+export { logger, withLogging };

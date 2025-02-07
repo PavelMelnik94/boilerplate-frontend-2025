@@ -2,7 +2,7 @@
   "*.{ts,tsx}": [
     "prettier --write",
     "eslint --fix --cache --no-warn-ignored",
-    "npm run type-check"
+    "bash -c 'npm run type-check'"
   ],
   "*.{css,scss}": [
     "prettier --write",

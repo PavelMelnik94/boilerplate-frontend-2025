@@ -2,14 +2,11 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always"
   },
-  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "eslint.format.enable": true,
   "stylelint.validate": ["css", "scss"],
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "typescript.preferences.importModuleSpecifierEnding": "js",
-  "path-intellisense.mappings": {
-    "@/": "${workspaceFolder}/src"
-  },
+  "typescript.preferences.importModuleSpecifierEnding": "minimal",
   "editor.formatOnSave": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -24,9 +21,6 @@
     "typescriptreact"
   ],
   "typescript.tsdk": "node_modules/typescript/lib",
-  "eslint.options": {
-    "configFile": ".eslintrc.js",
-    "extensions": [".js", ".jsx", ".ts", ".tsx"]
-  },
+  "eslint.useFlatConfig": true,
   "eslint.workingDirectories": [{ "mode": "auto" }]
 }

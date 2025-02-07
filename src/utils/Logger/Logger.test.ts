@@ -1,10 +1,9 @@
-import { describe, it, vi, expect } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
-import { Logger, withLogging } from './Logger';
+import { logger, withLogging } from './Logger';
 
-describe('Logger', () => {
+describe('logger', () => {
   it('should log info messages when enabled', () => {
-    const logger = Logger.getInstance();
     logger.setEnabled(true);
 
     const consoleInfoSpy = vi.spyOn(console, 'info');
@@ -19,7 +18,6 @@ describe('Logger', () => {
   });
 
   it('should not log info messages when disabled', () => {
-    const logger = Logger.getInstance();
     logger.setEnabled(false);
 
     const consoleInfoSpy = vi.spyOn(console, 'info');
@@ -31,7 +29,6 @@ describe('Logger', () => {
   });
 
   it('should log error messages when enabled', () => {
-    const logger = Logger.getInstance();
     logger.setEnabled(true);
 
     const consoleErrorSpy = vi.spyOn(console, 'error');
@@ -46,7 +43,6 @@ describe('Logger', () => {
   });
 
   it('should not log error messages when disabled', () => {
-    const logger = Logger.getInstance();
     logger.setEnabled(false);
 
     const consoleErrorSpy = vi.spyOn(console, 'error');
@@ -60,7 +56,6 @@ describe('Logger', () => {
 
 describe('withLogging', () => {
   it('should not log error messages when no error is thrown', () => {
-    const logger = Logger.getInstance();
     logger.setEnabled(true);
 
     const consoleErrorSpy = vi.spyOn(console, 'error');

@@ -1,6 +1,6 @@
+import eslintPlugin from '@nabla/vite-plugin-eslint';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import eslintPlugin from '@nabla/vite-plugin-eslint';
 // Build mode constants definition
 const MODES = {
   DEV: 'development',
@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     base,
-    plugins: [tsconfigPaths({ projects: ['./tsconfig.json'] }), eslintPlugin()],
+    plugins: [tsconfigPaths(), eslintPlugin()],
     // Resolve configuration
     // Sets up path aliases for simplified imports
     resolve: {

@@ -3,11 +3,11 @@ import parser from '@typescript-eslint/parser';
 import compat from 'eslint-plugin-compat';
 import importPlugin from 'eslint-plugin-import';
 import optimizeRegexPlugin from 'eslint-plugin-optimize-regex';
+import prettierPlugin from 'eslint-plugin-prettier';
 import promisePlugin from 'eslint-plugin-promise';
 import securityPlugin from 'eslint-plugin-security';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
-import prettierPlugin from 'eslint-plugin-prettier';
 
 import globals from 'globals';
 
@@ -43,6 +43,20 @@ export default [
       },
       sourceType: 'module',
       ecmaVersion: 'latest',
+    },
+    settings: {
+      // Configure browser targets for compat plugin
+      polyfills: [],
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
+        alias: {
+          map: [['@', './src']],
+          extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+        },
+      },
     },
     plugins: {
       '@typescript-eslint': tsPlugin,
@@ -143,23 +157,8 @@ export default [
       'object-curly-newline': ['error', { multiline: true, consistent: true }],
       'array-element-newline': ['error', { multiline: true, minItems: 3 }],
       'array-bracket-newline': ['error', { multiline: true, minItems: 3 }],
-    },
-    settings: {
-      // Configure browser targets for compat plugin
-      polyfills: [],
-      'import/resolver': {
-        node: {
-          extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
-        },
-        typescript: {
-          alwaysTryTypes: true,
-          project: './tsconfig.json',
-        },
-        alias: {
-          map: [['@/', './src']],
-          extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
-        },
-      },
+
+      'no-console': 'error',
     },
   },
 ];
