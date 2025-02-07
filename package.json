@@ -15,6 +15,7 @@
     "url": "https://github.com/PavelMelnik94/vite-typescript-starter/issues"
   },
   "scripts": {
+    "setup:vscode": "node scripts/setup-vscode-extensions.js",
     "dev": "vite --mode development",
     "build": "vite build",
     "preview": "vite preview",
