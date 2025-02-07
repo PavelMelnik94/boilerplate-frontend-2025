@@ -5,10 +5,12 @@
     "stylelint-order",
     "stylelint-use-nesting",
     "stylelint-no-unsupported-browser-features",
-    "stylelint-selector-bem-pattern"
+    "stylelint-selector-bem-pattern",
+    "stylelint-prettier",
+    "stylelint-declaration-strict-value"
   ],
   "customSyntax": "postcss-scss",
-  "extends": ["stylelint-config-standard"],
+  "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
   "overrides": [
     {
       "files": ["**/*.scss"],
@@ -191,6 +193,13 @@
         "emptyLineBefore": "always",
         "noEmptyLineBetween": true,
         "properties": ["transform", "transition", "animation"]
+      }
+    ],
+
+    "scale-unlimited/declaration-strict-value": [
+      ["color", "z-index", "font-size", "font-family"],
+      {
+        "ignoreKeywords": ["inherit", "transparent", "currentColor"]
       }
     ]
   }

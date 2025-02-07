@@ -6,7 +6,7 @@
   ],
   "*.{css,scss}": [
     "prettier --write",
-    "stylelint \"**/*.{css,scss}\" --fix --config .stylelintrc.json --custom-formatter=@csstools/stylelint-formatter-github"
+    "stylelint \"**/*.{css,scss}\" --fix --config .stylelintrc.json"
   ],
   "*.{json,md,yml,yaml}": ["prettier --write"]
 }

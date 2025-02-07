@@ -1,3 +1,4 @@
+/* stylelint-disable rule-empty-line-before */
 /* stylelint-disable plugin/no-unsupported-browser-features */
 /* stylelint-disable no-duplicate-selectors */
 @import url('_normalize.css');
@@ -9,11 +10,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-html {
-  font-size: 100%;
-  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
 }
 
 body {
@@ -30,6 +26,7 @@ body {
   text-rendering: optimizelegibility;
   -webkit-overflow-scrolling: touch;
   touch-action: manipulation;
+  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
 }
 
 /* For browsers that support scroll-behavior */
@@ -46,17 +43,13 @@ body {
 
 /* Media queries for Safari on iOS to exclude unsupported properties for older versions */
 @supports not (scroll-behavior: smooth) {
-
   html {
-    /* Use default scroll behavior for older browsers */
     scroll-behavior: auto;
   }
 }
 
 @supports not (overscroll-behavior-y: none) {
-
   body {
-    /* Use default scroll behavior for older browsers */
     overscroll-behavior-y: auto;
   }
 }
