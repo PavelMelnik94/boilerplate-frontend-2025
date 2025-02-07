@@ -16,12 +16,12 @@ export default defineConfig(({ mode }) => {
 
   return {
     base,
-    plugins: [tsconfigPaths({ projects: ['./tsconfig.json'],  }), eslintPlugin()],
+    plugins: [tsconfigPaths({ projects: ['./tsconfig.json'] }), eslintPlugin()],
     // Resolve configuration
     // Sets up path aliases for simplified imports
     resolve: {
       alias: {
-        '@/': '/src',
+        '@': '/src',
       },
     },
 
@@ -44,11 +44,17 @@ export default defineConfig(({ mode }) => {
           },
           // Output file naming patterns based on build mode
           chunkFileNames:
-            mode === MODES.PROD ? 'assets/js/[name]-[hash].js' : 'assets/js/[name].js',
+            mode === MODES.PROD
+              ? 'assets/js/[name]-[hash].js'
+              : 'assets/js/[name].js',
           entryFileNames:
-            mode === MODES.PROD ? 'assets/js/[name]-[hash].js' : 'assets/js/[name].js',
+            mode === MODES.PROD
+              ? 'assets/js/[name]-[hash].js'
+              : 'assets/js/[name].js',
           assetFileNames:
-            mode === MODES.PROD ? 'assets/[ext]/[name]-[hash].[ext]' : 'assets/[ext]/[name].[ext]',
+            mode === MODES.PROD
+              ? 'assets/[ext]/[name]-[hash].[ext]'
+              : 'assets/[ext]/[name].[ext]',
         },
         // External dependencies configuration
         external: mode === MODES.PROD ? [] : [/node_modules/],

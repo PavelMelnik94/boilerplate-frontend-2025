@@ -7,6 +7,7 @@ import promisePlugin from 'eslint-plugin-promise';
 import securityPlugin from 'eslint-plugin-security';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
+import prettierPlugin from 'eslint-plugin-prettier';
 
 import globals from 'globals';
 
@@ -28,12 +29,12 @@ export default [
     ],
   },
   {
-    files: ['./src/**/*.ts', './src/**/*.tsx'],
+    files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
       parser,
       parserOptions: {
         project: ['tsconfig.json'],
-        tsconfigRootDir: './',
+        tsconfigRootDir: import.meta.dirname,
       },
       globals: {
         ...globals.browser,
@@ -52,8 +53,12 @@ export default [
       sonarjs: sonarjsPlugin,
       unicorn: unicornPlugin,
       compat: compat,
+      prettier: prettierPlugin,
     },
     rules: {
+      // Prettier
+      'prettier/prettier': 'error',
+
       // TypeScript
       ...tsPlugin.configs['recommended'].rules,
       '@typescript-eslint/explicit-function-return-type': 'error',
@@ -66,7 +71,14 @@ export default [
       'import/order': [
         'error',
         {
-          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+          ],
           'newlines-between': 'always',
           alphabetize: { order: 'asc' },
         },
@@ -126,6 +138,11 @@ export default [
 
       // Compat - Browser compatibility checking
       'compat/compat': 'error',
+
+      // Formatting
+      'object-curly-newline': ['error', { multiline: true, consistent: true }],
+      'array-element-newline': ['error', { multiline: true, minItems: 3 }],
+      'array-bracket-newline': ['error', { multiline: true, minItems: 3 }],
     },
     settings: {
       // Configure browser targets for compat plugin
