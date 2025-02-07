@@ -2,7 +2,7 @@
   "*.{ts,tsx}": [
     "prettier --write",
     "eslint --fix --cache --no-warn-ignored",
-    "bash -c 'npm run type-check'"
+    "node --eval \"process.exit(process.exitCode || require('child_process').spawnSync('npm', ['run', 'type-check'], {stdio:'inherit'}).status)\""
   ],
   "*.{css,scss}": [
     "prettier --write",
