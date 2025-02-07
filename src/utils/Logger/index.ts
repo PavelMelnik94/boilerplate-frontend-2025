@@ -1,4 +1,4 @@
-import { Logger, withLogging } from './logger';
+import { Logger, withLogging } from './Logger';
 
 const logger = Logger.getInstance();
 
