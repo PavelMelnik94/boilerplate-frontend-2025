@@ -1,0 +1,45 @@
+{
+  "recommendations": [
+    // Core Language Support & Type Checking
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint",
+    "clinyong.vscode-css-modules",
+    "ms-vscode.vscode-typescript-next",
+    "chamboug.js-auto-backticks",
+    "rvest.vs-code-prettier-eslint",
+    "cipchk.cssrem",
+
+    // TypeScript Enhancements
+    "streetsidesoftware.code-spell-checker",
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-rename-tag",
+
+    // Git Integration
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+
+    // Testing & Debugging
+    "ZixuanChen.vitest-explorer",
+
+    // Code Quality & Productivity
+    "usernamehw.errorlens",
+    "naumovs.color-highlight",
+    "wayou.vscode-todo-highlight",
+    "aaron-bond.better-comments",
+    "exodiusstudios.comment-anchors",
+    "pflannery.vscode-versionlens",
+
+    // Security & Best Practices
+    "mikestead.dotenv",
+    "yoavbls.pretty-ts-errors",
+    "pflannery.vscode-versionlens",
+
+    // Optional but Recommended
+    "vscode-icons-team.vscode-icons",
+    "christian-kohler.npm-intellisense",
+    "PKief.material-icon-theme",
+    "fontanaridaniel.cursor-like-theme",
+    "miguelsolorio.symbols"
+  ]
+}
