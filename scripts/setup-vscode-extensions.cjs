@@ -42,8 +42,6 @@ const extensions = {
     ['webhint.vscode-webhint', 'Performance hints'],
   ],
   uiEnhancements: [
-    ['vscode-icons-team.vscode-icons', 'File icons'],
-    ['PKief.material-icon-theme', 'Material icons'],
     ['fontanaridaniel.cursor-like-theme', 'Modern cursor'],
     ['miguelsolorio.symbols', 'Custom file symbols'],
   ],
