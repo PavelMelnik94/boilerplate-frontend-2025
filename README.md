@@ -20,14 +20,14 @@ Welcome to **Boilerplate Frontend 2025**! A modern, feature-rich starter templat
   - [Husky](https://typicode.github.io/husky/) - Git hooks made easy
   - [lint-staged](https://github.com/okonet/lint-staged) - Run linters on git staged files
 - 📊 **Analysis & Testing**:
-  - Bundle analysis
-  - Web Vitals monitoring
-  - Lighthouse integration
-  - Accessibility testing (axe-core)
+  - [Bundle analysis](https://www.npmjs.com/package/rollup-plugin-visualizer) - Visualize bundle size
+  - [Web Vitals monitoring](https://www.npmjs.com/package/web-vitals) - Monitor web performance
+  - [Lighthouse integration](https://www.npmjs.com/package/lighthouse) - Run Lighthouse audits
+  - [Accessibility testing (axe-core)](https://www.npmjs.com/package/@axe-core/cli) - Check accessibility
 - 🔍 **Performance**:
-  - Bundle size limits
-  - Browser compatibility checks
-  - High-performance animations linting
+  - [Bundle size limits](https://www.npmjs.com/package/bundlesize) - Set size limits for assets
+  - [Browser compatibility checks](https://www.npmjs.com/package/eslint-plugin-compat) - Ensure compatibility
+  - [High-performance animations linting](https://www.npmjs.com/package/stylelint-high-performance-animation) - Check animations performance in styles
 
 ## 📂 Project Structure
 
@@ -48,6 +48,7 @@ boilerplate-frontend-2025/
     ├── postcss.config.js
     ├── tsconfig.json
     ├── vite.config.ts
+    ├── web-vitals.config.js
     └── vitest.config.ts
 ```
 
@@ -61,22 +62,30 @@ boilerplate-frontend-2025/
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/PavelMelnik94/boilerplate-frontend-2025.git
 cd boilerplate-frontend-2025
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Set up VS Code extensions (optional):
+
+This command will install recommended extensions for VS Code.
+
 ```bash
 npm run setup:vscode
 ```
 
-4. Start development server:
+4. Find all "\*ANCHOR" comments in the project and replace them with your own values.
+
+5. Start development server:
+
 ```bash
 npm run dev
 ```
@@ -84,11 +93,13 @@ npm run dev
 ## 📜 Available Scripts
 
 ### Development
+
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 
 ### Testing
+
 - `npm run test` - Run tests
 - `npm run test:ui` - Open test UI
 - `npm run test:coverage` - Generate coverage report
@@ -96,6 +107,7 @@ npm run dev
 - `npm run test:run` - Single run tests
 
 ### Linting & Formatting
+
 - `npm run lint` - Lint code
 - `npm run lint:fix` - Fix linting issues
 - `npm run format` - Format code
@@ -103,10 +115,12 @@ npm run dev
 - `npm run style:fix` - Fix style issues
 
 ### Type Checking
+
 - `npm run type-check` - Check types
 - `npm run type-check:watch` - Watch mode type checking
 
 ### Performance & Analysis
+
 - `npm run lighthouse` - Run Lighthouse audit
 - `npm run check-a11y` - Check accessibility
 - `npm run bundle-analysis` - Analyze bundle size
@@ -114,6 +128,7 @@ npm run dev
 - `npm run check-web-vitals` - Monitor web vitals
 
 ### Git Hooks
+
 - `npm run prepare` - Install Husky hooks
 - `npm run lint-staged` - Run staged file checks
 
@@ -161,6 +176,7 @@ docker-compose down
 ## 🔒 Git Hooks
 
 Pre-commit hooks automatically run:
+
 - ESLint
 - Prettier
 - Stylelint
