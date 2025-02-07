@@ -41,3 +41,4 @@ dist-ssr
 .env.production.local
 
 .husky/_
+.eslintcache
