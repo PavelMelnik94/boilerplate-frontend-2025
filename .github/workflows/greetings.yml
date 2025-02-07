@@ -9,15 +9,16 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-    - uses: actions/first-interaction@v1
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-message: "👋 Thanks for opening your first issue in boilerplate-frontend-2025! Please make sure you've followed our issue template and provided all necessary details about the problem or suggestion. Our community will review it soon!"
-        pr-message: "🎉 Thank you for your first pull request to boilerplate-frontend-2025! We appreciate your contribution to making our frontend boilerplate better. Please ensure:
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: "👋 Thanks for opening your first issue in boilerplate-frontend-2025! Please make sure you've followed our issue template and provided all necessary details about the problem or suggestion. Our community will review it soon!"
+          pr-message: |
+            🎉 Thank you for your first pull request to boilerplate-frontend-2025! We appreciate your contribution to making our frontend boilerplate better. Please ensure:
 
-        ✅ Your code follows our style guidelines
-        ✅ You've added/updated tests if necessary
-        ✅ Your commits are well-formatted
-        ✅ You've updated documentation if needed
-        
-        Our team will review your PR soon. Thank you for contributing! 💪"
+            - ✅ Your code follows our style guidelines
+            - ✅ You've added/updated tests if necessary
+            - ✅ Your commits are well-formatted
+            - ✅ You've updated documentation if needed
+
+            Our team will review your PR soon. Thank you for contributing! 💪

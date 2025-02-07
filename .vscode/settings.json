@@ -55,5 +55,7 @@
   "stylelint.enable": true,
   "stylelint.validate": ["css", "scss"],
   "css.validate": false,
-  "scss.validate": false
+  "scss.validate": false,
+  "prettier.requireConfig": true,
+  "files.eol": "\n"
 }

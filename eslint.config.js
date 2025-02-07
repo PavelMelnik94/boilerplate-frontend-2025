@@ -2,6 +2,8 @@ import tsPlugin from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';
 import compat from 'eslint-plugin-compat';
 import importPlugin from 'eslint-plugin-import';
+import a11yPlugin from 'eslint-plugin-jsx-a11y';
+import perfectionistPlugin from 'eslint-plugin-perfectionist';
 import prettierPlugin from 'eslint-plugin-prettier';
 import promisePlugin from 'eslint-plugin-promise';
 import securityPlugin from 'eslint-plugin-security';
@@ -66,10 +68,21 @@ export default [
       unicorn: unicornPlugin,
       compat: compat,
       prettier: prettierPlugin,
+      perfectionist: perfectionistPlugin,
+      'jsx-a11y': a11yPlugin,
     },
     rules: {
       // Prettier
-      'prettier/prettier': 'error',
+      'prettier/prettier': [
+        'error',
+        {
+          endOfLine: 'lf',
+          semi: true,
+          singleQuote: true,
+          tabWidth: 2,
+          trailingComma: 'all',
+        },
+      ],
 
       // TypeScript
       ...tsPlugin.configs['recommended'].rules,
@@ -80,23 +93,11 @@ export default [
       '@typescript-eslint/no-inferrable-types': 'error',
 
       // Import
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-          ],
-          'newlines-between': 'always',
-          alphabetize: { order: 'asc' },
-        },
-      ],
       'import/no-duplicates': 'error',
       'import/no-cycle': 'error',
+
+      // ESLint
+      'no-console': 'error',
 
       // Sonarjs
       ...sonarjsPlugin.configs.recommended.rules,
@@ -153,7 +154,86 @@ export default [
       'array-element-newline': ['error', { multiline: true, minItems: 3 }],
       'array-bracket-newline': ['error', { multiline: true, minItems: 3 }],
 
-      'no-console': 'error',
+      // Enhanced Perfectionist rules
+      'perfectionist/sort-imports': [
+        'error',
+        {
+          type: 'natural',
+          order: 'asc',
+          groups: [
+            'type',
+            ['builtin', 'external'],
+            'internal-type',
+            'internal',
+            ['parent-type', 'sibling-type', 'index-type'],
+            ['parent', 'sibling', 'index'],
+            'style',
+            'side-effect',
+            'unknown',
+          ],
+          internalPattern: ['^@/.*'],
+          ignoreCase: true,
+          sortSideEffects: true,
+          newlinesBetween: 'always',
+        },
+      ],
+      'perfectionist/sort-named-imports': [
+        'error',
+        {
+          type: 'natural',
+          order: 'asc',
+          ignoreCase: true,
+        },
+      ],
+      'perfectionist/sort-exports': [
+        'error',
+        {
+          type: 'natural',
+          order: 'asc',
+        },
+      ],
+
+      // Enhanced JSX-A11Y rules
+      'jsx-a11y/alt-text': [
+        'error',
+        { elements: ['img', 'object', 'area', 'input[type="image"]'] },
+      ],
+      'jsx-a11y/anchor-has-content': ['error', { components: ['Link'] }],
+      'jsx-a11y/aria-props': 'error',
+      'jsx-a11y/aria-proptypes': 'error',
+      'jsx-a11y/aria-unsupported-elements': 'error',
+      'jsx-a11y/click-events-have-key-events': 'error',
+      'jsx-a11y/heading-has-content': 'error',
+      'jsx-a11y/html-has-lang': 'error',
+      'jsx-a11y/iframe-has-title': 'error',
+      'jsx-a11y/img-redundant-alt': 'error',
+      'jsx-a11y/interactive-supports-focus': [
+        'error',
+        {
+          tabbable: [
+            'button',
+            'checkbox',
+            'link',
+            'searchbox',
+            'spinbutton',
+            'switch',
+            'textbox',
+          ],
+        },
+      ],
+      'jsx-a11y/label-has-associated-control': [
+        'error',
+        {
+          labelComponents: ['CustomLabel'],
+          labelAttributes: ['label'],
+          controlComponents: ['CustomInput'],
+          assert: 'both',
+          depth: 3,
+        },
+      ],
+      'jsx-a11y/media-has-caption': 'error',
+      'jsx-a11y/no-autofocus': ['error', { ignoreNonDOM: true }],
+      'jsx-a11y/no-redundant-roles': 'error',
     },
   },
 ];

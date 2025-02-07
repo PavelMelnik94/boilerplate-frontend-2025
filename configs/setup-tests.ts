@@ -1,4 +1,5 @@
-import { vi, beforeAll, afterEach, afterAll } from 'vitest';
+import { afterAll, afterEach, beforeAll, vi } from 'vitest';
+
 import './setup-test-env';
 
 // Global settings
