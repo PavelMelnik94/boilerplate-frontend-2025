@@ -28,12 +28,12 @@ export default [
     ],
   },
   {
-    files: ['**/*.ts', '**/*.tsx'],
+    files: ['./src/**/*.ts', './src/**/*.tsx'],
     languageOptions: {
       parser,
       parserOptions: {
-        project: ['./tsconfig.json'],
-        tsconfigRootDir: import.meta.dirname,
+        project: ['tsconfig.json'],
+        tsconfigRootDir: './',
       },
       globals: {
         ...globals.browser,
@@ -94,8 +94,10 @@ export default [
       'unicorn/prevent-abbreviations': 'off',
       'unicorn/no-array-for-each': 'off',
       'unicorn/no-null': 'off',
+      'unicorn/prefer-export-from': 'off',
       'unicorn/no-abusive-eslint-disable': 'error',
       'unicorn/no-new-array': 'error',
+      'unicorn/filename-case': 'off',
 
       // Promise
       ...promisePlugin.configs.recommended.rules,

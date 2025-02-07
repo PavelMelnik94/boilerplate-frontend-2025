@@ -1,14 +1,13 @@
 {
-  "extends": ["./tsconfig.node.json"],
   "compilerOptions": {
     // base settings
-    "target": "ES2020",
+    "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": [ "ES2022", "DOM", "DOM.Iterable", "ES2020" ],
 
     // settings for bundler
-    "moduleResolution": "Bundler",
+    "moduleResolution": "NodeNext",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -32,17 +31,19 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noImplicitReturns": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": false,
+
+
 
     // paths
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
 
     // types
-    "types": ["vite/client", "vitest/globals", "node"]
+    "types": [ "vite/client", "vitest/globals", "node" ]
   },
-  "include": ["src", "vite.config.ts", "vitest.config.ts", "src/.test.ts", "configs/**/*"],
-  "exclude": ["node_modules", "dist", "build", "coverage"]
+  "include": [ "src", "vite.config.ts", "vitest.config.ts", "src/.test.ts", "configs/**/*" ],
+  "exclude": [ "node_modules", "dist", "build", "coverage" ]
 }
