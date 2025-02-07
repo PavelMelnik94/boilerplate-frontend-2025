@@ -7,11 +7,17 @@ beforeAll(() => {
   vi.spyOn(console, 'warn').mockImplementation(() => {});
 
   // Set default viewport size
-  Object.defineProperty(globalThis.window, 'innerWidth', { value: 1024 /* REPLACEME*/ });
-  Object.defineProperty(globalThis.window, 'innerHeight', { value: 768 /* REPLACEME*/ });
+  Object.defineProperty(globalThis.window, 'innerWidth', {
+    value: 1024 /* REPLACEME*/,
+  });
+  Object.defineProperty(globalThis.window, 'innerHeight', {
+    value: 768 /* REPLACEME*/,
+  });
 
   // Set language settings
-  Object.defineProperty(navigator, 'language', { value: 'en-US' /* REPLACEME*/ });
+  Object.defineProperty(navigator, 'language', {
+    value: 'en-US' /* REPLACEME*/,
+  });
 });
 
 // Cleanup after each test
@@ -44,7 +50,8 @@ declare global {
   var sleep: (ms: number) => Promise<void>;
 }
 
-globalThis.sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
+globalThis.sleep = (ms: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, ms));
 
 // Disable animations
 Object.defineProperty(globalThis, 'matchMedia', {
