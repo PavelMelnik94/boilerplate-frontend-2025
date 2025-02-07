@@ -36,14 +36,14 @@
     // paths
     "baseUrl": ".",
     "paths": {
-      "@*": ["./src/*"]
+      "@/*": ["./src/*"]
     },
 
     // types
     "types": ["vite/client", "vitest/globals", "node"]
   },
   "include": [
-    "src",
+    "src/**/*.ts",
     "vite.config.ts",
     "vitest.config.ts",
     "src/.test.ts",

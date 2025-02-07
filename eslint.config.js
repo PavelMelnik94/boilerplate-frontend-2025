@@ -148,8 +148,15 @@ export default [
       // Configure browser targets for compat plugin
       polyfills: [],
       'import/resolver': {
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+        },
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
         alias: {
-          map: [['@', './src']],
+          map: [['@/', './src']],
           extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
         },
       },

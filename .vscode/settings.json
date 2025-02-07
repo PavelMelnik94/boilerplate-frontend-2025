@@ -25,6 +25,8 @@
   ],
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.options": {
-    "configFile": ".eslintrc.js"
-  }
+    "configFile": ".eslintrc.js",
+    "extensions": [".js", ".jsx", ".ts", ".tsx"]
+  },
+  "eslint.workingDirectories": [{ "mode": "auto" }]
 }
