@@ -9,15 +9,15 @@ beforeAll(() => {
 
   // Set default viewport size
   Object.defineProperty(globalThis.window, 'innerWidth', {
-    value: 1024 /* REPLACEME*/,
+    value: 1024 /* *ANCHOR */,
   });
   Object.defineProperty(globalThis.window, 'innerHeight', {
-    value: 768 /* REPLACEME*/,
+    value: 768 /* *ANCHOR */,
   });
 
   // Set language settings
   Object.defineProperty(navigator, 'language', {
-    value: 'en-US' /* REPLACEME*/,
+    value: 'en-US' /* *ANCHOR */,
   });
 });
 
