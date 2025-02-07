@@ -4,7 +4,6 @@
     "stylelint-scss",
     "stylelint-order",
     "stylelint-use-nesting",
-    "stylelint-no-unresolved-module",
     "stylelint-no-unsupported-browser-features",
     "stylelint-selector-bem-pattern"
   ],
@@ -48,7 +47,12 @@
     "plugin/no-low-performance-animation-properties": [
       true,
       {
-        "ignoreProperties": ["color", "background-color", "border-color", "opacity"]
+        "ignoreProperties": [
+          "color",
+          "background-color",
+          "border-color",
+          "opacity"
+        ]
       }
     ],
 
@@ -87,7 +91,13 @@
       "utilitySelectors": "^\\.u-[a-z0-9]+$"
     },
 
-    "order/order": ["custom-properties", "dollar-variables", "declarations", "at-rules", "rules"],
+    "order/order": [
+      "custom-properties",
+      "dollar-variables",
+      "declarations",
+      "at-rules",
+      "rules"
+    ],
     "order/properties-order": [
       {
         "groupName": "Positioning",

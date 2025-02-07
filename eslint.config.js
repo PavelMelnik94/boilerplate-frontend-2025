@@ -2,7 +2,6 @@ import tsPlugin from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';
 import compat from 'eslint-plugin-compat';
 import importPlugin from 'eslint-plugin-import';
-import optimizeRegexPlugin from 'eslint-plugin-optimize-regex';
 import prettierPlugin from 'eslint-plugin-prettier';
 import promisePlugin from 'eslint-plugin-promise';
 import securityPlugin from 'eslint-plugin-security';
@@ -61,7 +60,6 @@ export default [
     plugins: {
       '@typescript-eslint': tsPlugin,
       import: importPlugin,
-      'optimize-regex': optimizeRegexPlugin,
       promise: promisePlugin,
       security: securityPlugin,
       sonarjs: sonarjsPlugin,
@@ -99,9 +97,6 @@ export default [
       ],
       'import/no-duplicates': 'error',
       'import/no-cycle': 'error',
-
-      // Optimize regex
-      'optimize-regex/optimize-regex': 'warn',
 
       // Sonarjs
       ...sonarjsPlugin.configs.recommended.rules,
