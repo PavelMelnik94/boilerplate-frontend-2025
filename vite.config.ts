@@ -1,6 +1,8 @@
 import eslintPlugin from '@nabla/vite-plugin-eslint';
+import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
+
 // Build mode constants definition
 const MODES = {
   DEV: 'development',
@@ -16,7 +18,18 @@ export default defineConfig(({ mode }) => {
 
   return {
     base,
-    plugins: [tsconfigPaths(), eslintPlugin()],
+    plugins: [
+      tsconfigPaths(),
+      eslintPlugin(),
+      mode === MODES.ANALYZE &&
+        visualizer({
+          open: true,
+          filename: 'dist/stats.html',
+          gzipSize: true,
+          brotliSize: true,
+          template: 'treemap', // or 'sunburst', 'network'
+        }),
+    ].filter(Boolean),
     // Resolve configuration
     // Sets up path aliases for simplified imports
     resolve: {
