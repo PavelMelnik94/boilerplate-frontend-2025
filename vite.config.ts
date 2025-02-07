@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 // Build mode constants definition
 const MODES = {
@@ -15,12 +16,12 @@ export default defineConfig(({ mode }) => {
 
   return {
     base,
-
+    plugins: [tsconfigPaths()],
     // Resolve configuration
     // Sets up path aliases for simplified imports
     resolve: {
       alias: {
-        '@': '/src',
+        '@/*': '/src/*',
       },
     },
 
