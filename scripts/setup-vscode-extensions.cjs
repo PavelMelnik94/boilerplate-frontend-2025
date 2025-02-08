@@ -9,9 +9,15 @@ const extensions = {
     ['esbenp.prettier-vscode', 'Code formatter for consistent style'],
     ['stylelint.vscode-stylelint', 'CSS/SCSS/Less linting'],
     ['clinyong.vscode-css-modules', 'CSS Modules support and autocomplete'],
-    ['ms-vscode.vscode-typescript-next', 'Enhanced TypeScript/JavaScript support'],
+    [
+      'ms-vscode.vscode-typescript-next',
+      'Enhanced TypeScript/JavaScript support',
+    ],
     ['chamboug.js-auto-backticks', 'Auto converts quotes to backticks'],
-    ['rvest.vs-code-prettier-eslint', 'Combines Prettier and ESLint formatting'],
+    [
+      'rvest.vs-code-prettier-eslint',
+      'Combines Prettier and ESLint formatting',
+    ],
     ['cipchk.cssrem', 'Converts px to rem units automatically'],
   ],
   typeScriptEnhancements: [
@@ -25,7 +31,7 @@ const extensions = {
     ['mhutchie.git-graph', 'Git repository visualization'],
   ],
   testingDebugging: [
-    ['ZixuanChen.vitest-explorer', 'Vitest test runner'],
+    ['vitest.explorer', 'Vitest test runner'],
     ['usernamehw.errorlens', 'Inline error messages'],
   ],
   codeQuality: [
@@ -50,6 +56,7 @@ const extensions = {
     ['mrmlnc.vscode-scss', 'SCSS features'],
     ['bradlc.vscode-tailwindcss', 'Tailwind CSS support'],
     ['GraphQL.vscode-graphql', 'GraphQL support'],
+    ['antfu.vite', 'Vite support'],
   ],
 };
 

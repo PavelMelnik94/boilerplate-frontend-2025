@@ -1,7 +1,7 @@
 {
   "name": "vite-typescript-starter",
   "private": false,
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A starter project for Vite with TypeScript",
   "author": "Pavel Melnik",
   "license": "MIT",
@@ -50,7 +50,7 @@
     "autoprefixer": "^10.4.20",
     "bundlesize": "^0.18.2",
     "cross-env": "^7.0.3",
-    "eslint": "^9.19.0",
+    "eslint": "^9.20.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-import-resolver-typescript": "^3.7.0",
     "eslint-plugin-compat": "^6.0.2",

@@ -1,60 +1,35 @@
 {
   "recommendations": [
-    // === Core Language Support & Linting ===
-    // Essential tools for code quality and formatting
-    "dbaeumer.vscode-eslint", // JavaScript/TypeScript linting engine
-    "esbenp.prettier-vscode", // Code formatter for consistent style
-    "stylelint.vscode-stylelint", // CSS/SCSS/Less linting
-    "clinyong.vscode-css-modules", // CSS Modules support and autocomplete
-    "ms-vscode.vscode-typescript-next", // Enhanced TypeScript/JavaScript support
-    "chamboug.js-auto-backticks", // Auto converts quotes to backticks when needed
-    "rvest.vs-code-prettier-eslint", // Combines Prettier and ESLint formatting
-    "cipchk.cssrem", // Converts px to rem units automatically
-
-    // === TypeScript & Intellisense Enhancement ===
-    // Improves code writing experience and type checking
-    "streetsidesoftware.code-spell-checker", // Spell checking for code and comments
-    "christian-kohler.path-intellisense", // Autocompletes filenames in imports
-    "formulahendry.auto-rename-tag", // Auto-renames paired HTML/XML tags
-    "christian-kohler.npm-intellisense", // Autocompletes npm modules in imports
-
-    // === Git Integration ===
-    // Enhanced version control tools
-    "eamodio.gitlens", // Git supercharged - history and blame info
-    "mhutchie.git-graph", // Git repository visualization
-
-    // === Testing & Debugging ===
-    // Tools for testing and troubleshooting
-    "ZixuanChen.vitest-explorer", // Vitest test runner and debugger
-    "usernamehw.errorlens", // Inline error messages in code
-
-    // === Code Quality & Productivity ===
-    // Tools for better code understanding and maintenance
-    "naumovs.color-highlight", // Highlights color codes in code
-    "wayou.vscode-todo-highlight", // Highlights TODO comments
-    "aaron-bond.better-comments", // Categorized comment highlighting
-    "exodiusstudios.comment-anchors", // Create navigation anchors in comments
-    "pflannery.vscode-versionlens", // Shows package version info inline
-
-    // === Security & Best Practices ===
-    // Security and environment configuration
-    "mikestead.dotenv", // .env file support
-    "yoavbls.pretty-ts-errors", // Better TypeScript error messages
-    "deque-systems.vscode-axe-linter", // Accessibility testing
-    "webhint.vscode-webhint", // Performance and best practices hints
-
-    // === UI/UX Enhancements ===
-    // Visual improvements for the editor
-    "vscode-icons-team.vscode-icons", // File and folder icons
-    "PKief.material-icon-theme", // Material design icons
-    "fontanaridaniel.cursor-like-theme", // Modern cursor theme
-    "miguelsolorio.symbols", // Custom file symbols and icons
-
-    // === Specialized Tools ===
-    // Framework and technology specific support
-    "csstools.postcss", // PostCSS language support
-    "mrmlnc.vscode-scss", // SCSS language features
-    "bradlc.vscode-tailwindcss", // Tailwind CSS IntelliSense
-    "GraphQL.vscode-graphql" // GraphQL language support
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint",
+    "clinyong.vscode-css-modules",
+    "ms-vscode.vscode-typescript-next",
+    "chamboug.js-auto-backticks",
+    "rvest.vs-code-prettier-eslint",
+    "cipchk.cssrem",
+    "streetsidesoftware.code-spell-checker",
+    "christian-kohler.path-intellisense",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.npm-intellisense",
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "vitest.explorer",
+    "usernamehw.errorlens",
+    "naumovs.color-highlight",
+    "wayou.vscode-todo-highlight",
+    "aaron-bond.better-comments",
+    "exodiusstudios.comment-anchors",
+    "pflannery.vscode-versionlens",
+    "mikestead.dotenv",
+    "yoavbls.pretty-ts-errors",
+    "deque-systems.vscode-axe-linter",
+    "webhint.vscode-webhint",
+    "fontanaridaniel.cursor-like-theme",
+    "miguelsolorio.symbols",
+    "csstools.postcss",
+    "mrmlnc.vscode-scss",
+    "bradlc.vscode-tailwindcss",
+    "GraphQL.vscode-graphql"
   ]
 }
