@@ -34,7 +34,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": false,
+    "forceConsistentCasingInFileNames": true,
 
     // Declaration Settings
     "declaration": false,
@@ -46,7 +46,8 @@
     "vite.config.ts",
     "vitest.config.ts",
     "src/.test.ts",
-    "configs/**/*"
+    "configs/**/*",
+    "scripts/**/*"
   ],
   "exclude": ["node_modules", "dist", "build", "coverage"]
 }
