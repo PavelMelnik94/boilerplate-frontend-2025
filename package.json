@@ -42,10 +42,7 @@
     "generate:docs": "node scripts/generate-api-docs.cjs",
     "validate-env": "node scripts/validate-env.cjs",
     "prepare": "husky",
-    "lint-staged": "lint-staged",
-    "docs": "typedoc",
-    "docs:dev": "typedoc --watch",
-    "docs:sync": "node scripts/sync-docs.cjs"
+    "lint-staged": "lint-staged"
   },
   "devDependencies": {
     "@axe-core/cli": "^4.10.1",
