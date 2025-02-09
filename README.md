@@ -116,23 +116,77 @@ npm run dev
 - `npm run style:check` - Check styles
 - `npm run style:fix` - Fix style issues
 
-### Type Checking
+### Development Tools
 
-- `npm run type-check` - Check types
-- `npm run type-check:watch` - Watch mode type checking
+- `npm run check:deps` - Check for outdated dependencies and optionally update them
+- `npm run clean` - Clean temporary files and build artifacts
+- `npm run create:component` - Generate new component with all necessary files
+- `npm run analyze:code` - Analyze codebase statistics and potential issues
 
-### Performance & Analysis
+### Analysis & Quality
 
-- `npm run lighthouse` - Run Lighthouse audit
-- `npm run check-a11y` - Check accessibility
-- `npm run bundle-analysis` - Analyze bundle size
-- `npm run size` - Check size limits
-- `npm run check-web-vitals` - Monitor web vitals
+- `npm run lighthouse` - Run Lighthouse audit for performance analysis
+- `npm run check-a11y` - Check application accessibility
+- `npm run bundle-analysis` - Analyze bundle size composition
+- `npm run size` - Check bundle size limits
+- `npm run check-web-vitals` - Monitor Core Web Vitals metrics
 
-### Git Hooks
+### Setup & Maintenance
 
+- `npm run setup:vscode` - Install recommended VS Code extensions
 - `npm run prepare` - Install Husky hooks
 - `npm run lint-staged` - Run staged file checks
+
+## 🛠️ Development Tools
+
+### Component Generator
+
+```bash
+npm run create:component ComponentName
+```
+
+Generates a new component with:
+
+- Component file (TSX)
+- Styles module (SCSS)
+- Test file
+- Index file for exports
+
+### Dependency Management
+
+```bash
+npm run check:deps
+```
+
+- Checks for outdated dependencies
+- Shows available updates
+- Offers interactive update process
+
+### Project Cleanup
+
+```bash
+npm run clean
+```
+
+Removes:
+
+- Build artifacts
+- Temporary files
+- Cache directories
+- Debug logs
+
+### Codebase Analysis
+
+```bash
+npm run analyze:code
+```
+
+Provides:
+
+- File count and types statistics
+- Line count analysis
+- Largest files identification
+- Security audit results
 
 ## 🔧 Configuration
 
