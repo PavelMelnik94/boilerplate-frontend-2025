@@ -28,6 +28,14 @@ Welcome to **Boilerplate Frontend 2025**! A modern, feature-rich starter templat
   - [Bundle size limits](https://www.npmjs.com/package/bundlesize) - Set size limits for assets
   - [Browser compatibility checks](https://www.npmjs.com/package/eslint-plugin-compat) - Ensure compatibility
   - [High-performance animations linting](https://www.npmjs.com/package/stylelint-high-performance-animation) - Check animations performance in styles
+- 📚 **Documentation**:
+  - [TypeDoc](https://typedoc.org/) - API documentation generation
+  - GitHub Wiki sync - Automatic wiki synchronization
+  - Feature flags management - Feature toggle system
+- 🎛️ **Feature Management**:
+  - Runtime feature toggles
+  - Type-safe feature flags
+  - Environment-based feature switching
 
 ## 📂 Project Structure
 
@@ -94,6 +102,16 @@ npm run dev
 
 ## 📜 Available Scripts
 
+### Documentation
+
+- `npm run docs` - Generate API documentation using TypeDoc
+- `npm run docs:sync` - Sync documentation with GitHub Wiki
+- `npm run generate:docs` - Generate detailed API documentation with examples
+- `npm run feature-flags list` - List all feature flags
+- `npm run feature-flags add [name]` - Add new feature flag
+- `npm run feature-flags enable [name]` - Enable feature flag
+- `npm run feature-flags disable [name]` - Disable feature flag
+
 ### Development
 
 - `npm run dev` - Start development server
@@ -137,57 +155,6 @@ npm run dev
 - `npm run prepare` - Install Husky hooks
 - `npm run lint-staged` - Run staged file checks
 
-## 🛠️ Development Tools
-
-### Component Generator
-
-```bash
-npm run create:component ComponentName
-```
-
-Generates a new component with:
-
-- Component file (TSX)
-- Styles module (SCSS)
-- Test file
-- Index file for exports
-
-### Dependency Management
-
-```bash
-npm run check:deps
-```
-
-- Checks for outdated dependencies
-- Shows available updates
-- Offers interactive update process
-
-### Project Cleanup
-
-```bash
-npm run clean
-```
-
-Removes:
-
-- Build artifacts
-- Temporary files
-- Cache directories
-- Debug logs
-
-### Codebase Analysis
-
-```bash
-npm run analyze:code
-```
-
-Provides:
-
-- File count and types statistics
-- Line count analysis
-- Largest files identification
-- Security audit results
-
 ## 🔧 Configuration
 
 ### Browser Support
@@ -213,6 +180,60 @@ Provides:
   }
 ]
 ```
+
+### Feature Flags
+
+Feature flags can be managed using the CLI:
+
+```bash
+# List all feature flags
+npm run feature-flags list
+
+# Add new feature flag
+npm run feature-flags add darkMode
+
+# Enable feature flag
+npm run feature-flags enable darkMode
+
+# Disable feature flag
+npm run feature-flags disable darkMode
+```
+
+Usage in code:
+
+```typescript
+import { featureFlags } from '@/config/featureFlags';
+
+function MyComponent() {
+  return (
+    <div>
+      {featureFlags.darkMode && <DarkModeToggle />}
+    </div>
+  );
+}
+```
+
+### Documentation
+
+The project uses TypeDoc for API documentation generation:
+
+- Documentation is generated in Markdown format
+- Automatically syncs with GitHub Wiki
+- Supports JSDoc comments
+- Categorizes by Components, Hooks, Utils, and Types
+
+Example JSDoc usage:
+
+````typescript
+/**
+ * @category Components
+ * @component
+ * @example
+ * ```tsx
+ * <MyComponent prop="value" />
+ * ```
+ */
+````
 
 ## 🐳 Docker Support
 
@@ -256,7 +277,5 @@ For support, please open an issue in the GitHub repository.
 <div align="center">
 
 Made with ❤️ by [PavelMelnik94](https://github.com/PavelMelnik94)
-
-Last updated: 2025-02-07 21:56:30 UTC
 
 </div>
