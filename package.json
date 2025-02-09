@@ -1,7 +1,7 @@
 {
   "name": "vite-typescript-starter",
   "private": false,
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "A starter project for Vite with TypeScript",
   "author": "Pavel Melnik",
   "license": "MIT",
@@ -37,7 +37,11 @@
     "check-a11y": "axe http://localhost:3010",
     "bundle-analysis": "vite build --mode analyze",
     "size": "size-limit",
-    "check-web-vitals": "web-vitals"
+    "check-web-vitals": "web-vitals",
+    "check:deps": "node scripts/check-dependencies.cjs",
+    "clean": "node scripts/clean-project.cjs",
+    "create:component": "node scripts/create-component.cjs",
+    "analyze:code": "node scripts/analyze-codebase.cjs"
   },
   "devDependencies": {
     "@axe-core/cli": "^4.10.1",
