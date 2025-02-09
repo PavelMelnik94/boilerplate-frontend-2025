@@ -84,7 +84,9 @@ npm run setup:vscode
 
 4. Find all "\*ANCHOR" comments in the project and replace them with your own values.
 
-5. Start development server:
+5. Editing the `README.md`, `LICENSE`, and `package.json` files is also recommended.
+
+6. Start development server:
 
 ```bash
 npm run dev
