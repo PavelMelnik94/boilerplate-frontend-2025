@@ -38,6 +38,7 @@
     "size": "size-limit",
     "check-web-vitals": "web-vitals",
     "setup:vscode": "node scripts/setup-vscode-extensions.cjs",
+    "feature-flags": "node scripts/feature-flags.cjs",
     "prepare": "husky",
     "lint-staged": "lint-staged"
   },
