@@ -10,20 +10,48 @@ if (!componentName) {
   process.exit(1);
 }
 
+// Validate component name format
+const isValidComponentName = (name) => {
+  // Allow only alphanumeric characters and PascalCase
+  const validNamePattern = /^[A-Z][a-zA-Z0-9]*$/;
+  return validNamePattern.test(name);
+};
+
+// Sanitize file path to prevent path traversal
+const getSafePath = (basePath, ...parts) => {
+  const targetPath = path.normalize(path.join(basePath, ...parts));
+  if (!targetPath.startsWith(basePath)) {
+    throw new Error('Invalid path: Possible path traversal attempt detected');
+  }
+  return targetPath;
+};
+
 function createComponent() {
-  // Use path.join for cross-platform compatibility
-  const componentDir = path.join(
-    process.cwd(),
-    'src',
-    'components',
-    componentName,
-  );
+  // Validate component name
+  if (!isValidComponentName(componentName)) {
+    console.error(
+      '❌ Invalid component name. Use PascalCase (e.g., MyComponent)',
+    );
+    process.exit(1);
+  }
 
-  // Create component directory with recursive option
-  fs.mkdirSync(componentDir, { recursive: true });
+  // Define base directory for components
+  const baseDir = path.join(process.cwd(), 'src', 'components');
 
-  // Template for the component file
-  const componentContent = `import { FC } from 'react';
+  try {
+    // Create safe component directory path
+    const componentDir = getSafePath(baseDir, componentName);
+
+    // Ensure the target directory is within the components directory
+    if (!componentDir.startsWith(baseDir)) {
+      throw new Error('Invalid component path');
+    }
+
+    // Create component directory with recursive option
+    fs.mkdirSync(componentDir, { recursive: true });
+
+    // Template contents remain the same
+    const componentContent = `import { FC } from 'react';
 import styles from './${componentName}.module.scss';
 
 interface ${componentName}Props {
@@ -39,13 +67,11 @@ export const ${componentName}: FC<${componentName}Props> = () => {
 };
 `;
 
-  // Template for the styles file
-  const styleContent = `.root {
+    const styleContent = `.root {
   // Your styles here
 }`;
 
-  // Template for the test file
-  const testContent = `import { describe, expect, it } from 'vitest';
+    const testContent = `import { describe, expect, it } from 'vitest';
 import { ${componentName} } from './${componentName}';
 
 describe('${componentName}', () => {
@@ -54,24 +80,20 @@ describe('${componentName}', () => {
   });
 });`;
 
-  // Template for the index file
-  const indexContent = `export { ${componentName} } from './${componentName}';`;
+    const indexContent = `export { ${componentName} } from './${componentName}';`;
 
-  try {
-    // Write all files using path.join for cross-platform compatibility
-    fs.writeFileSync(
-      path.join(componentDir, `${componentName}.tsx`),
-      componentContent,
-    );
-    fs.writeFileSync(
-      path.join(componentDir, `${componentName}.module.scss`),
-      styleContent,
-    );
-    fs.writeFileSync(
-      path.join(componentDir, `${componentName}.test.tsx`),
-      testContent,
-    );
-    fs.writeFileSync(path.join(componentDir, 'index.ts'), indexContent);
+    // Write files using safe paths
+    const files = [
+      { name: `${componentName}.tsx`, content: componentContent },
+      { name: `${componentName}.module.scss`, content: styleContent },
+      { name: `${componentName}.test.tsx`, content: testContent },
+      { name: 'index.ts', content: indexContent },
+    ];
+
+    for (const file of files) {
+      const filePath = getSafePath(componentDir, file.name);
+      fs.writeFileSync(filePath, file.content);
+    }
 
     console.log(`✅ Component ${componentName} created successfully!`);
   } catch (error) {
