@@ -206,28 +206,6 @@ function MyComponent() {
 }
 ```
 
-### Documentation
-
-The project uses TypeDoc for API documentation generation:
-
-- Documentation is generated in Markdown format
-- Automatically syncs with GitHub Wiki
-- Supports JSDoc comments
-- Categorizes by Components, Hooks, Utils, and Types
-
-Example JSDoc usage:
-
-````typescript
-/**
- * @category Components
- * @component
- * @example
- * ```tsx
- * <MyComponent prop="value" />
- * ```
- */
-````
-
 ## 🐳 Docker Support
 
 Build and run with Docker:
