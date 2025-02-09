@@ -72,5 +72,12 @@
   "stylelint.validate": ["css", "scss"],
   "css.validate": false,
   "scss.validate": false,
-  "cSpell.words": ["bundlesize", "nabla"]
+  "cSpell.words": [
+    "addgroup",
+    "adduser",
+    "bundlesize",
+    "healthcheck",
+    "nabla",
+    "VITE"
+  ]
 }
