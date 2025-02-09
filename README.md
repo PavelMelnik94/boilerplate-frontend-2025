@@ -28,10 +28,6 @@ Welcome to **Boilerplate Frontend 2025**! A modern, feature-rich starter templat
   - [Bundle size limits](https://www.npmjs.com/package/bundlesize) - Set size limits for assets
   - [Browser compatibility checks](https://www.npmjs.com/package/eslint-plugin-compat) - Ensure compatibility
   - [High-performance animations linting](https://www.npmjs.com/package/stylelint-high-performance-animation) - Check animations performance in styles
-- 📚 **Documentation**:
-  - [TypeDoc](https://typedoc.org/) - API documentation generation
-  - GitHub Wiki sync - Automatic wiki synchronization
-  - Feature flags management - Feature toggle system
 - 🎛️ **Feature Management**:
   - Runtime feature toggles
   - Type-safe feature flags
@@ -102,11 +98,8 @@ npm run dev
 
 ## 📜 Available Scripts
 
-### Documentation
+### Feature Flags
 
-- `npm run docs` - Generate API documentation using TypeDoc
-- `npm run docs:sync` - Sync documentation with GitHub Wiki
-- `npm run generate:docs` - Generate detailed API documentation with examples
 - `npm run feature-flags list` - List all feature flags
 - `npm run feature-flags add [name]` - Add new feature flag
 - `npm run feature-flags enable [name]` - Enable feature flag
