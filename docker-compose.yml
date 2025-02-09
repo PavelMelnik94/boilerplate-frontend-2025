@@ -2,12 +2,28 @@ version: '3.8'
 
 services:
   frontend:
-    image: frontend-app
+    container_name: frontend-app
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - '3010:3010'
+    environment:
+      - NODE_ENV=development
+      - VITE_APP_PORT=3010
     volumes:
       - .:/app
-    command: npm run dev
+      - /app/node_modules
+    healthcheck:
+      test: ['CMD', 'wget', '--spider', 'http://localhost:3010']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend-network
+
+networks:
+  frontend-network:
+    name: frontend-network
+    driver: bridge

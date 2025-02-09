@@ -1,20 +1,41 @@
-# Use a Node.js base image
-FROM node:20.18.2-bookworm-slim
+# Build stage
+FROM node:20.18.2-bookworm-slim AS builder
 
-# Set the working directory
 WORKDIR /app
 
-# Copy the project files into the Docker image
-COPY . .
+# Copy package files first to leverage Docker cache
+COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm ci
 
-# Build the project
+# Copy source code
+COPY . .
+
+# Build application
 RUN npm run build
 
-# Expose the port the app runs on
-EXPOSE 3000
+# Production stage
+FROM node:20.18.2-bookworm-slim
 
-# Set the command to run the development server
-CMD ["npm", "run", "dev"]
+WORKDIR /app
+
+# Create non-root user
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nodejs
+
+# Copy built assets from builder stage
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/package*.json ./
+
+# Install only production dependencies
+RUN npm ci --only=production
+
+# Use non-root user
+USER nodejs
+
+# Expose port
+EXPOSE 3010
+
+# Start the application
+CMD ["npm", "run", "preview"]
