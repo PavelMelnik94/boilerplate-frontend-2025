@@ -27,6 +27,7 @@ export default [
       'app/*',
       'vite.config.ts',
       'vitest.config.ts',
+      'src/**/*.d.ts',
     ],
   },
   {

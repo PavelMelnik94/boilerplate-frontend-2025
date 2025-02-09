@@ -39,9 +39,13 @@
     "check-web-vitals": "web-vitals",
     "setup:vscode": "node scripts/setup-vscode-extensions.cjs",
     "feature-flags": "node scripts/feature-flags.cjs",
+    "generate:docs": "node scripts/generate-api-docs.cjs",
     "validate-env": "node scripts/validate-env.cjs",
     "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "docs": "typedoc",
+    "docs:dev": "typedoc --watch",
+    "docs:sync": "node scripts/sync-docs.cjs"
   },
   "devDependencies": {
     "@axe-core/cli": "^4.10.1",
@@ -92,7 +96,11 @@
     "vite": "^6.1.0",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.5",
-    "web-vitals": "^4.2.4"
+    "web-vitals": "^4.2.4",
+    "typedoc": "^0.27.6",
+    "typedoc-plugin-markdown": "^4.4.1",
+    "@docusaurus/core": "^3.7.0",
+    "@docusaurus/preset-classic": "^3.7.0"
   },
   "size-limit": [
     {
