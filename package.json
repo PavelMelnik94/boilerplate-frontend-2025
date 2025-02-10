@@ -41,7 +41,9 @@
     "feature-flags": "node scripts/feature-flags.cjs",
     "validate-env": "node scripts/validate-env.cjs",
     "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "check:all": "cross-env npm run lint && npm run style:check && npm run type-check",
+    "fix:all": "cross-env npm run lint:fix && npm run style:fix"
   },
   "devDependencies": {
     "@axe-core/cli": "^4.10.1",
