@@ -1,7 +1,7 @@
 {
   "name": "vite-typescript-starter",
   "private": false,
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A starter project for Vite with TypeScript",
   "author": "Pavel Melnik",
   "license": "MIT",
@@ -19,6 +19,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
+    "test:ci": "vitest run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest watch",
