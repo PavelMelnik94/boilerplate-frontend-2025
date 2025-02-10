@@ -1,1 +1,17 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run lint-staged
 npx lint-staged
+
+# Get exit code from lint-staged
+RESULT=$?
+
+# If lint-staged was successful, stage the changes it made
+if [ $RESULT -eq 0 ]; then
+    # Add any files that were modified by lint-staged
+    git add -u
+fi
+
+# Return the original exit code
+exit $RESULT
