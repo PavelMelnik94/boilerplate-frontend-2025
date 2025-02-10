@@ -131,6 +131,25 @@ export default [
       'unicorn/prefer-export-from': 'off',
       'unicorn/no-abusive-eslint-disable': 'error',
       'unicorn/no-new-array': 'error',
+      'unicorn/filename-case': [
+      'error',
+      {
+        cases: {
+          kebabCase: true,
+          pascalCase: true
+        },
+        ignore: [
+          // For single word class files starting with capital letter
+          '^[A-Z][a-z0-9]*\\.(ts|tsx|js|jsx)$',
+          // For test files with single word
+          '^[A-Z][a-z0-9]*\\.(test|spec)\\.(ts|tsx|js|jsx)$',
+          // For React components in PascalCase
+          '^[A-Z][a-zA-Z0-9]*\\.(tsx|jsx)$',
+          // For React component tests
+          '^[A-Z][a-zA-Z0-9]*\\.(test|spec)\\.(tsx|jsx)$'
+        ]
+      }
+    ],
 
       // Promise
       ...promisePlugin.configs.recommended.rules,
