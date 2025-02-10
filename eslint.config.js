@@ -120,7 +120,7 @@ export default [
       'unicorn/prefer-export-from': 'off',
       'unicorn/no-abusive-eslint-disable': 'error',
       'unicorn/no-new-array': 'error',
-      'unicorn/filename-case': 'off',
+      // 'unicorn/filename-case': 'off',
 
       // Promise
       ...promisePlugin.configs.recommended.rules,
