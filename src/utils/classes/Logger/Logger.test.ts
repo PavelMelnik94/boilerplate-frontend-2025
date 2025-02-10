@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { logger, withLogging } from './logger';
+import { logger, withLogging } from './Logger';
 
 describe('logger', () => {
   it('should log info messages when enabled', () => {

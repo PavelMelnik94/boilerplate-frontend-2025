@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 class Logger {
   private static instance: Logger;
   private isEnabled: boolean;

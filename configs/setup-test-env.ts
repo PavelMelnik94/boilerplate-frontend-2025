@@ -1,4 +1,7 @@
+/* This file contains mock implementations of browser APIs for testing.
+   Some implementations use deprecated methods which trigger prettier warnings. */
 /* eslint-disable prettier/prettier */
+
 import { vi } from "vitest";
 
 const emptyRecords = (): [] => [];

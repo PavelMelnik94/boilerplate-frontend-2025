@@ -31,7 +31,7 @@ describe('tryit', () => {
   });
 
   it('should handle async function execution', () => {
-    const result = tryit(() => Promise.resolve('async success'));
+    const result = tryit(async () => await Promise.resolve('async success'));
     expect(result.data).toBeInstanceOf(Promise);
     expect(result.err).toBeNull();
   });
