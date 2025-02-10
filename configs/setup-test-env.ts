@@ -1,5 +1,6 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable sonarjs/deprecation */
-import { vi } from 'vitest';
+import { vi } from "vitest";
 
 const emptyRecords = (): [] => [];
 const falseFn = (): boolean => false;
@@ -8,7 +9,7 @@ const falseFn = (): boolean => false;
 
 class IntersectionObserverMock implements IntersectionObserver {
   readonly root: Element | null = null;
-  readonly rootMargin: string = '';
+  readonly rootMargin: string = "";
   readonly thresholds: readonly number[] = [];
 
   disconnect = vi.fn();
@@ -92,7 +93,7 @@ const performanceMock = {
 
 globalThis.performance = performanceMock;
 
-const createObjectURL = (): string => 'blob:mock-url';
+const createObjectURL = (): string => "blob:mock-url";
 // Mock URL
 class URLMock extends URL {
   static readonly createObjectURL = vi.fn(createObjectURL);
@@ -156,12 +157,12 @@ class WebSocketMock implements WebSocket {
   CLOSING = 2 as const;
   CLOSED = 3 as const;
 
-  binaryType: BinaryType = 'blob';
+  binaryType: BinaryType = "blob";
   bufferedAmount = 0;
-  extensions = '';
-  protocol = '';
+  extensions = "";
+  protocol = "";
   readyState = WebSocketMock.CLOSED;
-  url = '';
+  url = "";
 
   onclose = null;
   onerror = null;
@@ -187,25 +188,25 @@ const historyMock = {
   state: null,
 };
 
-Object.defineProperty(globalThis, 'history', { value: historyMock });
+Object.defineProperty(globalThis, "history", { value: historyMock });
 
 // Mock Location
 const locationMock = {
-  hash: '',
-  host: 'localhost',
-  hostname: 'localhost',
-  href: 'http://localhost',
-  origin: 'http://localhost',
-  pathname: '/',
-  port: '',
-  protocol: 'http:',
-  search: '',
+  hash: "",
+  host: "localhost",
+  hostname: "localhost",
+  href: "http://localhost",
+  origin: "http://localhost",
+  pathname: "/",
+  port: "",
+  protocol: "http:",
+  search: "",
   assign: vi.fn(),
   reload: vi.fn(),
   replace: vi.fn(),
 };
 
-Object.defineProperty(globalThis, 'location', { value: locationMock });
+Object.defineProperty(globalThis, "location", { value: locationMock });
 
 // Mock MutationObserver
 class MutationObserverMock implements MutationObserver {
@@ -224,7 +225,7 @@ const selectionMock = {
   focusOffset: 0,
   isCollapsed: true,
   rangeCount: 0,
-  type: 'None',
+  type: "None",
   addRange: vi.fn(),
   collapse: vi.fn(),
   collapseToEnd: vi.fn(),
@@ -238,10 +239,10 @@ const selectionMock = {
   removeRange: vi.fn(),
   selectAllChildren: vi.fn(),
   setBaseAndExtent: vi.fn(),
-  toString: vi.fn(() => ''),
+  toString: vi.fn(() => ""),
 };
 
-Object.defineProperty(globalThis, 'getSelection', {
+Object.defineProperty(globalThis, "getSelection", {
   value: () => selectionMock,
 });
 
@@ -257,11 +258,11 @@ const cryptoMock = {
   },
 };
 
-Object.defineProperty(globalThis, 'crypto', { value: cryptoMock });
+Object.defineProperty(globalThis, "crypto", { value: cryptoMock });
 
 // Extend existing globalThis with additional properties
-Object.defineProperty(globalThis, 'isSecureContext', { value: true });
-Object.defineProperty(globalThis, 'crossOriginIsolated', { value: false });
+Object.defineProperty(globalThis, "isSecureContext", { value: true });
+Object.defineProperty(globalThis, "crossOriginIsolated", { value: false });
 
 // Mock matchMedia
 globalThis.matchMedia = vi.fn().mockImplementation((query) => ({
@@ -276,12 +277,12 @@ globalThis.matchMedia = vi.fn().mockImplementation((query) => ({
 // Mock Navigator
 class NavigatorMock implements Navigator {
   // Required Navigator properties
-  userAgent = 'node.js';
-  language = 'en-US';
-  languages = ['en-US', 'en'];
+  userAgent = "node.js";
+  language = "en-US";
+  languages = ["en-US", "en"];
   onLine = true;
   cookieEnabled = true;
-  platform = 'test';
+  platform = "test";
   maxTouchPoints = 0;
   doNotTrack = null;
   geolocation = {
@@ -295,15 +296,15 @@ class NavigatorMock implements Navigator {
     create: vi.fn(),
     preventSilentAccess: vi.fn(),
   } as CredentialsContainer;
-  appCodeName = 'Mozilla';
-  appName = 'Netscape';
-  appVersion = '5.0';
+  appCodeName = "Mozilla";
+  appName = "Netscape";
+  appVersion = "5.0";
   connection = null;
   hardwareConcurrency = 4;
-  product = 'Gecko';
-  productSub = '20030107';
-  vendor = 'Google Inc.';
-  vendorSub = '';
+  product = "Gecko";
+  productSub = "20030107";
+  vendor = "Google Inc.";
+  vendorSub = "";
   deviceMemory = 8;
 
   // Mocked APIs
@@ -355,7 +356,7 @@ class NavigatorMock implements Navigator {
   } as unknown as MediaCapabilities;
   mediaSession = {
     metadata: null,
-    playbackState: 'none',
+    playbackState: "none",
     setActionHandler: vi.fn(),
     setPositionState: vi.fn(),
   } as MediaSession;
