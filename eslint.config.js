@@ -47,7 +47,6 @@ export default [
       ecmaVersion: 'latest',
     },
     settings: {
-      // Configure browser targets for compat plugin
       polyfills: [],
       'import/resolver': {
         typescript: {
@@ -73,7 +72,7 @@ export default [
       'jsx-a11y': a11yPlugin,
     },
     rules: {
-      // Prettier
+      // Prettier (.prettierrc)
       'prettier/prettier': [
         'error',
         {
@@ -82,6 +81,18 @@ export default [
           singleQuote: true,
           tabWidth: 2,
           trailingComma: 'all',
+          printWidth: 120,
+          arrowParens: 'always',
+          bracketSpacing: true,
+          embeddedLanguageFormatting: 'auto',
+          htmlWhitespaceSensitivity: 'css',
+          insertPragma: false,
+          bracketSameLine: false,
+          jsxSingleQuote: false,
+          proseWrap: 'preserve',
+          quoteProps: 'as-needed',
+          requirePragma: false,
+          useTabs: false,
         },
       ],
 
@@ -120,7 +131,6 @@ export default [
       'unicorn/prefer-export-from': 'off',
       'unicorn/no-abusive-eslint-disable': 'error',
       'unicorn/no-new-array': 'error',
-      // 'unicorn/filename-case': 'off',
 
       // Promise
       ...promisePlugin.configs.recommended.rules,
@@ -147,15 +157,15 @@ export default [
       'security/detect-possible-timing-attacks': 'error',
       'security/detect-pseudoRandomBytes': 'error',
 
-      // Compat - Browser compatibility checking
+      // Compat
       'compat/compat': 'error',
 
-      // Formatting
-      'object-curly-newline': ['error', { multiline: true, consistent: true }],
-      'array-element-newline': ['error', { multiline: true, minItems: 3 }],
-      'array-bracket-newline': ['error', { multiline: true, minItems: 3 }],
+      // Remove conflicting formatting rules
+      'object-curly-newline': 'off',
+      'array-element-newline': 'off',
+      'array-bracket-newline': 'off',
 
-      // Enhanced Perfectionist rules
+      // Perfectionist
       'perfectionist/sort-imports': [
         'error',
         {
@@ -194,7 +204,7 @@ export default [
         },
       ],
 
-      // Enhanced JSX-A11Y rules
+      // JSX-A11Y
       'jsx-a11y/alt-text': [
         'error',
         { elements: ['img', 'object', 'area', 'input[type="image"]'] },

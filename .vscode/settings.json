@@ -33,7 +33,7 @@
   // Language-Specific Formatting
   // Formatter settings for different file types
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -78,6 +78,9 @@
     "bundlesize",
     "healthcheck",
     "nabla",
+    "proptypes",
+    "sonarjs",
+    "spinbutton",
     "tryit",
     "VITE"
   ]
