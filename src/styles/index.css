@@ -1,10 +1,10 @@
 /* stylelint-disable rule-empty-line-before */
 /* stylelint-disable plugin/no-unsupported-browser-features */
 /* stylelint-disable no-duplicate-selectors */
-@import url('_normalize.css');
-@import url('mapper.scss');
-@import url('variables.css');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("_normalize.css");
+@import url("mapper.scss");
+@import url("variables.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 *,
 *::before,
