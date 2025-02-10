@@ -275,6 +275,26 @@ docker-compose up
 docker-compose down
 ```
 
+## 🔒 Security Notes
+
+### Development Server Security
+
+For secure development, use:
+
+```bash
+npm run dev:secure
+```
+
+This command:
+
+- Restricts the dev server to localhost
+- Disables CORS
+- Enables HTTPS
+- Adds security headers
+- Prevents source map exposure
+
+**Note**: Never expose development servers to public networks.
+
 ## 🔒 Git Hooks
 
 Pre-commit hooks automatically run:
