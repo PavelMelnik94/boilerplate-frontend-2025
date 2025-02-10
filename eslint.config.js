@@ -1,8 +1,8 @@
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';
 import compat from 'eslint-plugin-compat';
+import eslintCommentsPlugin from 'eslint-plugin-eslint-comments';
 import importPlugin from 'eslint-plugin-import';
-import a11yPlugin from 'eslint-plugin-jsx-a11y';
 import perfectionistPlugin from 'eslint-plugin-perfectionist';
 import prettierPlugin from 'eslint-plugin-prettier';
 import promisePlugin from 'eslint-plugin-promise';
@@ -66,13 +66,13 @@ export default [
       security: securityPlugin,
       sonarjs: sonarjsPlugin,
       unicorn: unicornPlugin,
-      compat: compat,
+      compat,
       prettier: prettierPlugin,
       perfectionist: perfectionistPlugin,
-      'jsx-a11y': a11yPlugin,
+      'eslint-comments': eslintCommentsPlugin,
     },
     rules: {
-      // Prettier (.prettierrc)
+      // Prettier configuration
       'prettier/prettier': [
         'error',
         {
@@ -88,7 +88,6 @@ export default [
           htmlWhitespaceSensitivity: 'css',
           insertPragma: false,
           bracketSameLine: false,
-          jsxSingleQuote: false,
           proseWrap: 'preserve',
           quoteProps: 'as-needed',
           requirePragma: false,
@@ -96,174 +95,174 @@ export default [
         },
       ],
 
-      // TypeScript
-      ...tsPlugin.configs['recommended'].rules,
-      '@typescript-eslint/explicit-function-return-type': 'error',
-      '@typescript-eslint/no-unused-vars': 'error',
-      '@typescript-eslint/no-explicit-any': 'error',
-      '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-      '@typescript-eslint/no-inferrable-types': 'error',
-
-      // Import
-      'import/no-duplicates': 'error',
-      'import/no-cycle': 'error',
-
-      // ESLint
-      'no-console': 'error',
-
-      // Sonarjs
-      ...sonarjsPlugin.configs.recommended.rules,
-      'sonarjs/cognitive-complexity': ['error', 15],
-      'sonarjs/no-duplicate-string': 'error',
-      'sonarjs/no-all-duplicated-branches': 'error',
-      'sonarjs/no-identical-functions': 'error',
-      'sonarjs/no-redundant-boolean': 'error',
-      'sonarjs/no-small-switch': 'error',
-      'sonarjs/no-useless-catch': 'error',
-      'sonarjs/no-inverted-boolean-check': 'error',
-      'sonarjs/no-one-iteration-loop': 'error',
-
-      // Unicorn
-      ...unicornPlugin.configs.recommended.rules,
-      'unicorn/prevent-abbreviations': 'off',
-      'unicorn/no-array-for-each': 'off',
-      'unicorn/no-null': 'off',
-      'unicorn/prefer-export-from': 'off',
-      'unicorn/no-abusive-eslint-disable': 'error',
-      'unicorn/no-new-array': 'error',
+      // Filename conventions
       'unicorn/filename-case': [
-      'error',
-      {
-        cases: {
-          kebabCase: true,
-          pascalCase: true
+        'error',
+        {
+          cases: {
+            kebabCase: true,
+            pascalCase: true,
+          },
+          ignore: [
+            // For single-word class files with capital letter
+            '^[A-Z][a-z0-9]*\\.(ts|tsx|js|jsx)$',
+            // For single-word test files
+            '^[A-Z][a-z0-9]*\\.(test|spec)\\.(ts|tsx|js|jsx)$',
+            // For PascalCase components
+            '^[A-Z][a-zA-Z0-9]*\\.(tsx|jsx)$',
+            // For component test files
+            '^[A-Z][a-zA-Z0-9]*\\.(test|spec)\\.(tsx|jsx)$',
+          ],
         },
-        ignore: [
-          // For single word class files starting with capital letter
-          '^[A-Z][a-z0-9]*\\.(ts|tsx|js|jsx)$',
-          // For test files with single word
-          '^[A-Z][a-z0-9]*\\.(test|spec)\\.(ts|tsx|js|jsx)$',
-          // For React components in PascalCase
-          '^[A-Z][a-zA-Z0-9]*\\.(tsx|jsx)$',
-          // For React component tests
-          '^[A-Z][a-zA-Z0-9]*\\.(test|spec)\\.(tsx|jsx)$'
-        ]
-      }
-    ],
+      ],
 
-      // Promise
-      ...promisePlugin.configs.recommended.rules,
-      'promise/always-return': 'error',
-      'promise/no-nesting': 'error',
-      'promise/catch-or-return': 'error',
-      'promise/no-callback-in-promise': 'error',
-      'promise/no-new-statics': 'error',
-      'promise/no-return-in-finally': 'error',
-      'promise/param-names': 'error',
+      // Date handling rules
+      // Enforces using Date.now() instead of new Date() for timestamps
+      'unicorn/prefer-date-now': 'error',
 
-      // Security
-      ...securityPlugin.configs.recommended.rules,
-      'security/detect-object-injection': 'error',
-      'security/detect-unsafe-regex': 'error',
-      'security/detect-buffer-noassert': 'error',
-      'security/detect-child-process': 'error',
-      'security/detect-disable-mustache-escape': 'error',
-      'security/detect-eval-with-expression': 'error',
-      'security/detect-no-csrf-before-method-override': 'error',
-      'security/detect-non-literal-fs-filename': 'error',
-      'security/detect-non-literal-regexp': 'error',
-      'security/detect-non-literal-require': 'error',
+      // Performance rules
+      // Ensures correct collection size checks
+      'sonarjs/no-collection-size-mischeck': 'error',
+      // Removes unnecessary jumps (break/continue/return) at the end of blocks
+      'sonarjs/no-redundant-jump': 'error',
+      // Suggests immediate value return instead of variable creation
+      'sonarjs/prefer-immediate-return': 'error',
+      // Suggests using object literals instead of Object.create(null)
+      'sonarjs/prefer-object-literal': 'error',
+      // Suggests using Set.has instead of Array.includes for large collections
+      'unicorn/prefer-set-has': 'error',
+      // Suggests using includes instead of indexOf for element checking
+      'unicorn/prefer-includes': 'error',
+
+      // Modern JavaScript rules
+      // Suggests using optional catch binding
+      'unicorn/prefer-optional-catch-binding': 'error',
+      // Enforces using slice instead of substr/substring
+      'unicorn/prefer-string-slice': 'error',
+      // Suggests using spread instead of Array.from
+      'unicorn/prefer-spread': 'error',
+      // Suggests using ternary operator for simple if statements
+      'unicorn/prefer-ternary': 'error',
+      // Enforces using Number static properties instead of globals
+      'unicorn/prefer-number-properties': 'error',
+
+      // Error handling rules
+      // Prevents throwing non-Error objects
+       "no-throw-literal": "off",
+      "@typescript-eslint/only-throw-error": "error",
+      // Enforces using TypeError for type errors
+      'unicorn/prefer-type-error': 'error',
+      // Sets standard error name in catch blocks
+      'unicorn/catch-error-name': ['error', { name: 'error' }],
+
+      // Import rules
+      'import/order': [
+        'error',
+        {
+          'groups': [
+            'builtin',    // Node.js built-in modules
+            'external',   // External packages
+            'internal',   // Internal modules (aliases)
+            'parent',     // Parent directory imports
+            'sibling',    // Same directory imports
+            'index',      // Index file imports
+            'object',     // Object imports
+            'type'        // Type imports
+          ],
+          'pathGroups': [
+            {
+              'pattern': '@/**',
+              'group': 'internal',
+              'position': 'after'
+            }
+          ],
+          'newlines-between': 'always'
+        }
+      ],
+      // Prevents default exports for better maintainability
+      'import/no-default-export': 'error',
+      // Prevents circular dependencies
+      'import/no-cycle': ['error', { maxDepth: Infinity }],
+      // Prevents self-imports
+      'import/no-self-import': 'error',
+      // Removes unnecessary path segments
+      'import/no-useless-path-segments': 'error',
+
+      // TypeScript type rules
+      // Enforces using 'import type' for type imports
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          prefer: 'type-imports',
+          disallowTypeAnnotations: false,
+        },
+      ],
+      // Enforces consistent type exports
+      '@typescript-eslint/consistent-type-exports': [
+        'error',
+        {
+          fixMixedExportsWithInlineTypeSpecifier: true,
+        },
+      ],
+      // Enforces using property signatures in interfaces
+      '@typescript-eslint/method-signature-style': ['error', 'property'],
+      // Prevents type import side effects
+      '@typescript-eslint/no-import-type-side-effects': 'error',
+      // Enforces consistent generic constructor usage
+      '@typescript-eslint/consistent-generic-constructors': ['error', 'constructor'],
+
+      // Security rules
+      // Detects possible timing attacks
       'security/detect-possible-timing-attacks': 'error',
-      'security/detect-pseudoRandomBytes': 'error',
+      // Checks for unsafe regular expressions
+      'security/detect-non-literal-regexp': 'error',
+      // Detects potentially unsafe regular expressions
+      'security/detect-unsafe-regex': 'error',
+      // Detects unsafe buffer operations
+      'security/detect-buffer-noassert': 'error',
+      // Warns about potential object injection vulnerabilities
+      'security/detect-object-injection': 'warn',
 
-      // Compat
-      'compat/compat': 'error',
+      // Comment rules
+      // TypeScript comment configurations
+      '@typescript-eslint/ban-ts-comment': [
+        'error',
+        {
+          'ts-expect-error': 'allow-with-description', // Allows @ts-expect-error with description
+          'ts-ignore': true,                           // Disallows @ts-ignore
+          'ts-nocheck': true,                          // Disallows @ts-nocheck
+          'ts-check': false,                           // Allows @ts-check
+          minimumDescriptionLength: 10                 // Minimum description length
+        }
+      ],
+      // Prevents unlimited eslint-disable comments
+      'eslint-comments/no-unlimited-disable': 'error',
+      // Prevents unused eslint-disable comments
+      'eslint-comments/no-unused-disable': 'error',
 
-      // Remove conflicting formatting rules
-      'object-curly-newline': 'off',
-      'array-element-newline': 'off',
-      'array-bracket-newline': 'off',
-
-      // Perfectionist
-      'perfectionist/sort-imports': [
-        'error',
-        {
-          type: 'natural',
-          order: 'asc',
-          groups: [
-            'type',
-            ['builtin', 'external'],
-            'internal-type',
-            'internal',
-            ['parent-type', 'sibling-type', 'index-type'],
-            ['parent', 'sibling', 'index'],
-            'style',
-            'side-effect',
-            'unknown',
-          ],
-          internalPattern: ['^@/.*'],
-          ignoreCase: true,
-          sortSideEffects: true,
-          newlinesBetween: 'always',
-        },
-      ],
-      'perfectionist/sort-named-imports': [
-        'error',
-        {
-          type: 'natural',
-          order: 'asc',
-          ignoreCase: true,
-        },
-      ],
-      'perfectionist/sort-exports': [
-        'error',
-        {
-          type: 'natural',
-          order: 'asc',
-        },
-      ],
-
-      // JSX-A11Y
-      'jsx-a11y/alt-text': [
-        'error',
-        { elements: ['img', 'object', 'area', 'input[type="image"]'] },
-      ],
-      'jsx-a11y/anchor-has-content': ['error', { components: ['Link'] }],
-      'jsx-a11y/aria-props': 'error',
-      'jsx-a11y/aria-proptypes': 'error',
-      'jsx-a11y/aria-unsupported-elements': 'error',
-      'jsx-a11y/click-events-have-key-events': 'error',
-      'jsx-a11y/heading-has-content': 'error',
-      'jsx-a11y/html-has-lang': 'error',
-      'jsx-a11y/iframe-has-title': 'error',
-      'jsx-a11y/img-redundant-alt': 'error',
-      'jsx-a11y/interactive-supports-focus': [
-        'error',
-        {
-          tabbable: [
-            'button',
-            'checkbox',
-            'link',
-            'searchbox',
-            'spinbutton',
-            'switch',
-            'textbox',
-          ],
-        },
-      ],
-      'jsx-a11y/label-has-associated-control': [
-        'error',
-        {
-          labelComponents: ['CustomLabel'],
-          labelAttributes: ['label'],
-          controlComponents: ['CustomInput'],
-          assert: 'both',
-          depth: 3,
-        },
-      ],
-      'jsx-a11y/media-has-caption': 'error',
-      'jsx-a11y/no-autofocus': ['error', { ignoreNonDOM: true }],
-      'jsx-a11y/no-redundant-roles': 'error',
+      // Async code rules
+      // Ensures await is only used with Promises
+      '@typescript-eslint/await-thenable': 'error',
+      // Requires Promise handling
+      '@typescript-eslint/no-floating-promises': 'error',
+      // Prevents Promise misuse
+      '@typescript-eslint/no-misused-promises': 'error',
+      // Requires async keyword for Promise-returning functions
+      '@typescript-eslint/promise-function-async': 'error',
+      // Disables base rule
+      'no-return-await': 'off',
+      // Requires return await consistently
+      '@typescript-eslint/return-await': ['error', 'always'],
+    },
+  },
+  {
+    // Tests override
+    files: ['**/*.test.ts', '**/*.spec.ts', '**/*.test.tsx', '**/*.spec.tsx'],
+    rules: {
+      'sonarjs/no-duplicate-string': 'off',
+      'sonarjs/no-identical-functions': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      'max-nested-callbacks': 'off',
     },
   },
 ];
