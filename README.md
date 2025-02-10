@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](package.json)
-[![Last Updated](https://img.shields.io/badge/last%20updated-2025--02--09-brightgreen)](README.md)
+[![Last Updated](https://img.shields.io/badge/last%20updated-2025--02--10-brightgreen)](README.md)
 
 Welcome to **Boilerplate Frontend 2025**! A modern, feature-rich starter template for frontend development powered by Vite and TypeScript. This boilerplate is designed to provide developers with a robust foundation for building scalable and maintainable web applications.
 
@@ -43,13 +43,11 @@ boilerplate-frontend-2025/
 ├── .vscode/               # VS Code settings and recommendations
 ├── src/                   # Source code directory
 ├── scripts/               # Helper scripts
+├── public/               # Static assets and public files
 ├── dist/                  # Build output
 └── config files          # Various configuration files
     ├── .editorconfig
-    ├── .eslintrc.json
-    ├── .prettierrc
-    ├── .stylelintrc.json
-    ├── postcss.config.js
+    ├── eslint.config.js  # New flat ESLint configuration
     ├── tsconfig.json
     ├── vite.config.ts
     ├── web-vitals.config.js
@@ -150,6 +148,41 @@ npm run dev
 
 ## 🔧 Configuration
 
+### ESLint Configuration
+
+The project uses the new flat ESLint configuration system with enhanced rules for:
+
+- TypeScript strict checking
+- Import/export organization
+- Security best practices
+- Performance optimizations
+- Modern JavaScript practices
+- Async code handling
+- Error handling
+- Code style consistency
+
+Key features of the ESLint configuration:
+
+```javascript
+{
+  // Strict TypeScript checks
+  "@typescript-eslint/consistent-type-imports": ["error"],
+  "@typescript-eslint/no-floating-promises": "error",
+
+  // Performance rules
+  "sonarjs/no-collection-size-mischeck": "error",
+  "unicorn/prefer-set-has": "error",
+
+  // Security rules
+  "security/detect-possible-timing-attacks": "error",
+  "security/detect-unsafe-regex": "error",
+
+  // Modern JavaScript practices
+  "unicorn/prefer-optional-catch-binding": "error",
+  "unicorn/prefer-string-slice": "error"
+}
+```
+
 ### Browser Support
 
 ```json
@@ -205,6 +238,27 @@ function MyComponent() {
   );
 }
 ```
+
+### Public Directory
+
+The project now includes a `public/` directory for static assets with:
+
+- Improved asset organization
+- Built-in support for PWA assets
+- Favicon and icon management
+- Static file serving
+
+### Enhanced HTML Template
+
+The `index.html` template includes:
+
+- Comprehensive meta tags
+- SEO optimizations
+- Social media sharing support
+- Performance optimizations
+- PWA support
+- DNS prefetching
+- Resource preloading
 
 ## 🐳 Docker Support
 
