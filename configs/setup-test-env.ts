@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable sonarjs/deprecation */
 import { vi } from "vitest";
 
 const emptyRecords = (): [] => [];
