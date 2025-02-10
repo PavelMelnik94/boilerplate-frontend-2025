@@ -1,0 +1,126 @@
+{
+  // The name of your application as it should appear to users *ANCHOR
+  "name": "Modern Frontend Boilerplate",
+
+  // A shorter version of the name, used when there isn't enough space *ANCHOR
+  "short_name": "MFB",
+
+  // Description of what your application does *ANCHOR
+  "description": "A modern frontend application built with latest technologies",
+
+  // The preferred URL to launch when the web app starts *ANCHOR
+  "start_url": "/",
+
+  // Display mode determines how the app should look when launched
+  // Options: fullscreen, standalone, minimal-ui, browser *ANCHOR
+  "display": "standalone",
+
+  // Theme color affects the UI elements of the browser/device *ANCHOR
+  "theme_color": "#2196F3",
+
+  // Background color used for the splash screen *ANCHOR
+  "background_color": "#ffffff",
+
+  // Preferred orientation of the app *ANCHOR
+  // Options: any, natural, landscape, portrait *ANCHOR
+  "orientation": "any",
+
+  // Scope defines which pages are part of the PWA experience *ANCHOR
+  "scope": "/",
+
+  // Icons for different platforms and sizes *ANCHOR
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+
+  // Screenshots for app stores and install prompts *ANCHOR
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshots/mobile.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+
+  // Categories that describe your app *ANCHOR
+  "categories": ["productivity", "utilities"],
+
+  // Language and text direction *ANCHOR
+  "lang": "en",
+  "dir": "ltr",
+
+  // Display preferences for the app *ANCHOR
+  "display_override": ["standalone", "minimal-ui"],
+
+  // Protocol handlers for the app *ANCHOR
+  "protocol_handlers": [
+    {
+      "protocol": "mailto",
+      "url": "/compose?to=%s"
+    }
+  ],
+
+  // Related applications *ANCHOR
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.example.app",
+      "id": "com.example.app"
+    }
+  ],
+  "prefer_related_applications": false
+}

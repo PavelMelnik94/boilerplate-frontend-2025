@@ -25,7 +25,7 @@
   <!-- Open Graph meta tags for better sharing on social media *ANCHOR -->
   <meta property="og:title" content="Vite + TS Project" />
   <meta property="og:description" content="A modern Vite project with TypeScript" />
-  <meta property="og:image" content="/preview.png" />
+  <meta property="og:image" content="/images/preview.png" />
   <meta property="og:url" content="https://yourwebsite.com" />
   <meta property="og:type" content="website" />
 
@@ -33,25 +33,20 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Vite + TS Project" />
   <meta name="twitter:description" content="A modern Vite project with TypeScript" />
-  <meta name="twitter:image" content="/preview.png" />
+  <meta name="twitter:image" content="/images/preview.png" />
 
   <!-- Robots meta tag to control indexing and crawling by search engines -->
   <meta name="robots" content="index, follow" />
 
-  <!-- Charset definition for proper encoding -->
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-  <!-- Refresh the page automatically after a set time (e.g., 30 seconds) -->
-  <meta http-equiv="refresh" content="30" />
-
-  <!-- Theme color for browsers and mobile devices -->
-  <meta name="theme-color" content="#ffffff" />
+  <!-- Theme color defined in manifest.json for better cross-browser support -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-navbutton-color" content="#ffffff">
 
   <!-- Apple-specific meta tags for better iOS experience -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Vite + TS" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 
   <!-- Canonical URL to avoid duplicate content issues *ANCHOR -->
   <link rel="canonical" href="https://yourwebsite.com" />
@@ -64,18 +59,15 @@
   <link rel="preconnect" href="https://cdn.example.com" crossorigin />
 
   <!-- Prefetch specific resources for faster loading -->
-  <link rel="prefetch" href="/styles.css" />
+  <link rel="prefetch" href="/styles/main.css" />
 
   <!-- Prerender entire pages for instant navigation *ANCHOR -->
   <link rel="prerender" href="https://yourwebsite.com/next-page" />
 <!-- Performance optimizations -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#ffffff">
 
 <!-- PWA support -->
-<link rel="manifest" href="/manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 
 <!-- SEO improvements *ANCHOR -  -->
