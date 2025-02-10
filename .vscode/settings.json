@@ -78,6 +78,7 @@
     "bundlesize",
     "healthcheck",
     "nabla",
+    "tryit",
     "VITE"
   ]
 }
