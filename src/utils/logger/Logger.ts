@@ -21,7 +21,7 @@ class Logger {
     if (this.isEnabled) {
       console.info(
         `%cINFO: ${message}`,
-        'background: #2C528C; padding: 0.2rem; border-radius: 0.1rem',
+        "background: #2C528C; padding: 0.2rem; border-radius: 0.1rem",
         ...optionalParams,
       );
     }
@@ -31,7 +31,7 @@ class Logger {
     if (this.isEnabled) {
       console.info(
         `%cLOG: ${message}`,
-        'font-weight: bold; background:rgb(44, 140, 92); padding: 0.2rem; border-radius: 0.1rem',
+        "font-weight: bold; background:rgb(44, 140, 92); padding: 0.2rem; border-radius: 0.1rem",
         ...optionalParams,
       );
     }
@@ -39,13 +39,13 @@ class Logger {
 
   public warn(message: string, ...optionalParams: never[]): void {
     if (this.isEnabled) {
-      console.warn(`%cWARN: ${message}`, 'color: orange;', ...optionalParams);
+      console.warn(`%cWARN: ${message}`, "color: orange;", ...optionalParams);
     }
   }
 
   public error(message: string, ...optionalParams: unknown[]): void {
     if (this.isEnabled) {
-      console.error(`%cERROR: ${message}`, 'color: red', ...optionalParams);
+      console.error(`%cERROR: ${message}`, "color: red", ...optionalParams);
     }
   }
 }
