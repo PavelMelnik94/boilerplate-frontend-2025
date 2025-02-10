@@ -51,8 +51,7 @@ declare global {
   var sleep: (ms: number) => Promise<void>;
 }
 
-globalThis.sleep = (ms: number): Promise<void> =>
-  new Promise((resolve) => setTimeout(resolve, ms));
+globalThis.sleep = async (ms: number): Promise<void> => await new Promise((resolve) => setTimeout(resolve, ms));
 
 // Disable animations
 Object.defineProperty(globalThis, 'matchMedia', {
