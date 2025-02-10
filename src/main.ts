@@ -1,4 +1,4 @@
-import logger from '@/utils/classes/Logger';
+import logger from '@/utils/classes/logger';
 
 import './styles/index.css';
 

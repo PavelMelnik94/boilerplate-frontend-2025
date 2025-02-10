@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { logger, withLogging } from './Logger';
+import { logger, withLogging } from './logger';
 
 describe('logger', () => {
   it('should log info messages when enabled', () => {
@@ -34,10 +34,7 @@ describe('logger', () => {
     const consoleErrorSpy = vi.spyOn(console, 'error');
     logger.error('This is an error message');
 
-    expect(consoleErrorSpy).toHaveBeenCalledWith(
-      '%cERROR: This is an error message',
-      'color: red',
-    );
+    expect(consoleErrorSpy).toHaveBeenCalledWith('%cERROR: This is an error message', 'color: red');
 
     consoleErrorSpy.mockRestore();
   });
