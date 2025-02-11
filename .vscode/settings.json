@@ -1,54 +1,39 @@
 {
-  // Editor Core Settings
-  // Controls basic editor behavior and appearance
+  // Core Editor Settings
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.tabSize": 2,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "always",
-    "source.fixAll.stylelint": "explicit"
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "off"
   },
+  "editor.suggest.maxVisibleSuggestions": 8,
+  "editor.suggestOnTriggerCharacters": false,
+
   // File Management
-  // Handles file-level behaviors and formatting
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "files.eol": "\n",
 
-  // TypeScript/JavaScript Configuration
-  // Controls how TypeScript and JavaScript files are handled
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.preferences.importModuleSpecifier": "non-relative",
-  "typescript.preferences.importModuleSpecifierEnding": "minimal",
-  "typescript.preferences.preferTypeOnlyAutoImports": true,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.suggest.completeFunctionCalls": true,
-  "typescript.implementationsCodeLens.enabled": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
+  // Completely disable auto-imports
+  "typescript.suggest.autoImports": false,
+  "javascript.suggest.autoImports": false,
+  "typescript.suggestionActions.enabled": false,
+  "javascript.suggestionActions.enabled": false,
 
-  // Development Experience (DX) Improvements
-  // Enhanced coding assistance and visual aids
-  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "javascript.inlayHints.parameterTypes.enabled": true,
-  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
-
-  // Language-Specific Formatting
-  // Formatter settings for different file types
-  "[typescript]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  // Disable all validators except ESLint
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false,
 
   // ESLint Configuration
-  // JavaScript/TypeScript linting settings
   "eslint.format.enable": true,
   "eslint.useFlatConfig": true,
+  "eslint.run": "onSave",
+  "eslint.lintTask.enable": false,
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "eslint.validate": [
     "javascript",
@@ -56,22 +41,23 @@
     "typescript",
     "typescriptreact"
   ],
-  "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
 
-  // StyleLint & CSS Configuration
-  // CSS and SCSS linting and validation
-  "stylelint.enable": true,
-  "prettier.requireConfig": true,
-  "files.eol": "\n",
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // Code Actions
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
   },
-  "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "stylelint.validate": ["css", "scss"],
-  "css.validate": false,
-  "scss.validate": false,
+
+  // Explicitly disable other tools
+  "webhint.enable": false,
+  "typescript.implementationsCodeLens.enabled": false,
+  "typescript.referencesCodeLens.enabled": false,
+  "javascript.referencesCodeLens.enabled": false,
+
+  // Disable inlay hints
+  "typescript.inlayHints.enable": false,
+  "javascript.inlayHints.enable": false,
+
+  // Spell checker words can stay
   "cSpell.words": [
     "addgroup",
     "adduser",

@@ -19,8 +19,14 @@ export default defineConfig({
         'vitest.config.ts',
       ],
     },
+
     include: ['src/**/*.{test,spec}.{js,ts,tsx}'],
     watch: true,
     reporters: ['verbose'],
+  },
+  resolve: {
+    alias: {
+      "@": "/src",
+    },
   },
 });

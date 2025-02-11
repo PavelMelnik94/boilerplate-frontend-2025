@@ -188,6 +188,10 @@ export default [
       // Removes unnecessary path segments
       'import/no-useless-path-segments': 'error',
 
+      "perfectionist/import-sort": "off",
+      "simple-import-sort/imports": "off",
+      "sort-imports": "off",
+
       // TypeScript type rules
       // Enforces using 'import type' for type imports
       '@typescript-eslint/consistent-type-imports': [

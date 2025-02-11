@@ -1,5 +1,4 @@
 import eslintPlugin from "@nabla/vite-plugin-eslint";
-import basicSsl from "@vitejs/plugin-basic-ssl";
 import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
@@ -30,8 +29,6 @@ export default defineConfig(({ mode }) => {
           brotliSize: true,
           template: "treemap", // or 'sunburst', 'network'
         }),
-      // Add HTTPS in development
-      basicSsl(),
     ].filter(Boolean),
     // Resolve configuration
     // Sets up path aliases for simplified imports
@@ -104,26 +101,23 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 3010,
       strictPort: true,
-      host: "127.0.0.1",
+      host: true,
       open: true,
-      cors: false,
-      // Add security headers
+      cors: true, // Enable CORS for WebSocket
       headers: {
         "X-Content-Type-Options": "nosniff",
         "X-Frame-Options": "DENY",
         "X-XSS-Protection": "1; mode=block",
-        "Cross-Origin-Resource-Policy": "same-origin",
-        "Cross-Origin-Opener-Policy": "same-origin",
-        "Cross-Origin-Embedder-Policy": "require-corp",
         "Referrer-Policy": "no-referrer",
-        "Permissions-Policy": "interest-cohort=()",
       },
       hmr: {
         overlay: true,
-        // Restrict WebSocket connections
-        host: "127.0.0.1",
-        protocol: "ws",
-        clientPort: 24678,
+        // Configure WebSocket for HTTPS
+        host: 'localhost',
+        port: 3010,
+      },
+      watch: {
+        usePolling: true, // Add for better stability
       },
     },
 
