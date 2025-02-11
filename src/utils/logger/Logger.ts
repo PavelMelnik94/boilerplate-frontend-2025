@@ -1,9 +1,10 @@
+import { IS_DEBUG_ENABLED } from '../constants/global.constant';
 class Logger {
   private static instance: Logger;
   private isEnabled: boolean;
 
   private constructor() {
-    this.isEnabled = true;
+    this.isEnabled = IS_DEBUG_ENABLED || false;
   }
 
   public static getInstance(): Logger {
