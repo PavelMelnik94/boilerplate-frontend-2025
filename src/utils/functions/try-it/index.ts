@@ -1,3 +1,3 @@
-import { tryit } from './try-it';
+import { tryit, tryitAsync } from './try-it';
 
-export { tryit };
+export { tryit, tryitAsync };
