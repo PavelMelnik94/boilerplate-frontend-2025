@@ -67,9 +67,11 @@
     "msapplication",
     "nabla",
     "navbutton",
+    "pnpmfile",
     "proptypes",
     "sonarjs",
     "spinbutton",
+    "stylelintignore",
     "tryit",
     "VITE"
   ]

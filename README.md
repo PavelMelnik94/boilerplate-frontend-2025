@@ -32,6 +32,15 @@ Welcome to **Boilerplate Frontend 2025**! A modern, feature-rich starter templat
   - Runtime feature toggles
   - Type-safe feature flags
   - Environment-based feature switching
+- 🌐 **HTTP Client**:
+  - Type-safe Axios-based HTTP client
+  - Automatic error handling
+  - Request/Response interceptors
+  - Header normalization
+  - Configurable timeouts and base URL
+  - Comprehensive logging
+  - Full TypeScript support
+  - Unit test coverage
 
 ## 📂 Project Structure
 
