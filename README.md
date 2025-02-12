@@ -33,7 +33,7 @@ Welcome to **Boilerplate Frontend 2025**! A modern, feature-rich starter templat
   - Type-safe feature flags
   - Environment-based feature switching
 - 🌐 **HTTP Client**:
-  - Type-safe Axios-based HTTP client
+  - Type-safe [Axios](https://www.axios.com/)-based HTTP client
   - Automatic error handling
   - Request/Response interceptors
   - Header normalization
@@ -112,6 +112,20 @@ npm run dev
 - `npm run feature-flags enable [name]` - Enable feature flag
 - `npm run feature-flags disable [name]` - Disable feature flag
 
+Usage in code:
+
+```typescript
+import { featureFlags } from '@/config/featureFlags';
+
+function MyComponent() {
+  return (
+    <div>
+      {featureFlags.darkMode && <DarkModeToggle />}
+    </div>
+  );
+}
+```
+
 ### Development
 
 - `npm run dev` - Start development server
@@ -170,28 +184,6 @@ The project uses the new flat ESLint configuration system with enhanced rules fo
 - Error handling
 - Code style consistency
 
-Key features of the ESLint configuration:
-
-```javascript
-{
-  // Strict TypeScript checks
-  "@typescript-eslint/consistent-type-imports": ["error"],
-  "@typescript-eslint/no-floating-promises": "error",
-
-  // Performance rules
-  "sonarjs/no-collection-size-mischeck": "error",
-  "unicorn/prefer-set-has": "error",
-
-  // Security rules
-  "security/detect-possible-timing-attacks": "error",
-  "security/detect-unsafe-regex": "error",
-
-  // Modern JavaScript practices
-  "unicorn/prefer-optional-catch-binding": "error",
-  "unicorn/prefer-string-slice": "error"
-}
-```
-
 ### Browser Support
 
 ```json
@@ -214,38 +206,6 @@ Key features of the ESLint configuration:
     "limit": "100 kb"
   }
 ]
-```
-
-### Feature Flags
-
-Feature flags can be managed using the CLI:
-
-```bash
-# List all feature flags
-npm run feature-flags list
-
-# Add new feature flag
-npm run feature-flags add darkMode
-
-# Enable feature flag
-npm run feature-flags enable darkMode
-
-# Disable feature flag
-npm run feature-flags disable darkMode
-```
-
-Usage in code:
-
-```typescript
-import { featureFlags } from '@/config/featureFlags';
-
-function MyComponent() {
-  return (
-    <div>
-      {featureFlags.darkMode && <DarkModeToggle />}
-    </div>
-  );
-}
 ```
 
 ### Public Directory
@@ -283,26 +243,6 @@ docker-compose up
 # Stop the container
 docker-compose down
 ```
-
-## 🔒 Security Notes
-
-### Development Server Security
-
-For secure development, use:
-
-```bash
-npm run dev:secure
-```
-
-This command:
-
-- Restricts the dev server to localhost
-- Disables CORS
-- Enables HTTPS
-- Adds security headers
-- Prevents source map exposure
-
-**Note**: Never expose development servers to public networks.
 
 ## 🔒 Git Hooks
 

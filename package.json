@@ -44,9 +44,7 @@
     "prepare": "husky",
     "lint-staged": "lint-staged",
     "check:all": "cross-env npm run lint && npm run style:check && npm run type-check",
-    "fix:all": "cross-env npm run lint:fix && npm run style:fix",
-    "dev:secure": "vite --mode development --host 127.0.0.1",
-    "check:security": "npm audit && snyk test"
+    "fix:all": "cross-env npm run lint:fix && npm run style:fix"
   },
   "devDependencies": {
     "@axe-core/cli": "^4.10.1",
