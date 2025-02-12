@@ -46,12 +46,12 @@ Welcome to **Boilerplate Frontend 2025**! A modern, feature-rich starter templat
 
 ```
 boilerplate-frontend-2025/
-├── .bolt/                  # Bolt configuration files
 ├── .github/               # GitHub workflows and configurations
 ├── .husky/                # Git hooks configurations
 ├── .vscode/               # VS Code settings and recommendations
 ├── src/                   # Source code directory
 ├── scripts/               # Helper scripts
+├── configs/               # Shared configurations
 ├── public/               # Static assets and public files
 ├── dist/                  # Build output
 └── config files          # Various configuration files
