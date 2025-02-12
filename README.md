@@ -239,9 +239,9 @@ The `index.html` template includes:
 
 ## 📦 Core Dependencies
 
-- **axios** (^0.24.0) - Promise-based HTTP client
-- **crypto-js** (^4.2.0) - Advanced encryption for secure data storage
-- **localforage** (^1.10.0) - Offline storage with IndexedDB/WebSQL/localStorage
+- **axios** - Promise-based HTTP client
+- **crypto-js** - Advanced encryption for secure data storage
+- **localforage** - Offline storage with IndexedDB/WebSQL/localStorage
 
 ## 🗄️ Storage System
 
