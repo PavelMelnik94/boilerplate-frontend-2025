@@ -163,6 +163,17 @@ function MyComponent() {
 - `npm run size` - Check bundle size limits
 - `npm run check-web-vitals` - Monitor Core Web Vitals metrics
 
+## Bundle Size Limits via `bundlesize`(`npm run size`)
+
+```json
+"size-limit": [
+  {
+    "path": "dist/**/*.js",
+    "limit": "100 kb"
+  }
+]
+```
+
 ### Setup & Maintenance
 
 - `npm run setup:vscode` - Install recommended VS Code extensions
@@ -194,17 +205,6 @@ The project uses the new flat ESLint configuration system with enhanced rules fo
   "iOS >= 15",
   "> 0.5%",
   "not dead"
-]
-```
-
-### Size Limits
-
-```json
-"size-limit": [
-  {
-    "path": "dist/**/*.js",
-    "limit": "100 kb"
-  }
 ]
 ```
 
