@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](package.json)
-[![Last Updated](https://img.shields.io/badge/last%20updated-2025--02--10-brightgreen)](README.md)
+[![Last Updated](https://img.shields.io/badge/last%20updated-2025--02--12-brightgreen)](README.md)
 
 Welcome to **Boilerplate Frontend 2025**! A modern, feature-rich starter template for frontend development powered by Vite and TypeScript. This boilerplate is designed to provide developers with a robust foundation for building scalable and maintainable web applications.
 
