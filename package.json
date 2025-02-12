@@ -25,7 +25,7 @@
     "test:watch": "vitest watch",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,css,md,json}\"",
+    "format": "prettier --write \"**/*.{css,md,json}\"",
     "style:check": "stylelint \"**/*.{css,scss}\"  --config .stylelintrc.json",
     "style:fix": "stylelint \"**/*.{css,scss}\" --fix --config .stylelintrc.json",
     "type-check": "tsc --noEmit -p tsconfig.json",

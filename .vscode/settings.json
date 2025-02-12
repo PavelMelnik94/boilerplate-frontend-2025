@@ -34,7 +34,7 @@
   "eslint.useFlatConfig": true,
   "eslint.run": "onSave",
   "eslint.lintTask.enable": false,
-  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.workingDirectories": [ { "mode": "auto" } ],
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -63,6 +63,7 @@
     "adduser",
     "bundlesize",
     "healthcheck",
+    "INDEXEDDB",
     "mischeck",
     "msapplication",
     "nabla",
@@ -73,6 +74,15 @@
     "spinbutton",
     "stylelintignore",
     "tryit",
-    "VITE"
-  ]
+    "VITE",
+    "WEBSQL"
+  ],
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.suggest.enabled": true,
+  "typescript.surveys.enabled": false
 }

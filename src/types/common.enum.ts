@@ -3,3 +3,8 @@ export enum ENV_MODES {
   PROD = 'production',
   TEST = 'test',
 }
+
+export enum THEME {
+  LIGHT = 'light',
+  DARK = 'dark',
+}
