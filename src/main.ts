@@ -1,7 +1,7 @@
 import { logger } from '@/utils/logger';
 
 import './styles/index.css';
-import { httpClient } from './utils/functions/http-client/http-client';
+import { httpClient } from './utils/http-client/http-client';
 
 logger.info('Hello World!');
 
