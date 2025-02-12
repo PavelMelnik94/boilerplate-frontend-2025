@@ -45,7 +45,6 @@
     "src/**/*.ts",
     "vite.config.ts",
     "vitest.config.ts",
-    "src/.test.ts",
     "configs/**/*",
     "scripts/**/*"
   ],
