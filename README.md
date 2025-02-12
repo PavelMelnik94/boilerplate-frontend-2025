@@ -33,7 +33,7 @@ Welcome to **Boilerplate Frontend 2025**! A modern, feature-rich starter templat
   - Type-safe feature flags
   - Environment-based feature switching
 - 🌐 **HTTP Client**:
-  - Type-safe [Axios](https://www.axios.com/)-based HTTP client
+  - Type-safe [Axios](https://axios-http.com/docs/intro)-based HTTP client
   - Automatic error handling
   - Request/Response interceptors
   - Header normalization
