@@ -32,6 +32,14 @@ Welcome to **Boilerplate Frontend 2025**! A modern, feature-rich starter templat
   - Runtime feature toggles
   - Type-safe feature flags
   - Environment-based feature switching
+- 🗄️ **Enhanced Storage**:
+  - Multiple storage instances (main, temporary, secure, cache)
+  - Encrypted data support with crypto-js
+  - IndexedDB/WebSQL/LocalStorage with [localforage](https://github.com/localForage/localForage)
+  - Type-safe storage operations
+  - Subscribe to storage changes
+  - Automatic state persistence
+  - Initial state configuration
 - 🌐 **HTTP Client**:
   - Type-safe [Axios](https://axios-http.com/docs/intro)-based HTTP client
   - Automatic error handling
@@ -229,6 +237,24 @@ The `index.html` template includes:
 - DNS prefetching
 - Resource preloading
 
+## 📦 Core Dependencies
+
+- **axios** (^0.24.0) - Promise-based HTTP client
+- **crypto-js** (^4.2.0) - Advanced encryption for secure data storage
+- **localforage** (^1.10.0) - Offline storage with IndexedDB/WebSQL/localStorage
+
+## 🗄️ Storage System
+
+The project includes a robust storage system located in `src/utils/storage/` with the following features:
+
+- Multiple storage instances:
+  - `mainStorage` - Primary application data
+  - `tempStorage` - Temporary session data
+  - `secureStorage` - Encrypted sensitive data
+  - `cacheStorage` - Performance optimization cache
+
+````
+
 ## 🐳 Docker Support
 
 Build and run with Docker:
@@ -242,7 +268,7 @@ docker-compose up
 
 # Stop the container
 docker-compose down
-```
+````
 
 ## 🔒 Git Hooks
 
