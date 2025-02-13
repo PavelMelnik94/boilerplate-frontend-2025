@@ -40,10 +40,15 @@
     "typescript",
     "typescriptreact"
   ],
+  "eslint.options": {
+    "cache": true,
+    "cacheLocation": ".eslintcache"
+  },
 
   // Code Actions
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
   },
 
   // Explicitly disable other tools
