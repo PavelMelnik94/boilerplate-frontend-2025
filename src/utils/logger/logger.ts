@@ -65,4 +65,4 @@ function withLogging<T extends (...args: unknown[]) => unknown>(fn: T): T {
 
 const logger = Logger.getInstance();
 
-export { logger, withLogging };
+export { logger, withLogging, Logger };

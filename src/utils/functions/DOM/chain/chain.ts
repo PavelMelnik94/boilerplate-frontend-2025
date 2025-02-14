@@ -168,16 +168,33 @@ function chain<T extends HTMLElement>(
             return;
           }
 
-          const propertyName = key.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
+          // Convert to camelCase for style property access
+          const camelCaseKey = key.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
 
-          if (!SAFE_CSS_PROPERTIES.has(key)) {
-            throw new Error(`Invalid CSS property: ${key}`);
+          // Additional validation to prevent object injection
+          if (typeof camelCaseKey !== 'string' || !camelCaseKey.match(/^[a-zA-Z]+$/)) {
+            if (!config.silent) {
+              logger.warn(`Invalid CSS property name format: ${key}`);
+            }
+            return;
+          }
+
+          // Explicit check against whitelist
+          if (!SAFE_CSS_PROPERTIES.has(camelCaseKey)) {
+            if (!config.silent) {
+              logger.warn(`Invalid CSS property: ${key}`);
+            }
+            return;
           }
 
           try {
-            el.style.setProperty(propertyName, String(value));
-          } catch {
-            throw new Error(`Failed to set CSS property ${key}: ${value}`);
+            // Use setProperty instead of direct assignment
+            const kebabCaseKey = camelCaseKey.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
+            el.style.setProperty(kebabCaseKey, String(value));
+          } catch (error) {
+            if (!config.silent) {
+              logger.error(`Failed to set CSS property ${key}: ${value}`, error);
+            }
           }
         });
       }, 'Failed to set styles');
@@ -359,10 +376,11 @@ function chain<T extends HTMLElement>(
         abortController.abort();
         // Cancel all active animations
         animations.forEach((animation) => animation.cancel());
-        animations.length = 0;
+        // Clear arrays using splice instead of length assignment
+        animations.splice(0);
         // Execute all cleanup functions
         cleanups.forEach((cleanup) => cleanup());
-        cleanups.length = 0;
+        cleanups.splice(0);
       }
       return chainMethods;
     },
