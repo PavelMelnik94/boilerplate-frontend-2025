@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { tryit } from './try-it';
+import { tryit, tryitAsync } from './try-it';
 
 describe('tryit', () => {
   it('should return data and null error on successful execution', () => {
@@ -40,5 +40,41 @@ describe('tryit', () => {
     const result = tryit(() => {});
     expect(result.data).toBeUndefined();
     expect(result.err).toBeNull();
+  });
+});
+
+describe('tryit', () => {
+  it('should return data on successful execution', () => {
+    const result = tryit(() => 'success');
+    expect(result).toEqual({ err: null, data: 'success' });
+  });
+
+  it('should return error on failed execution', () => {
+    const error = new Error('test error');
+    const result = tryit(() => {
+      throw error;
+    });
+    expect(result).toEqual({ err: error, data: null });
+  });
+});
+
+describe('tryitAsync', () => {
+  it('should return data on successful async execution', async () => {
+    const result = await tryitAsync(async () => 'success');
+    expect(result).toEqual({ err: null, data: 'success' });
+  });
+
+  it('should return error on failed async execution', async () => {
+    const error = new Error('test error');
+    const result = await tryitAsync(async () => {
+      throw error;
+    });
+    expect(result).toEqual({ err: error, data: null });
+  });
+
+  it('should handle Promise rejection', async () => {
+    const error = new Error('promise rejection');
+    const result = await tryitAsync(async () => await Promise.reject(error));
+    expect(result).toEqual({ err: error, data: null });
   });
 });

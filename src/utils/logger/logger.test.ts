@@ -67,3 +67,44 @@ describe('withLogging', () => {
     consoleErrorSpy.mockRestore();
   });
 });
+
+describe('Logger', () => {
+  beforeEach(() => {
+    vi.spyOn(console, 'info').mockImplementation(() => {});
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    logger.setEnabled(true);
+  });
+
+  it('should log info messages when enabled', () => {
+    logger.info('test message');
+    expect(console.info).toHaveBeenCalledWith(
+      '%cINFO: test message',
+      'background: #2C528C; padding: 0.2rem; border-radius: 0.1rem',
+    );
+  });
+
+  it('should not log when disabled', () => {
+    logger.setEnabled(false);
+    logger.info('test message');
+    logger.warn('test message');
+    logger.error('test message');
+    logger.log('test message');
+
+    expect(console.info).not.toHaveBeenCalled();
+    expect(console.warn).not.toHaveBeenCalled();
+    expect(console.error).not.toHaveBeenCalled();
+  });
+
+  it('should log errors with withLogging decorator', () => {
+    const error = new Error('Test error');
+    const testFn = withLogging(() => {
+      throw error;
+    });
+
+    const result = testFn();
+
+    expect(result).toBeUndefined();
+    expect(console.error).toHaveBeenCalledWith('%cERROR: 🚨🚨🚨 FIRE!!! An error occurred.', 'color: red', error);
+  });
+});
