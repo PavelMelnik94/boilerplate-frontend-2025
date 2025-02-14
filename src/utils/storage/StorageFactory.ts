@@ -22,17 +22,15 @@ class StorageFactoryImpl implements StorageFactory {
     return this.stores.get(name);
   }
 
-  removeStore(name: string): void {
+  async removeStore(name: string): Promise<void> {
     const storage = this.stores.get(name);
     if (storage) {
-      storage
-        .clear()
-        .then(() => {
-          this.stores.delete(name);
-        })
-        .catch((error) => {
-          logger.error(`Failed to remove storage "${name}":`, error);
-        });
+      try {
+        await storage.clear();
+        this.stores.delete(name);
+      } catch (error) {
+        logger.error(`Failed to remove storage "${name}":`, error);
+      }
     }
   }
 

@@ -29,6 +29,6 @@ export interface StorageConfig {
 export interface StorageFactory {
   create: (config: StorageConfig) => EnhancedStorage;
   getStore: (name: string) => EnhancedStorage | undefined;
-  removeStore: (name: string) => void;
+  removeStore: (name: string) => Promise<void>;
   listStores: () => string[];
 }
