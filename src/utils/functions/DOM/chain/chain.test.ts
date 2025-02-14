@@ -12,6 +12,10 @@ vi.mock('@/utils/logger', () => ({
   },
 }));
 
+async function flushPromises() {
+  return await new Promise((resolve) => setImmediate(resolve));
+}
+
 describe('chain utility', () => {
   let element: HTMLDivElement;
 
@@ -172,6 +176,53 @@ describe('chain utility', () => {
       chain(element).transition('all', '0.3s').apply();
       expect(element.style.transition).toBe('all 0.3s');
     });
+
+    it('should handle concurrent animations', () => {
+      const element = document.createElement('div');
+      const mockAnimate = vi.fn().mockReturnValue({
+        finished: Promise.resolve(),
+        cancel: vi.fn(),
+      });
+      element.animate = mockAnimate;
+
+      // Start multiple animations
+      const chainInstance = chain(element)
+        .animate([{ opacity: 0 }, { opacity: 1 }], { duration: 1000 })
+        .animate([{ scale: 0 }, { scale: 1 }], { duration: 500 });
+
+      chainInstance.apply();
+
+      expect(mockAnimate).toHaveBeenCalledTimes(2);
+    });
+
+    it('should handle animation errors gracefully', async () => {
+      const element = document.createElement('div');
+      const error = new Error('Animation failed');
+      const cancelSpy = vi.fn();
+      let rejectFn: (error: Error) => void;
+      const animationPromise = new Promise<void>((_, reject) => {
+        rejectFn = reject;
+      });
+
+      const mockAnimate = vi.fn().mockReturnValue({
+        finished: animationPromise,
+        cancel: cancelSpy,
+      });
+      element.animate = mockAnimate;
+
+      chain(element, { silent: false })
+        .animate([{ opacity: 0 }, { opacity: 1 }], { duration: 1000 })
+        .apply();
+
+      // Trigger animation error
+      rejectFn!(error);
+
+      // Use flushPromises to ensure all promises are resolved
+      await flushPromises();
+
+      expect(logger.error).toHaveBeenCalledWith('Animation failed', error);
+      expect(cancelSpy).toHaveBeenCalled();
+    });
   });
 
   describe('abort controller', () => {
@@ -202,7 +253,7 @@ describe('chain utility', () => {
         },
       });
 
-      // @ts-expect-error - Testing invalid input
+      // @ts-expect-error testing invalid property
       chain(element, { silent: false }).setStyles({ backgroundColor: troubleMaker }).apply();
 
       expect(logger.error).toHaveBeenCalledWith('Failed to set styles', expect.any(TypeError));
@@ -227,7 +278,7 @@ describe('chain utility', () => {
         .apply();
 
       expect(result.style.backgroundColor).toBe('red');
-      // @ts-expect-error accessing for test
+      // @ts-expect-error testing invalid property
       expect(result.style.invalidProperty).toBeUndefined();
     });
 
@@ -280,6 +331,63 @@ describe('chain utility', () => {
 
       await new Promise((resolve) => setTimeout(resolve, 150));
       expect(animation).toBe(element);
+    });
+
+    it('should handle errors in style application and continue chain', () => {
+      const element = document.createElement('div');
+      const error = new Error('Style error');
+      Object.defineProperty(element.style, 'setProperty', {
+        value: () => {
+          throw error;
+        },
+      });
+
+      const result = chain(element, { silent: false }).setStyles({ backgroundColor: 'red' }).addClass('test').apply();
+
+      expect(result.classList.contains('test')).toBe(true);
+      expect(logger.error).toHaveBeenCalledWith('Failed to set CSS property backgroundColor: red', error);
+    });
+
+    it('should handle complete chain failure gracefully', async () => {
+      const element = document.createElement('div');
+      const error = new Error('Event listener error');
+      const listener = vi.fn().mockImplementation(() => {
+        throw error;
+      });
+
+      chain(element, { silent: false }).addEventListener('click', listener).apply();
+
+      element.dispatchEvent(new Event('click'));
+      // Use flushPromises to ensure all promises are resolved
+      await flushPromises();
+
+      expect(logger.error).toHaveBeenCalledWith('Event listener error', error);
+      expect(listener).toHaveBeenCalled();
+    });
+
+    it('should properly cleanup resources on error', async () => {
+      const element = document.createElement('div');
+      const controller = new AbortController();
+      const cancelSpy = vi.fn();
+      const error = new Error('Animation failed');
+
+      const mockAnimate = vi.fn().mockReturnValue({
+        finished: Promise.reject(error),
+        cancel: cancelSpy,
+      });
+      element.animate = mockAnimate;
+
+      chain(element)
+        .withAbortController(controller)
+        .animate([{ opacity: 0 }, { opacity: 1 }], { duration: 1000 })
+        .abort()
+        .apply();
+
+      // Use flushPromises to ensure all promises are resolved
+      await flushPromises();
+
+      expect(cancelSpy).toHaveBeenCalled();
+      expect(logger.error).toHaveBeenCalledWith('Animation failed', error);
     });
   });
 });

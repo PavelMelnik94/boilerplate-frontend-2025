@@ -212,24 +212,31 @@ function chain<T extends HTMLElement>(
     },
 
     addEventListener: (type, listener, options = {}) => {
-      addOperation(
-        (el) => {
-          const finalOptions = {
-            ...options,
-            signal: abortController?.signal,
-          };
-
-          el.addEventListener(type, listener, finalOptions);
-
-          // Add cleanup function if signal is not used
-          if (!finalOptions.signal) {
-            cleanups.push(() => {
-              el.removeEventListener(type, listener);
-            });
+      addOperation((el) => {
+        const wrappedListener = (event: HTMLElementEventMap[typeof type]) => {
+          try {
+            // Type assertion here is safe because we're using the correct event type from HTMLElementEventMap
+            listener(event as HTMLElementEventMap[typeof type]);
+          } catch (error) {
+            if (!config.silent) {
+              logger.error('Event listener error', error);
+            }
           }
-        },
-        `Failed to add event listener for ${String(type)}`,
-      );
+        };
+
+        const finalOptions = {
+          ...options,
+          signal: abortController?.signal,
+        };
+
+        el.addEventListener(type, wrappedListener as EventListener, finalOptions);
+
+        if (!finalOptions.signal) {
+          cleanups.push(() => {
+            el.removeEventListener(type, wrappedListener as EventListener);
+          });
+        }
+      }, 'Failed to add event listener');
       return chainMethods;
     },
 
@@ -281,25 +288,22 @@ function chain<T extends HTMLElement>(
 
     animate: (keyframes, options = {}) => {
       addOperation((el) => {
-        // Create animation with proper typing
         const animation = el.animate(keyframes, {
           ...options,
-          // Signal is handled separately from standard animation options
           ...(abortController?.signal ? { signal: abortController.signal } : {}),
         } as KeyframeAnimationOptions);
 
         animations.push(animation);
 
-        // Remove animation from tracking array after completion
+        // Handle animation errors
         animation.finished
-          .then(() => {
-            const index = animations.indexOf(animation);
-            if (index > -1) {
-              animations.splice(index, 1);
+          .catch((error) => {
+            if (!config.silent) {
+              logger.error('Animation failed', error);
             }
+            animation.cancel();
           })
-          .catch(() => {
-            // Silently handle animation cancellation
+          .finally(() => {
             const index = animations.indexOf(animation);
             if (index > -1) {
               animations.splice(index, 1);
@@ -374,12 +378,25 @@ function chain<T extends HTMLElement>(
     abort: () => {
       if (abortController) {
         abortController.abort();
-        // Cancel all active animations
-        animations.forEach((animation) => animation.cancel());
-        // Clear arrays using splice instead of length assignment
+        animations.forEach((animation) => {
+          try {
+            animation.cancel();
+          } catch (error) {
+            if (!config.silent) {
+              logger.error('Failed to cancel animation', error);
+            }
+          }
+        });
         animations.splice(0);
-        // Execute all cleanup functions
-        cleanups.forEach((cleanup) => cleanup());
+        cleanups.forEach((cleanup) => {
+          try {
+            cleanup();
+          } catch (error) {
+            if (!config.silent) {
+              logger.error('Failed to execute cleanup', error);
+            }
+          }
+        });
         cleanups.splice(0);
       }
       return chainMethods;
