@@ -1,8 +1,17 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 
+import { logger } from '@/utils/logger';
+
 import { storageFactory } from '../StorageFactory';
 
 import type { StorageConfig } from '../types';
+
+vi.mock('@/utils/logger', () => ({
+  logger: {
+    error: vi.fn(),
+    warn: vi.fn(),
+  },
+}));
 
 describe('StorageFactory', () => {
   let testConfig: StorageConfig;
@@ -18,10 +27,12 @@ describe('StorageFactory', () => {
 
     // Reset the factory's state
     const stores = storageFactory.listStores();
-    await Promise.all(stores.map(async (name) => await storageFactory.removeStore(name)));
+    for (const name of stores) {
+      await storageFactory.removeStore(name);
+    }
 
-    // Wait for any pending async operations
-    return await new Promise((resolve) => setTimeout(resolve, 0));
+    // Wait for cleanup to complete
+    await new Promise((resolve) => setTimeout(resolve, 100));
   });
 
   describe('create', () => {
@@ -67,9 +78,40 @@ describe('StorageFactory', () => {
     it('should handle removing non-existent store', () => {
       expect(async () => await storageFactory.removeStore('non-existent')).not.toThrow();
     });
+
+    it('should handle storage clear errors', async () => {
+      const storage = storageFactory.create(testConfig);
+      const errorSpy = vi.spyOn(logger, 'error');
+
+      // Mock storage clear to throw error
+      vi.spyOn(storage, 'clear').mockRejectedValue(new Error('Clear failed'));
+
+      await storageFactory.removeStore(testConfig.name);
+
+      expect(errorSpy).toHaveBeenCalledWith('Failed to remove storage "test-storage":', expect.any(Error));
+    });
+
+    it('should properly clean up store references', async () => {
+      const storage = storageFactory.create(testConfig);
+      await storageFactory.removeStore(testConfig.name);
+      await new Promise((resolve) => setTimeout(resolve, 0));
+
+      // Create a new store with the same name
+      const newStorage = storageFactory.create(testConfig);
+      expect(newStorage).not.toBe(storage);
+    });
   });
 
   describe('listStores', () => {
+    beforeEach(async () => {
+      // Ensure clean state
+      const stores = storageFactory.listStores();
+      for (const name of stores) {
+        await storageFactory.removeStore(name);
+      }
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    });
+
     it('should list all created stores', async () => {
       const config1 = { ...testConfig, name: 'store1' };
       const config2 = { ...testConfig, name: 'store2' };

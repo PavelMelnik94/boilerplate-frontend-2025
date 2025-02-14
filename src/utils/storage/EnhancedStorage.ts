@@ -31,17 +31,24 @@ export class EnhancedStorage {
     this.subscribers = new Map();
     this.cache = { ...this.config.initialState };
 
+    // Initialize immediately but don't block constructor
     this.initialize().catch((error) => {
       logger.error('Storage initialization error:', error);
     });
   }
 
-  private async initialize() {
-    for (const key of Object.keys(this.config.initialState)) {
-      const value = await this.get(key as keyof StorageSchema);
-      if (value === null) {
-        await this.set(key as keyof StorageSchema, this.config.initialState[key]);
+  // Change from private to protected for testing
+  protected async initialize(): Promise<void> {
+    try {
+      for (const key of Object.keys(this.config.initialState)) {
+        const value = await this.get(key as keyof StorageSchema);
+        if (value === null) {
+          await this.set(key as keyof StorageSchema, this.config.initialState[key]);
+        }
       }
+    } catch (error) {
+      logger.error('Storage initialization error:', error);
+      throw error; // Re-throw to ensure error propagation
     }
   }
 
@@ -78,12 +85,17 @@ export class EnhancedStorage {
       return this.cache[key] as StorageSchema[K];
     }
 
-    const encrypted = await this.storage.getItem(key as string);
-    if (encrypted === null) return null;
+    try {
+      const encrypted = await this.storage.getItem(key as string);
+      if (encrypted === null) return null;
 
-    const value = this.decrypt(encrypted as string);
-    this.cache[key] = value;
-    return value;
+      const value = this.decrypt(encrypted as string);
+      this.cache[key] = value;
+      return value;
+    } catch (error) {
+      logger.error(`Failed to get item "${key}":`, error);
+      return null;
+    }
   }
 
   async merge<K extends keyof StorageSchema>(key: K, value: Partial<StorageSchema[K]>): Promise<StorageSchema[K]> {

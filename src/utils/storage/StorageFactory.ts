@@ -9,7 +9,7 @@ class StorageFactoryImpl implements StorageFactory {
 
   create(config: StorageConfig): EnhancedStorage {
     if (this.stores.has(config.name)) {
-      console.warn(`Storage with name "${config.name}" already exists. Returning existing instance.`);
+      logger.warn(`Storage with name "${config.name}" already exists. Returning existing instance.`);
       return this.stores.get(config.name)!;
     }
 
@@ -27,9 +27,10 @@ class StorageFactoryImpl implements StorageFactory {
     if (storage) {
       try {
         await storage.clear();
-        this.stores.delete(name);
       } catch (error) {
         logger.error(`Failed to remove storage "${name}":`, error);
+      } finally {
+        this.stores.delete(name);
       }
     }
   }

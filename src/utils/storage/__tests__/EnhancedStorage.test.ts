@@ -2,8 +2,11 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import CryptoJS from 'crypto-js';
 
 import { THEME } from '@/types/common.enum';
+import { logger } from '@/utils/logger';
 
 import { EnhancedStorage } from '../EnhancedStorage';
+
+import { TestEnhancedStorage } from './helpers/TestEnhancedStorage';
 
 import type { Settings, StorageConfig } from '../types';
 
@@ -24,8 +27,15 @@ vi.mock('localforage', () => ({
   },
 }));
 
+vi.mock('@/utils/logger', () => ({
+  logger: {
+    error: vi.fn(),
+    warn: vi.fn(),
+  },
+}));
+
 describe('EnhancedStorage', () => {
-  let storage: EnhancedStorage;
+  let storage: TestEnhancedStorage;
   const testConfig: StorageConfig = {
     name: 'test-storage',
     storeName: 'test',
@@ -42,7 +52,35 @@ describe('EnhancedStorage', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    storage = new EnhancedStorage(testConfig);
+    storage = new TestEnhancedStorage(testConfig);
+  });
+
+  describe('initialization', () => {
+    it('should handle initialization errors', async () => {
+      const error = new Error('Storage error');
+      vi.clearAllMocks();
+      mockGetItem.mockRejectedValueOnce(error);
+
+      try {
+        await storage.testInitialize();
+        throw error;
+      } catch (error_) {
+        expect(error_).toBe(error);
+      }
+    });
+
+    it('should initialize with default config values', () => {
+      const minimalConfig: StorageConfig = {
+        name: 'minimal',
+        storeName: 'test',
+        encrypted: false,
+        saveOnChange: true,
+        initialState: {},
+      };
+
+      const storage = new EnhancedStorage(minimalConfig);
+      expect(storage).toBeDefined();
+    });
   });
 
   describe('set', () => {
@@ -70,6 +108,41 @@ describe('EnhancedStorage', () => {
       await storage.set('settings', newData);
 
       expect(mockCallback).toHaveBeenCalledWith(newData, expect.any(Object));
+    });
+  });
+
+  describe('encryption', () => {
+    it('should not encrypt data when encryption is disabled', async () => {
+      const unencryptedConfig: StorageConfig = {
+        ...testConfig,
+        encrypted: false,
+      };
+      const storage = new EnhancedStorage(unencryptedConfig);
+      const data: Settings = {
+        theme: THEME.DARK,
+        language: 'en',
+      };
+
+      await storage.set('settings', data);
+      const [, value] = mockSetItem.mock.calls[0];
+      expect(value).toBe(JSON.stringify(data));
+    });
+
+    it('should handle missing encryption key', async () => {
+      const noKeyConfig: StorageConfig = {
+        ...testConfig,
+        encrypted: true,
+        encryptionKey: undefined,
+      };
+      const storage = new EnhancedStorage(noKeyConfig);
+      const data: Settings = {
+        theme: THEME.DARK,
+        language: 'en',
+      };
+
+      await storage.set('settings', data);
+      const [, value] = mockSetItem.mock.calls[0];
+      expect(value).toBe(JSON.stringify(data));
     });
   });
 
@@ -159,6 +232,31 @@ describe('EnhancedStorage', () => {
 
       await storage.set('settings', { theme: THEME.DARK, language: 'fr' });
       expect(callback).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('cache management', () => {
+    it('should handle cache miss and storage error', async () => {
+      const errorSpy = vi.spyOn(logger, 'error');
+      mockGetItem.mockRejectedValueOnce(new Error('Storage error'));
+
+      const data = await storage.get('nonexistent');
+
+      expect(data).toBeNull();
+      expect(errorSpy).toHaveBeenCalledWith('Failed to get item "nonexistent":', expect.any(Error));
+    });
+
+    it('should use cached value when available', async () => {
+      const data: Settings = {
+        theme: THEME.DARK,
+        language: 'en',
+      };
+      await storage.set('settings', data);
+      mockGetItem.mockClear();
+
+      const cachedData = await storage.get('settings');
+      expect(cachedData).toEqual(data);
+      expect(mockGetItem).not.toHaveBeenCalled();
     });
   });
 });
