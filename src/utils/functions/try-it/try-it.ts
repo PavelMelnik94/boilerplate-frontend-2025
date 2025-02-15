@@ -1,6 +1,6 @@
 interface TryitResult<T> {
-  err: Error | null;
-  data: T | null;
+  err: Error | null
+  data: T | null
 }
 
 /**
@@ -25,14 +25,15 @@ interface TryitResult<T> {
  * @throws Never - All exceptions are caught and returned in the result object
  * @since 1.0.0
  */
-const tryit = <T>(fn: () => T): TryitResult<T> => {
+function tryit<T>(fn: () => T): TryitResult<T> {
   try {
-    const data = fn();
-    return { err: null, data };
-  } catch (error) {
-    return { err: error as Error, data: null };
+    const data = fn()
+    return { err: null, data }
   }
-};
+  catch (error) {
+    return { err: error as Error, data: null }
+  }
+}
 
 /**
  * Executes an async function and returns a structured result containing either the successful data or an error.
@@ -55,13 +56,14 @@ const tryit = <T>(fn: () => T): TryitResult<T> => {
  *
  * @throws Never - All exceptions are caught and returned in the result object
  */
-const tryitAsync = async <T>(fn: () => Promise<T>): Promise<TryitResult<T>> => {
+async function tryitAsync<T>(fn: () => Promise<T>): Promise<TryitResult<T>> {
   try {
-    const data = await fn();
-    return { err: null, data };
-  } catch (error) {
-    return { err: error as Error, data: null };
+    const data = await fn()
+    return { err: null, data }
   }
-};
+  catch (error) {
+    return { err: error as Error, data: null }
+  }
+}
 
-export { tryit, tryitAsync };
+export { tryit, tryitAsync }

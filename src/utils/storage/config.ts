@@ -1,8 +1,8 @@
-import localforage from 'localforage';
+import type { StorageConfig } from './types'
 
-import { THEME } from '@/types/common.enum';
+import { THEME } from '@/types/common.enum'
 
-import type { StorageConfig } from './types';
+import localforage from 'localforage'
 
 // Prepare storage configurations *ANCHOR
 export const storageConfigs = {
@@ -12,7 +12,7 @@ export const storageConfigs = {
     storeName: 'main',
     driver: [localforage.INDEXEDDB, localforage.WEBSQL, localforage.LOCALSTORAGE],
     encrypted: true,
-    encryptionKey: process.env.NEXT_PUBLIC_STORAGE_ENCRYPTION_KEY,
+    encryptionKey: import.meta.env.NEXT_PUBLIC_STORAGE_ENCRYPTION_KEY,
     saveOnChange: true,
     initialState: {
       user: null,
@@ -44,7 +44,7 @@ export const storageConfigs = {
     storeName: 'secure',
     driver: [localforage.INDEXEDDB],
     encrypted: true,
-    encryptionKey: process.env.NEXT_PUBLIC_STORAGE_ENCRYPTION_KEY,
+    encryptionKey: import.meta.env.NEXT_PUBLIC_STORAGE_ENCRYPTION_KEY,
     saveOnChange: true,
     initialState: {},
     version: 1,
@@ -62,4 +62,4 @@ export const storageConfigs = {
     version: 1,
     description: 'Cache storage for temporary data',
   } satisfies StorageConfig,
-};
+}

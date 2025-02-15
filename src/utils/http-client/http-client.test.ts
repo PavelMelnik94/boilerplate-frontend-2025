@@ -1,17 +1,17 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import axios from 'axios';
+import axios from 'axios'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { configureHttpClient, httpClient } from './http-client';
+import { configureHttpClient, httpClient } from './http-client'
 
 // Create mock functions for HTTP methods
-const mockGet = vi.fn();
-const mockPost = vi.fn();
-const mockPut = vi.fn();
-const mockPatch = vi.fn();
-const mockDelete = vi.fn();
-const mockHead = vi.fn();
-const mockRequestUse = vi.fn();
-const mockResponseUse = vi.fn();
+const mockGet = vi.fn()
+const mockPost = vi.fn()
+const mockPut = vi.fn()
+const mockPatch = vi.fn()
+const mockDelete = vi.fn()
+const mockHead = vi.fn()
+const mockRequestUse = vi.fn()
+const mockResponseUse = vi.fn()
 
 // Mock axios with a proper structure
 vi.mock('axios', () => ({
@@ -29,10 +29,10 @@ vi.mock('axios', () => ({
       },
     })),
   },
-}));
+}))
 
 // vi.mock('axios');
-const mockedAxios = vi.mocked(axios, true);
+const mockedAxios = vi.mocked(axios, true)
 const mockAxiosInstance = {
   interceptors: {
     request: { use: vi.fn() },
@@ -44,17 +44,17 @@ const mockAxiosInstance = {
   patch: vi.fn(),
   delete: vi.fn(),
   head: vi.fn(),
-};
+}
 
 describe('httpClient', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     // Reset all mocks
     [mockGet, mockPost, mockPut, mockPatch, mockDelete, mockHead, mockRequestUse, mockResponseUse].forEach((mock) => {
-      mock.mockReset();
-    });
-    configureHttpClient({ baseURL: 'https://api.example.com' });
-  });
+      mock.mockReset()
+    })
+    configureHttpClient({ baseURL: 'https://api.example.com' })
+  })
 
   it('should make a GET request', async () => {
     const mockResponse = {
@@ -63,14 +63,14 @@ describe('httpClient', () => {
       statusText: 'OK',
       headers: {},
       config: {},
-    };
-    mockGet.mockResolvedValue(mockResponse);
+    }
+    mockGet.mockResolvedValue(mockResponse)
 
-    const response = await httpClient.get('/posts/1');
+    const response = await httpClient.get('/posts/1')
 
-    expect(response.data).toHaveProperty('id', 1);
-    expect(response.status).toBe(200);
-  });
+    expect(response.data).toHaveProperty('id', 1)
+    expect(response.status).toBe(200)
+  })
 
   it('should make a POST request', async () => {
     const mockResponse = {
@@ -79,18 +79,18 @@ describe('httpClient', () => {
       statusText: 'Created',
       headers: {},
       config: {},
-    };
-    mockPost.mockResolvedValue(mockResponse);
+    }
+    mockPost.mockResolvedValue(mockResponse)
 
     const response = await httpClient.post('/posts', {
       title: 'foo',
       body: 'bar',
       userId: 1,
-    });
+    })
 
-    expect(response.data).toHaveProperty('id');
-    expect(response.status).toBe(201);
-  });
+    expect(response.data).toHaveProperty('id')
+    expect(response.status).toBe(201)
+  })
 
   it('should make a PUT request', async () => {
     const mockResponse = {
@@ -99,19 +99,19 @@ describe('httpClient', () => {
       statusText: 'OK',
       headers: {},
       config: {},
-    };
-    mockPut.mockResolvedValue(mockResponse);
+    }
+    mockPut.mockResolvedValue(mockResponse)
 
     const response = await httpClient.put('/posts/1', {
       id: 1,
       title: 'foo',
       body: 'bar',
       userId: 1,
-    });
+    })
 
-    expect(response.data).toHaveProperty('id', 1);
-    expect(response.status).toBe(200);
-  });
+    expect(response.data).toHaveProperty('id', 1)
+    expect(response.status).toBe(200)
+  })
 
   it('should make a PATCH request', async () => {
     const mockResponse = {
@@ -120,14 +120,14 @@ describe('httpClient', () => {
       statusText: 'OK',
       headers: {},
       config: {},
-    };
-    mockPatch.mockResolvedValue(mockResponse);
+    }
+    mockPatch.mockResolvedValue(mockResponse)
 
-    const response = await httpClient.patch('/posts/1', { title: 'foo' });
+    const response = await httpClient.patch('/posts/1', { title: 'foo' })
 
-    expect(response.data).toHaveProperty('title', 'foo');
-    expect(response.status).toBe(200);
-  });
+    expect(response.data).toHaveProperty('title', 'foo')
+    expect(response.status).toBe(200)
+  })
 
   it('should make a DELETE request', async () => {
     const mockResponse = {
@@ -135,13 +135,13 @@ describe('httpClient', () => {
       statusText: 'OK',
       headers: {},
       config: {},
-    };
-    mockDelete.mockResolvedValue(mockResponse);
+    }
+    mockDelete.mockResolvedValue(mockResponse)
 
-    const response = await httpClient.delete('/posts/1');
+    const response = await httpClient.delete('/posts/1')
 
-    expect(response.status).toBe(200);
-  });
+    expect(response.status).toBe(200)
+  })
 
   it('should make a HEAD request', async () => {
     const mockResponse = {
@@ -149,36 +149,38 @@ describe('httpClient', () => {
       statusText: 'OK',
       headers: {},
       config: {},
-    };
-    mockHead.mockResolvedValue(mockResponse);
+    }
+    mockHead.mockResolvedValue(mockResponse)
 
-    const response = await httpClient.head('/posts/1');
+    const response = await httpClient.head('/posts/1')
 
-    expect(response.status).toBe(200);
-  });
-});
+    expect(response.status).toBe(200)
+  })
+})
 
-describe('httpClient', () => {
+describe('httpClient test', () => {
   beforeEach(() => {
-    vi.clearAllMocks();
-    mockedAxios.create.mockReturnValue(mockAxiosInstance as any);
-    configureHttpClient({ baseURL: 'https://api.example.com' });
-  });
+    vi.clearAllMocks()
 
-  describe('HTTP methods', () => {
+    // @ts-expect-error mockReturnValue is not defined in the type definition
+    mockedAxios.create.mockReturnValue(mockAxiosInstance)
+    configureHttpClient({ baseURL: 'https://api.example.com' })
+  })
+
+  describe('hTTP methods', () => {
     it('should handle POST requests', async () => {
       const mockResponse = {
         data: { id: 1 },
         status: 200,
         headers: {},
         statusText: 'OK',
-      };
-      mockAxiosInstance.post.mockResolvedValue(mockResponse);
+      }
+      mockAxiosInstance.post.mockResolvedValue(mockResponse)
 
-      const response = await httpClient.post('/test', { name: 'test' });
-      expect(response.data).toEqual({ id: 1 });
-      expect(mockAxiosInstance.post).toHaveBeenCalledWith('/test', { name: 'test' }, expect.any(Object));
-    });
+      const response = await httpClient.post('/test', { name: 'test' })
+      expect(response.data).toEqual({ id: 1 })
+      expect(mockAxiosInstance.post).toHaveBeenCalledWith('/test', { name: 'test' }, expect.any(Object))
+    })
 
     it('should handle PUT requests', async () => {
       const mockResponse = {
@@ -186,13 +188,13 @@ describe('httpClient', () => {
         status: 200,
         headers: {},
         statusText: 'OK',
-      };
-      mockAxiosInstance.put.mockResolvedValue(mockResponse);
+      }
+      mockAxiosInstance.put.mockResolvedValue(mockResponse)
 
-      const response = await httpClient.put('/test', { name: 'updated' });
-      expect(response.data).toEqual({ updated: true });
-      expect(mockAxiosInstance.put).toHaveBeenCalledWith('/test', { name: 'updated' }, expect.any(Object));
-    });
+      const response = await httpClient.put('/test', { name: 'updated' })
+      expect(response.data).toEqual({ updated: true })
+      expect(mockAxiosInstance.put).toHaveBeenCalledWith('/test', { name: 'updated' }, expect.any(Object))
+    })
 
     it('should handle PATCH requests', async () => {
       const mockResponse = {
@@ -200,13 +202,13 @@ describe('httpClient', () => {
         status: 200,
         headers: {},
         statusText: 'OK',
-      };
-      mockAxiosInstance.patch.mockResolvedValue(mockResponse);
+      }
+      mockAxiosInstance.patch.mockResolvedValue(mockResponse)
 
-      const response = await httpClient.patch('/test', { name: 'patched' });
-      expect(response.data).toEqual({ patched: true });
-      expect(mockAxiosInstance.patch).toHaveBeenCalledWith('/test', { name: 'patched' }, expect.any(Object));
-    });
+      const response = await httpClient.patch('/test', { name: 'patched' })
+      expect(response.data).toEqual({ patched: true })
+      expect(mockAxiosInstance.patch).toHaveBeenCalledWith('/test', { name: 'patched' }, expect.any(Object))
+    })
 
     it('should handle DELETE requests', async () => {
       const mockResponse = {
@@ -214,25 +216,25 @@ describe('httpClient', () => {
         status: 200,
         headers: {},
         statusText: 'OK',
-      };
-      mockAxiosInstance.delete.mockResolvedValue(mockResponse);
+      }
+      mockAxiosInstance.delete.mockResolvedValue(mockResponse)
 
-      const response = await httpClient.delete('/test');
-      expect(response.data).toEqual({ deleted: true });
-      expect(mockAxiosInstance.delete).toHaveBeenCalledWith('/test', expect.any(Object));
-    });
+      const response = await httpClient.delete('/test')
+      expect(response.data).toEqual({ deleted: true })
+      expect(mockAxiosInstance.delete).toHaveBeenCalledWith('/test', expect.any(Object))
+    })
 
     it('should handle HEAD requests', async () => {
       const mockResponse = {
         headers: { 'content-type': 'application/json' },
         status: 200,
         statusText: 'OK',
-      };
-      mockAxiosInstance.head.mockResolvedValue(mockResponse);
+      }
+      mockAxiosInstance.head.mockResolvedValue(mockResponse)
 
-      const response = await httpClient.head('/test');
-      expect(response.headers['content-type']).toBe('application/json');
-      expect(mockAxiosInstance.head).toHaveBeenCalledWith('/test', expect.any(Object));
-    });
-  });
-});
+      const response = await httpClient.head('/test')
+      expect(response.headers['content-type']).toBe('application/json')
+      expect(mockAxiosInstance.head).toHaveBeenCalledWith('/test', expect.any(Object))
+    })
+  })
+})

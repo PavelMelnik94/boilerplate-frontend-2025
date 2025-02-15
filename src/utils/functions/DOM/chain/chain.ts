@@ -1,5 +1,5 @@
-import { logger } from '@/utils/logger';
-import { tryit } from '@/utils/functions/try-it';
+import { tryit } from '@/utils/functions/try-it'
+import { logger } from '@/utils/logger'
 
 /**
  * Extended animation options that include AbortSignal
@@ -8,12 +8,12 @@ type ExtendedKeyframeAnimationOptions = KeyframeAnimationOptions & {
   /**
    * Signal for aborting the animation
    */
-  signal?: AbortSignal;
-};
+  signal?: AbortSignal
+}
 
-type StyleObject = Partial<CSSStyleDeclaration>;
-type ChainOperation<T extends HTMLElement> = (element: T) => void;
-type ChainConfig = { silent?: boolean };
+type StyleObject = Partial<CSSStyleDeclaration>
+type ChainOperation<T extends HTMLElement> = (element: T) => void
+interface ChainConfig { silent?: boolean }
 
 const SAFE_CSS_PROPERTIES = new Set([
   'alignContent',
@@ -70,27 +70,27 @@ const SAFE_CSS_PROPERTIES = new Set([
   'visibility',
   'width',
   'zIndex',
-]);
+])
 
 interface ChainMethods<T extends HTMLElement> {
-  addClass: (...classNames: string[]) => ChainMethods<T>;
-  removeClass: (...classNames: string[]) => ChainMethods<T>;
-  toggleClass: (className: string) => ChainMethods<T>;
-  setStyles: (styles: StyleObject) => ChainMethods<T>;
-  setAttribute: (name: string, value: string) => ChainMethods<T>;
-  removeAttribute: (name: string) => ChainMethods<T>;
+  addClass: (...classNames: string[]) => ChainMethods<T>
+  removeClass: (...classNames: string[]) => ChainMethods<T>
+  toggleClass: (className: string) => ChainMethods<T>
+  setStyles: (styles: StyleObject) => ChainMethods<T>
+  setAttribute: (name: string, value: string) => ChainMethods<T>
+  removeAttribute: (name: string) => ChainMethods<T>
   addEventListener: <K extends keyof HTMLElementEventMap>(
     type: K,
     listener: (event: HTMLElementEventMap[K]) => void,
     options?: AddEventListenerOptions & { signal?: AbortSignal },
-  ) => ChainMethods<T>;
-  setContent: (content: string | Node) => ChainMethods<T>;
-  setHtml: (html: string) => ChainMethods<T>;
-  hide: () => ChainMethods<T>;
-  show: (display?: string) => ChainMethods<T>;
-  setSize: (width: string | number, height: string | number) => ChainMethods<T>;
-  setPosition: (position: 'relative' | 'absolute' | 'fixed') => ChainMethods<T>;
-  setCoords: (top: string | number, left: string | number) => ChainMethods<T>;
+  ) => ChainMethods<T>
+  setContent: (content: string | Node) => ChainMethods<T>
+  setHtml: (html: string) => ChainMethods<T>
+  hide: () => ChainMethods<T>
+  show: (display?: string) => ChainMethods<T>
+  setSize: (width: string | number, height: string | number) => ChainMethods<T>
+  setPosition: (position: 'relative' | 'absolute' | 'fixed') => ChainMethods<T>
+  setCoords: (top: string | number, left: string | number) => ChainMethods<T>
 
   /**
    * Animates the element using the Web Animations API
@@ -98,117 +98,118 @@ interface ChainMethods<T extends HTMLElement> {
    * @param options - Animation options including duration, easing, etc.
    * @returns Chain instance for method chaining
    */
-  animate: (keyframes: Keyframe[], options?: ExtendedKeyframeAnimationOptions) => ChainMethods<T>;
+  animate: (keyframes: Keyframe[], options?: ExtendedKeyframeAnimationOptions) => ChainMethods<T>
 
-  transition: (properties: string, duration: string) => ChainMethods<T>;
-  append: (...nodes: (string | Node)[]) => ChainMethods<T>;
-  prepend: (...nodes: (string | Node)[]) => ChainMethods<T>;
-  empty: () => ChainMethods<T>;
-  setData: (key: string, value: string) => ChainMethods<T>;
-  getData: (key: string) => string | null;
-  hasClass: (className: string) => boolean;
-  replaceClass: (oldClass: string, newClass: string) => ChainMethods<T>;
-  apply: () => T;
+  transition: (properties: string, duration: string) => ChainMethods<T>
+  append: (...nodes: (string | Node)[]) => ChainMethods<T>
+  prepend: (...nodes: (string | Node)[]) => ChainMethods<T>
+  empty: () => ChainMethods<T>
+  setData: (key: string, value: string) => ChainMethods<T>
+  getData: (key: string) => string | null
+  hasClass: (className: string) => boolean
+  replaceClass: (oldClass: string, newClass: string) => ChainMethods<T>
+  apply: () => T
 
-  withAbortController: (controller?: AbortController) => ChainMethods<T>;
-  abort: () => ChainMethods<T>;
+  withAbortController: (controller?: AbortController) => ChainMethods<T>
+  abort: () => ChainMethods<T>
 }
 
 // Function overloads
-function chain<T extends HTMLElement>(element: T): ChainMethods<T>;
-function chain<T extends HTMLElement>(element: T, operations: ChainOperation<T>[]): ChainMethods<T>;
-function chain<T extends HTMLElement>(element: T, config: ChainConfig): ChainMethods<T>;
+function chain<T extends HTMLElement>(element: T): ChainMethods<T>
+function chain<T extends HTMLElement>(element: T, operations: ChainOperation<T>[]): ChainMethods<T>
+function chain<T extends HTMLElement>(element: T, config: ChainConfig): ChainMethods<T>
 function chain<T extends HTMLElement>(
   element: T,
   operationsOrConfig?: ChainOperation<T>[] | ChainConfig,
 ): ChainMethods<T> {
-  if (!element) {
-    throw new Error('Chain requires a valid HTMLElement');
+  if (element === null || element === undefined) {
+    throw new Error('Chain requires a valid HTMLElement')
   }
 
   const config: ChainConfig = Array.isArray(operationsOrConfig)
     ? { silent: false }
-    : { silent: false, ...operationsOrConfig };
+    : { silent: false, ...operationsOrConfig }
 
-  const operations: ChainOperation<T>[] = Array.isArray(operationsOrConfig) ? operationsOrConfig : [];
+  const operations: ChainOperation<T>[] = Array.isArray(operationsOrConfig) ? operationsOrConfig : []
 
   const addOperation = (operation: ChainOperation<T>, errorMessage: string) => {
     operations.push((el) => {
-      const result = tryit(() => operation(el));
+      const result = tryit(() => operation(el))
       if (result.err && !config.silent) {
-        logger.error(errorMessage, result.err);
+        logger.error(errorMessage, result.err)
       }
-    });
-  };
+    })
+  }
 
-  let abortController: AbortController | null = null;
-  const animations: Animation[] = [];
-  const cleanups: (() => void)[] = [];
+  let abortController: AbortController | null = null
+  const animations: Animation[] = []
+  const cleanups: (() => void)[] = []
 
   const chainMethods: ChainMethods<T> = {
     addClass: (...classNames) => {
-      addOperation((el) => el.classList.add(...classNames), `Failed to add classes: ${classNames.join(', ')}`);
-      return chainMethods;
+      addOperation(el => el.classList.add(...classNames), `Failed to add classes: ${classNames.join(', ')}`)
+      return chainMethods
     },
 
     removeClass: (...classNames) => {
-      addOperation((el) => el.classList.remove(...classNames), `Failed to remove classes: ${classNames.join(', ')}`);
-      return chainMethods;
+      addOperation(el => el.classList.remove(...classNames), `Failed to remove classes: ${classNames.join(', ')}`)
+      return chainMethods
     },
 
     toggleClass: (className) => {
-      addOperation((el) => el.classList.toggle(className), `Failed to toggle class: ${className}`);
-      return chainMethods;
+      addOperation(el => el.classList.toggle(className), `Failed to toggle class: ${className}`)
+      return chainMethods
     },
 
     setStyles: (styles) => {
       addOperation((el) => {
         Object.entries(styles).forEach(([key, value]) => {
           if (value === null || value === undefined) {
-            return;
+            return
           }
 
           // Convert to camelCase for style property access
-          const camelCaseKey = key.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+          const camelCaseKey = key.replace(/-([a-z])/g, (_, letter: string) => letter.toUpperCase())
 
           // Additional validation to prevent object injection
-          if (typeof camelCaseKey !== 'string' || !camelCaseKey.match(/^[a-zA-Z]+$/)) {
+          if (typeof camelCaseKey !== 'string' || !camelCaseKey.match(/^[a-z]+$/i)) {
             if (!config.silent) {
-              logger.warn(`Invalid CSS property name format: ${key}`);
+              logger.warn(`Invalid CSS property name format: ${key}`)
             }
-            return;
+            return
           }
 
           // Explicit check against whitelist
           if (!SAFE_CSS_PROPERTIES.has(camelCaseKey)) {
             if (!config.silent) {
-              logger.warn(`Invalid CSS property: ${key}`);
+              logger.warn(`Invalid CSS property: ${key}`)
             }
-            return;
+            return
           }
 
           try {
             // Use setProperty instead of direct assignment
-            const kebabCaseKey = camelCaseKey.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
-            el.style.setProperty(kebabCaseKey, String(value));
-          } catch (error) {
+            const kebabCaseKey = camelCaseKey.replace(/[A-Z]/g, m => `-${m.toLowerCase()}`)
+            el.style.setProperty(kebabCaseKey, String(value))
+          }
+          catch (error) {
             if (!config.silent) {
-              logger.error(`Failed to set CSS property ${key}: ${value}`, error);
+              logger.error(`Failed to set CSS property ${key}: ${String(value)}`, error)
             }
           }
-        });
-      }, 'Failed to set styles');
-      return chainMethods;
+        })
+      }, 'Failed to set styles')
+      return chainMethods
     },
 
     setAttribute: (name, value) => {
-      addOperation((el) => el.setAttribute(name, value), `Failed to set attribute ${name}=${value}`);
-      return chainMethods;
+      addOperation(el => el.setAttribute(name, value), `Failed to set attribute ${name}=${value}`)
+      return chainMethods
     },
 
     removeAttribute: (name) => {
-      addOperation((el) => el.removeAttribute(name), `Failed to remove attribute ${name}`);
-      return chainMethods;
+      addOperation(el => el.removeAttribute(name), `Failed to remove attribute ${name}`)
+      return chainMethods
     },
 
     addEventListener: (type, listener, options = {}) => {
@@ -216,47 +217,49 @@ function chain<T extends HTMLElement>(
         const wrappedListener = (event: HTMLElementEventMap[typeof type]) => {
           try {
             // Type assertion here is safe because we're using the correct event type from HTMLElementEventMap
-            listener(event as HTMLElementEventMap[typeof type]);
-          } catch (error) {
+            listener(event)
+          }
+          catch (error) {
             if (!config.silent) {
-              logger.error('Event listener error', error);
+              logger.error('Event listener error', error)
             }
           }
-        };
+        }
 
         const finalOptions = {
           ...options,
           signal: abortController?.signal,
-        };
+        }
 
-        el.addEventListener(type, wrappedListener as EventListener, finalOptions);
+        el.addEventListener(type, wrappedListener as EventListener, finalOptions)
 
         if (!finalOptions.signal) {
           cleanups.push(() => {
-            el.removeEventListener(type, wrappedListener as EventListener);
-          });
+            el.removeEventListener(type, wrappedListener as EventListener)
+          })
         }
-      }, 'Failed to add event listener');
-      return chainMethods;
+      }, 'Failed to add event listener')
+      return chainMethods
     },
 
     setContent: (content) => {
       addOperation((el) => {
         if (content instanceof Node) {
-          el.textContent = '';
-          el.appendChild(content);
-        } else {
-          el.textContent = content;
+          el.textContent = ''
+          el.appendChild(content)
         }
-      }, 'Failed to set content');
-      return chainMethods;
+        else {
+          el.textContent = content
+        }
+      }, 'Failed to set content')
+      return chainMethods
     },
 
     setHtml: (html) => {
       addOperation((el) => {
-        el.innerHTML = html;
-      }, 'Failed to set HTML content');
-      return chainMethods;
+        el.innerHTML = html
+      }, 'Failed to set HTML content')
+      return chainMethods
     },
 
     hide: () => chainMethods.setStyles({ display: 'none' }),
@@ -265,25 +268,25 @@ function chain<T extends HTMLElement>(
 
     setSize: (width, height) => {
       addOperation((el) => {
-        el.style.width = typeof width === 'number' ? `${width}px` : width;
-        el.style.height = typeof height === 'number' ? `${height}px` : height;
-      }, 'Failed to set size');
-      return chainMethods;
+        el.style.width = typeof width === 'number' ? `${width}px` : width
+        el.style.height = typeof height === 'number' ? `${height}px` : height
+      }, 'Failed to set size')
+      return chainMethods
     },
 
     setPosition: (position) => {
       addOperation((el) => {
-        el.style.position = position;
-      }, 'Failed to set position');
-      return chainMethods;
+        el.style.position = position
+      }, 'Failed to set position')
+      return chainMethods
     },
 
     setCoords: (top, left) => {
       addOperation((el) => {
-        el.style.top = typeof top === 'number' ? `${top}px` : top;
-        el.style.left = typeof left === 'number' ? `${left}px` : left;
-      }, 'Failed to set coordinates');
-      return chainMethods;
+        el.style.top = typeof top === 'number' ? `${top}px` : top
+        el.style.left = typeof left === 'number' ? `${left}px` : left
+      }, 'Failed to set coordinates')
+      return chainMethods
     },
 
     animate: (keyframes, options = {}) => {
@@ -291,133 +294,137 @@ function chain<T extends HTMLElement>(
         const animation = el.animate(keyframes, {
           ...options,
           ...(abortController?.signal ? { signal: abortController.signal } : {}),
-        } as KeyframeAnimationOptions);
+        } as KeyframeAnimationOptions)
 
-        animations.push(animation);
+        animations.push(animation)
 
         // Handle animation errors
         animation.finished
           .catch((error) => {
             if (!config.silent) {
-              logger.error('Animation failed', error);
+              logger.error('Animation failed', error)
             }
-            animation.cancel();
+            animation.cancel()
           })
           .finally(() => {
-            const index = animations.indexOf(animation);
+            const index = animations.indexOf(animation)
             if (index > -1) {
-              animations.splice(index, 1);
+              animations.splice(index, 1)
             }
-          });
-      }, 'Failed to start animation');
-      return chainMethods;
+          })
+      }, 'Failed to start animation')
+      return chainMethods
     },
 
     transition: (properties, duration) => {
       addOperation((el) => {
-        el.style.transition = `${properties} ${duration}`;
-      }, 'Failed to set transition');
-      return chainMethods;
+        el.style.transition = `${properties} ${duration}`
+      }, 'Failed to set transition')
+      return chainMethods
     },
 
     append: (...nodes) => {
       addOperation((el) => {
-        el.append(...nodes);
-      }, 'Failed to append nodes');
-      return chainMethods;
+        el.append(...nodes)
+      }, 'Failed to append nodes')
+      return chainMethods
     },
 
     prepend: (...nodes) => {
       addOperation((el) => {
-        el.prepend(...nodes);
-      }, 'Failed to prepend nodes');
-      return chainMethods;
+        el.prepend(...nodes)
+      }, 'Failed to prepend nodes')
+      return chainMethods
     },
 
     empty: () => {
       addOperation((el) => {
-        el.innerHTML = '';
-      }, 'Failed to empty element');
-      return chainMethods;
+        el.innerHTML = ''
+      }, 'Failed to empty element')
+      return chainMethods
     },
 
     setData: (key, value) => {
       addOperation((el) => {
-        if (/^[a-zA-Z0-9]+$/.test(key)) {
-          el.setAttribute(`data-${key}`, value);
-        } else {
-          throw new Error('Invalid data attribute key. Only alphanumeric characters are allowed.');
+        if (/^[a-z0-9]+$/i.test(key)) {
+          el.setAttribute(`data-${key}`, value)
         }
-      }, 'Failed to set data attribute');
-      return chainMethods;
+        else {
+          throw new Error('Invalid data attribute key. Only alphanumeric characters are allowed.')
+        }
+      }, 'Failed to set data attribute')
+      return chainMethods
     },
 
     getData: (key) => {
-      if (/^[a-zA-Z0-9]+$/.test(key)) {
-        return element.getAttribute(`data-${key}`) || null;
+      if (/^[a-z0-9]+$/i.test(key)) {
+        const value = element.getAttribute(`data-${key}`)
+        return value !== null && value !== '' ? value : null
       }
-      throw new Error('Invalid data attribute key. Only alphanumeric characters are allowed.');
+      throw new Error('Invalid data attribute key. Only alphanumeric characters are allowed.')
     },
 
     hasClass: (className) => {
-      return element.classList.contains(className);
+      return element.classList.contains(className)
     },
 
     replaceClass: (oldClass, newClass) => {
       addOperation((el) => {
-        el.classList.replace(oldClass, newClass);
-      }, 'Failed to replace class');
-      return chainMethods;
+        el.classList.replace(oldClass, newClass)
+      }, 'Failed to replace class')
+      return chainMethods
     },
 
     withAbortController: (controller?: AbortController) => {
-      abortController = controller || new AbortController();
-      return chainMethods;
+      abortController = controller || new AbortController()
+      return chainMethods
     },
 
     abort: () => {
       if (abortController) {
-        abortController.abort();
+        abortController.abort()
         animations.forEach((animation) => {
           try {
-            animation.cancel();
-          } catch (error) {
+            animation.cancel()
+          }
+          catch (error) {
             if (!config.silent) {
-              logger.error('Failed to cancel animation', error);
+              logger.error('Failed to cancel animation', error)
             }
           }
-        });
-        animations.splice(0);
+        })
+        animations.splice(0)
         cleanups.forEach((cleanup) => {
           try {
-            cleanup();
-          } catch (error) {
+            cleanup()
+          }
+          catch (error) {
             if (!config.silent) {
-              logger.error('Failed to execute cleanup', error);
+              logger.error('Failed to execute cleanup', error)
             }
           }
-        });
-        cleanups.splice(0);
+        })
+        cleanups.splice(0)
       }
-      return chainMethods;
+      return chainMethods
     },
 
     apply: () => {
       const result = tryit(() => {
-        operations.forEach((operation) => operation(element));
-      });
+        operations.forEach(operation => operation(element))
+      })
 
       if (result.err && !config.silent) {
-        logger.error('Chain application failed', result.err);
+        logger.error('Chain application failed', result.err)
         // On error, abort all operations
-        chainMethods.abort();
+        chainMethods.abort()
       }
 
-      return element;
+      return element
     },
-  };
+  }
 
-  return chainMethods;
+  return chainMethods
 }
 
 /**
@@ -442,5 +449,5 @@ function chain<T extends HTMLElement>(
  *   .apply();
  * ```
  */
-export { chain };
-export type { ChainMethods, ExtendedKeyframeAnimationOptions };
+export { chain }
+export type { ChainMethods, ExtendedKeyframeAnimationOptions }

@@ -1,1 +1,1 @@
-export * from './typeguards';
+export * from './typeguards'

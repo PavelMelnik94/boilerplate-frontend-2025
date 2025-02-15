@@ -1,8 +1,10 @@
+const process = require('node:process')
+
 export default {
   reportHandler: (metric) => {
-    console.log(metric);
+    console.log(metric)
   },
   analyticsId: '', // *ANCHOR -  Your analytics ID if needed
   debug: process.env.NODE_ENV === 'development',
-  reportAllChanges: true
-};
+  reportAllChanges: true,
+}

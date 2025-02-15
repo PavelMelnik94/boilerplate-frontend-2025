@@ -1,3 +1,3 @@
-import { logger, withLogging } from './logger';
+import { logger, withLogging } from './logger'
 
-export { logger, withLogging };
+export { logger, withLogging }

@@ -2,44 +2,44 @@
   "compilerOptions": {
     // Build Options
     "target": "ESNext",
-    "module": "ESNext",
-    "lib": ["ES2022", "DOM", "DOM.Iterable", "ES2020"],
     "jsx": "react-jsx",
-    "noEmit": true,
-    "isolatedModules": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable", "ES2020"],
 
+    "useDefineForClassFields": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "module": "es2020",
     // Module Resolution
     "moduleResolution": "bundler",
-    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     },
-    "rootDir": ".",
     "resolveJsonModule": true,
-    "allowImportingTsExtensions": false,
     "types": ["vite/client", "vitest/globals", "node"],
+    "allowImportingTsExtensions": false,
 
     // JavaScript Support
     "allowJs": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "useDefineForClassFields": true,
-    "skipLibCheck": true,
 
     // Type Checking
     "strict": true,
+    "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
-    "noImplicitThis": true,
     "noImplicitReturns": true,
+    "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true,
 
     // Declaration Settings
     "declaration": false,
     "declarationMap": false,
-    "emitDeclarationOnly": false
+    "emitDeclarationOnly": false,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*.ts",

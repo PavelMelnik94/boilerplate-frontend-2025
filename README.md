@@ -122,7 +122,7 @@ npm run dev
 
 Usage in code:
 
-```typescript
+```
 import { featureFlags } from '@/config/featureFlags';
 
 function MyComponent() {
@@ -174,12 +174,14 @@ function MyComponent() {
 ## Bundle Size Limits via `bundlesize`(`npm run size`)
 
 ```json
-"size-limit": [
-  {
-    "path": "dist/**/*.js",
-    "limit": "100 kb"
-  }
-]
+{
+  "size-limit": [
+    {
+      "path": "dist/**/*.js",
+      "limit": "100 kb"
+    }
+  ]
+}
 ```
 
 ### Setup & Maintenance
@@ -206,14 +208,16 @@ The project uses the new flat ESLint configuration system with enhanced rules fo
 ### Browser Support
 
 ```json
-"browserslist": [
-  "last 10 Chrome versions",
-  "last 10 Firefox versions",
-  "last 10 Safari versions",
-  "iOS >= 15",
-  "> 0.5%",
-  "not dead"
-]
+{
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 10 Safari versions",
+    "iOS >= 15",
+    "> 0.5%",
+    "not dead"
+  ]
+}
 ```
 
 ### Public Directory
