@@ -194,16 +194,25 @@ function MyComponent() {
 
 ### ESLint Configuration
 
-The project uses the new flat ESLint configuration system with enhanced rules for:
+The project uses [@antfu/eslint-config](https://github.com/antfu/eslint-config) - [Anthony Fu's](https://antfu.me/) opinionated ESLint configuration preset. This provides:
 
-- TypeScript strict checking
+- Single quotes, no semi
+- Auto fix for formatting (aimed to be used standalone without Prettier)
+- Designed to work with TypeScript, Vue out-of-box
+- Lint also for json, yaml, markdown
+- Sorted imports, dangling commas
+- Reasonable defaults, best practices, only one-line of config
+- Style principle: Minimal code style, maximum readability
+
+For detailed configuration, check `eslint.config.js`. The setup includes:
+
+- TypeScript integration
 - Import/export organization
 - Security best practices
 - Performance optimizations
 - Modern JavaScript practices
 - Async code handling
 - Error handling
-- Code style consistency
 
 ### Browser Support
 
