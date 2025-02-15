@@ -18,6 +18,13 @@
     }
   ],
   "rules": {
+    "prettier/prettier": [
+      true,
+      {
+        "singleQuote": true,
+        "tabWidth": 2
+      }
+    ],
     "at-rule-no-unknown": [
       true,
       {

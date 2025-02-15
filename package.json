@@ -1,11 +1,11 @@
 {
   "name": "vite-typescript-starter",
-  "private": false,
+  "type": "module",
   "version": "0.6.5",
+  "private": false,
   "description": "A starter project for Vite with TypeScript",
   "author": "Pavel Melnik",
   "license": "MIT",
-  "type": "module",
   "homepage": "https://github.com/PavelMelnik94/vite-typescript-starter#readme",
   "repository": {
     "type": "git",
@@ -13,6 +13,25 @@
   },
   "bugs": {
     "url": "https://github.com/PavelMelnik94/vite-typescript-starter/issues"
+  },
+  "keywords": [
+    "vite",
+    "typescript",
+    "starter",
+    "template",
+    "frontend",
+    "web development",
+    "javascript",
+    "react",
+    "esbuild",
+    "vitejs",
+    "project template",
+    "scss",
+    "css"
+  ],
+
+  "engines": {
+    "node": ">=14.0.0"
   },
   "scripts": {
     "dev": "vite --mode development",
@@ -31,7 +50,7 @@
     "type-check": "tsc --noEmit -p tsconfig.json",
     "create:component": "node scripts/create-component.cjs",
     "analyze:code": "node scripts/analyze-codebase.cjs",
-    "check:deps": "node scripts/check-dependencies.cjs",
+    "check:deps": "npx taze",
     "clean": "node scripts/clean-project.cjs",
     "lighthouse": "lighthouse http://localhost:3010 --view",
     "check-a11y": "axe http://localhost:3010",
@@ -46,13 +65,21 @@
     "check:all": "cross-env npm run lint && npm run style:check && npm run type-check",
     "fix:all": "cross-env npm run lint:fix && npm run style:fix"
   },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "crypto-js": "^4.2.0",
+    "localforage": "^1.10.0"
+  },
   "devDependencies": {
+    "@antfu/eslint-config": "^4.2.1",
     "@axe-core/cli": "^4.10.1",
+    "@eslint-react/eslint-plugin": "^1.26.2",
     "@nabla/vite-plugin-eslint": "^2.0.5",
     "@types/crypto-js": "^4.2.2",
-    "@types/node": "^22.13.1",
+    "@types/node": "^22.13.4",
     "@typescript-eslint/eslint-plugin": "^8.24.0",
     "@typescript-eslint/parser": "^8.24.0",
+    "@unocss/eslint-plugin": "^65.5.0",
     "@vitest/coverage-v8": "^3.0.5",
     "@vitest/ui": "^3.0.5",
     "autoprefixer": "^10.4.20",
@@ -62,16 +89,19 @@
     "esbuild": "^0.25.0",
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
-    "eslint-import-resolver-typescript": "^3.7.0",
+    "eslint-import-resolver-typescript": "^3.8.0",
     "eslint-plugin-compat": "^6.0.2",
     "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-format": "^1.0.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-perfectionist": "^4.8.0",
+    "eslint-plugin-perfectionist": "^4.9.0",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-promise": "^7.2.1",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
     "eslint-plugin-security": "^3.0.1",
-    "eslint-plugin-sonarjs": "^3.0.1",
+    "eslint-plugin-sonarjs": "^3.0.2",
     "eslint-plugin-unicorn": "^56.0.1",
     "globals": "^15.15.0",
     "happy-dom": "^17.1.0",
@@ -81,7 +111,7 @@
     "postcss": "^8.5.2",
     "postcss-preset-env": "^10.1.4",
     "postcss-scss": "^4.0.9",
-    "prettier": "^3.5.0",
+    "prettier": "^3.5.1",
     "rollup-plugin-visualizer": "^5.14.0",
     "size-limit": "^11.1.6",
     "stylelint": "^16.14.1",
@@ -120,24 +150,6 @@
     "> 0.5%",
     "not dead"
   ],
-  "keywords": [
-    "vite",
-    "typescript",
-    "starter",
-    "template",
-    "frontend",
-    "web development",
-    "javascript",
-    "react",
-    "esbuild",
-    "vitejs",
-    "project template",
-    "scss",
-    "css"
-  ],
-  "engines": {
-    "node": ">=14.0.0"
-  },
   "generatedBy": {
     "tool": "Bolt",
     "assistant": "GitHub Copilot"
@@ -150,10 +162,5 @@
       "Array.prototype.push"
     ],
     "lintAllEsApis": true
-  },
-  "dependencies": {
-    "axios": "^1.7.9",
-    "crypto-js": "^4.2.0",
-    "localforage": "^1.10.0"
   }
 }

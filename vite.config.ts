@@ -1,49 +1,49 @@
-import eslintPlugin from "@nabla/vite-plugin-eslint";
-import { visualizer } from "rollup-plugin-visualizer";
-import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
+import eslintPlugin from '@nabla/vite-plugin-eslint'
+import { visualizer } from 'rollup-plugin-visualizer'
+import { defineConfig } from 'vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 // Build mode constants definition
 const MODES = {
-  DEV: "development",
-  PROD: "production",
-  ANALYZE: "analyze",
-} as const;
+  DEV: 'development',
+  PROD: 'production',
+  ANALYZE: 'analyze',
+} as const
 
 export default defineConfig(({ mode }) => {
   // Base path for the application
   // *ANCHOR -  - replace <repo-name> with your repository name
   // Use '/' for localhost and '/<repo-name>/' for GitHub Pages
-  const base = mode === MODES.PROD ? "/boilerplate-frontend-2025/" : "/";
+  const base = mode === MODES.PROD ? '/boilerplate-frontend-2025/' : '/'
 
   return {
     base,
     plugins: [
       tsconfigPaths(),
       eslintPlugin(),
-      mode === MODES.ANALYZE &&
-        visualizer({
-          open: true,
-          filename: "dist/stats.html",
-          gzipSize: true,
-          brotliSize: true,
-          template: "treemap", // or 'sunburst', 'network'
-        }),
+      mode === MODES.ANALYZE
+      && visualizer({
+        open: true,
+        filename: 'dist/stats.html',
+        gzipSize: true,
+        brotliSize: true,
+        template: 'treemap', // or 'sunburst', 'network'
+      }),
     ].filter(Boolean),
     // Resolve configuration
     // Sets up path aliases for simplified imports
     resolve: {
       alias: {
-        "@": "/src",
+        '@': '/src',
       },
     },
 
     // Build configuration
     // Controls how the application is built for production
     build: {
-      sourcemap: process.env.NODE_ENV === "development",
-      target: ["chrome100", "firefox100", "safari15", "ios15"],
-      minify: mode === MODES.PROD ? "esbuild" : false,
+      sourcemap: mode === MODES.DEV,
+      target: ['chrome100', 'firefox100', 'safari15', 'ios15'],
+      minify: mode === MODES.PROD ? 'esbuild' : false,
 
       // Rollup specific options
       // Configures how the code is bundled and split
@@ -51,23 +51,23 @@ export default defineConfig(({ mode }) => {
         output: {
           // Manual chunk splitting for better caching
           manualChunks: {
-            "vendor-react": [],
-            "vendor-utils": [],
-            "vendor-ui": [],
+            'vendor-react': [],
+            'vendor-utils': [],
+            'vendor-ui': [],
           },
           // Output file naming patterns based on build mode
           chunkFileNames:
             mode === MODES.PROD
-              ? "assets/js/[name]-[hash].js"
-              : "assets/js/[name].js",
+              ? 'assets/js/[name]-[hash].js'
+              : 'assets/js/[name].js',
           entryFileNames:
             mode === MODES.PROD
-              ? "assets/js/[name]-[hash].js"
-              : "assets/js/[name].js",
+              ? 'assets/js/[name]-[hash].js'
+              : 'assets/js/[name].js',
           assetFileNames:
             mode === MODES.PROD
-              ? "assets/[ext]/[name]-[hash].[ext]"
-              : "assets/[ext]/[name].[ext]",
+              ? 'assets/[ext]/[name]-[hash].[ext]'
+              : 'assets/[ext]/[name].[ext]',
         },
         // External dependencies configuration
         external: mode === MODES.PROD ? [] : [/node_modules/],
@@ -86,7 +86,7 @@ export default defineConfig(({ mode }) => {
       // Defines how assets are optimized and handled
       assetsInlineLimit: 4096,
       emptyOutDir: true,
-      cssTarget: ["chrome120", "firefox120", "safari17", "ios15"],
+      cssTarget: ['chrome120', 'firefox120', 'safari17', 'ios15'],
     },
 
     // Dependency optimization configuration
@@ -105,10 +105,10 @@ export default defineConfig(({ mode }) => {
       open: true,
       cors: true, // Enable CORS for WebSocket
       headers: {
-        "X-Content-Type-Options": "nosniff",
-        "X-Frame-Options": "DENY",
-        "X-XSS-Protection": "1; mode=block",
-        "Referrer-Policy": "no-referrer",
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'DENY',
+        'X-XSS-Protection': '1; mode=block',
+        'Referrer-Policy': 'no-referrer',
       },
       hmr: {
         overlay: true,
@@ -133,9 +133,9 @@ export default defineConfig(({ mode }) => {
     // ESBuild configuration
     // Low-level build tool settings
     esbuild: {
-      target: ["chrome100", "firefox100", "safari15", "ios15"],
-      legalComments: "none",
+      target: ['chrome100', 'firefox100', 'safari15', 'ios15'],
+      legalComments: 'none',
       treeShaking: true,
     },
-  };
-});
+  }
+})

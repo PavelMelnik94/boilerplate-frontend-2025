@@ -1,7 +1,5 @@
 {
   // Core Editor Settings
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.tabSize": 2,
   "editor.quickSuggestions": {
     "other": "on",
@@ -10,56 +8,74 @@
   },
   "editor.suggestOnTriggerCharacters": false,
 
-  // File Management
-  "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": true,
-  "files.eol": "\n",
-
   // Completely disable auto-imports
   "typescript.suggest.autoImports": false,
   "javascript.suggest.autoImports": false,
   "typescript.suggestionActions.enabled": false,
   "javascript.suggestionActions.enabled": false,
+  "typescript.preferences.importModuleSpecifier": "non-relative",
 
-  // Disable all validators except ESLint
-  "css.validate": false,
-  "less.validate": false,
-  "scss.validate": false,
-  "typescript.validate.enable": true,
-  "javascript.validate.enable": false,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.suggest.enabled": true,
+  "typescript.surveys.enabled": false,
 
-  // ESLint Configuration
-  "eslint.format.enable": true,
-  "eslint.useFlatConfig": true,
-  "eslint.run": "onSave",
-  "eslint.lintTask.enable": false,
-  "eslint.workingDirectories": [{ "mode": "auto" }],
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "eslint.options": {
-    "cache": true,
-    "cacheLocation": ".eslintcache"
-  },
+  // Disable the default formatter, use eslint instead
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
 
-  // Code Actions
+  // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
 
-  // Explicitly disable other tools
-  "webhint.enable": false,
-  "typescript.implementationsCodeLens.enabled": false,
-  "typescript.referencesCodeLens.enabled": false,
-  "javascript.referencesCodeLens.enabled": false,
+  // Silent the stylistic rules in you IDE, but still auto fix them
+  "eslint.rules.customizations": [
+    { "rule": "style/*", "severity": "off", "fixable": true },
+    { "rule": "format/*", "severity": "off", "fixable": true },
+    { "rule": "*-indent", "severity": "off", "fixable": true },
+    { "rule": "*-spacing", "severity": "off", "fixable": true },
+    { "rule": "*-spaces", "severity": "off", "fixable": true },
+    { "rule": "*-order", "severity": "off", "fixable": true },
+    { "rule": "*-dangle", "severity": "off", "fixable": true },
+    { "rule": "*-newline", "severity": "off", "fixable": true },
+    { "rule": "*quotes", "severity": "off", "fixable": true },
+    { "rule": "*semi", "severity": "off", "fixable": true }
+  ],
 
-  // Disable inlay hints
-  "typescript.inlayHints.enable": false,
-  "javascript.inlayHints.enable": false,
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+
+  "eslint.options": {
+    "cache": true,
+    "cacheLocation": ".eslintcache"
+  },
+
+  // Enable eslint for all supported languages
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "json5",
+    "jsonc",
+    "yaml",
+    "toml",
+    "xml",
+    "gql",
+    "graphql",
+    "astro",
+    "svelte",
+    "css",
+    "less",
+    "scss",
+    "pcss",
+    "postcss"
+  ],
 
   // Spell checker words can stay
   "cSpell.words": [
@@ -77,16 +93,9 @@
     "sonarjs",
     "spinbutton",
     "stylelintignore",
+    "taze",
     "tryit",
     "VITE",
     "WEBSQL"
-  ],
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "typescript.suggest.enabled": true,
-  "typescript.surveys.enabled": false
+  ]
 }

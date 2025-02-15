@@ -1,7 +1,6 @@
 {
+  "*": ["eslint --fix", "git add"],
   "*.{ts,tsx}": [
-    "prettier --write",
-    "eslint . --fix --cache",
     "node --eval \"process.exit(process.exitCode || require('child_process').spawnSync('npm', ['run', 'type-check'], {stdio:'inherit'}).status)\"",
     "git add"
   ],
@@ -9,6 +8,5 @@
     "prettier --write",
     "stylelint \"**/*.{css,scss}\" --fix --config .stylelintrc.json",
     "git add"
-  ],
-  "*.{json,md,yml,yaml}": ["prettier --write", "git add"]
+  ]
 }

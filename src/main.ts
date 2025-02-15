@@ -1,10 +1,5 @@
-import { logger } from '@/utils/logger';
+import { logger } from '@/utils/logger'
 
-import './styles/index.css';
-import { httpClient } from './utils/http-client/http-client';
+import './styles/index.css'
 
-logger.info('Hello World!');
-
-await httpClient.get('/posts/1').then((response) => {
-  console.log(response.data);
-});
+logger.info('Hello World!')
