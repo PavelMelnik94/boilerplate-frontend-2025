@@ -9,3 +9,5 @@ export type KeysType<T> = keyof T
 
 // Type alias for extracting the values of an object as a union
 export type ValuesType<T> = T[keyof T]
+
+export type PrettyPrint<T> = T extends object ? { [K in keyof T]: PrettyPrint<T[K]> } : T
