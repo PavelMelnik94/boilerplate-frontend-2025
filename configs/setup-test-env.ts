@@ -1,35 +1,31 @@
-/* This file contains mock implementations of browser APIs for testing.
-   Some implementations use deprecated methods which trigger prettier warnings. */
-/* eslint-disable prettier/prettier */
+import { vi } from 'vitest'
 
-import { vi } from "vitest";
-
-const emptyRecords = (): [] => [];
-const falseFn = (): boolean => false;
+const emptyRecords = (): [] => []
+const falseFn = (): boolean => false
 
 // Mock IntersectionObserver
 
 class IntersectionObserverMock implements IntersectionObserver {
-  readonly root: Element | null = null;
-  readonly rootMargin: string = "";
-  readonly thresholds: readonly number[] = [];
+  readonly root: Element | null = null
+  readonly rootMargin: string = ''
+  readonly thresholds: readonly number[] = []
 
-  disconnect = vi.fn();
-  observe = vi.fn();
-  takeRecords = vi.fn(emptyRecords);
-  unobserve = vi.fn();
+  disconnect = vi.fn()
+  observe = vi.fn()
+  takeRecords = vi.fn(emptyRecords)
+  unobserve = vi.fn()
 }
 
-globalThis.IntersectionObserver = IntersectionObserverMock;
+globalThis.IntersectionObserver = IntersectionObserverMock
 
 // Mock ResizeObserver
 class ResizeObserverMock implements ResizeObserver {
-  disconnect = vi.fn();
-  observe = vi.fn();
-  unobserve = vi.fn();
+  disconnect = vi.fn()
+  observe = vi.fn()
+  unobserve = vi.fn()
 }
 
-globalThis.ResizeObserver = ResizeObserverMock;
+globalThis.ResizeObserver = ResizeObserverMock
 
 // Mock AbortController
 class AbortControllerMock implements AbortController {
@@ -41,11 +37,12 @@ class AbortControllerMock implements AbortController {
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
     onabort: null,
-  } as unknown as AbortSignal;
-  abort = vi.fn();
+  } as unknown as AbortSignal
+
+  abort = vi.fn()
 }
 
-globalThis.AbortController = AbortControllerMock;
+globalThis.AbortController = AbortControllerMock
 
 // Mock Performance
 const performanceMock = {
@@ -91,94 +88,94 @@ const performanceMock = {
   dispatchEvent: vi.fn(),
   clearResourceTimings: vi.fn(),
   setResourceTimingBufferSize: vi.fn(),
-};
-
-globalThis.performance = performanceMock;
-
-const createObjectURL = (): string => "blob:mock-url";
-// Mock URL
-class URLMock extends URL {
-  static readonly createObjectURL = vi.fn(createObjectURL);
-  static readonly revokeObjectURL = vi.fn();
 }
 
-globalThis.URL = URLMock;
+globalThis.performance = performanceMock
+
+const createObjectURL = (): string => 'blob:mock-url'
+// Mock URL
+class URLMock extends URL {
+  static readonly createObjectURL = vi.fn(createObjectURL)
+  static readonly revokeObjectURL = vi.fn()
+}
+
+globalThis.URL = URLMock
 
 // Mock Blob
 class BlobMock extends Blob {
-  static readonly override = vi.fn();
+  static readonly override = vi.fn()
 }
 
-globalThis.Blob = BlobMock;
+globalThis.Blob = BlobMock
 
 // Mock File
 class FileMock extends File {
-  static readonly override = vi.fn();
+  static readonly override = vi.fn()
 }
 
-globalThis.File = FileMock;
+globalThis.File = FileMock
 
 // Mock FormData
 class FormDataMock implements FormData {
-  append = vi.fn();
-  delete = vi.fn();
-  get = vi.fn();
-  getAll = vi.fn(emptyRecords);
-  has = vi.fn(falseFn);
-  set = vi.fn();
+  append = vi.fn()
+  delete = vi.fn()
+  get = vi.fn()
+  getAll = vi.fn(emptyRecords)
+  has = vi.fn(falseFn)
+  set = vi.fn()
   forEach = vi.fn();
 
   *entries(): IterableIterator<[string, FormDataEntryValue]> {
-    yield* [];
+    yield * []
   }
 
   *keys(): IterableIterator<string> {
-    yield* [];
+    yield * []
   }
 
   *values(): IterableIterator<FormDataEntryValue> {
-    yield* [];
+    yield * []
   }
 
   *[Symbol.iterator](): IterableIterator<[string, FormDataEntryValue]> {
-    yield* [];
+    yield * []
   }
 }
 
-globalThis.FormData = FormDataMock;
+globalThis.FormData = FormDataMock
 
 // Mock WebSocket
 class WebSocketMock implements WebSocket {
-  static readonly CONNECTING = 0 as const;
-  static readonly OPEN = 1 as const;
-  static readonly CLOSING = 2 as const;
-  static readonly CLOSED = 3 as const;
+  static readonly CONNECTING = 0
+  static readonly OPEN = 1
+  static readonly CLOSING = 2
+  static readonly CLOSED = 3
 
-  CONNECTING = 0 as const;
-  OPEN = 1 as const;
-  CLOSING = 2 as const;
-  CLOSED = 3 as const;
+  CONNECTING = 0 as const
+  OPEN = 1 as const
+  CLOSING = 2 as const
+  CLOSED = 3 as const
 
-  binaryType: BinaryType = "blob";
-  bufferedAmount = 0;
-  extensions = "";
-  protocol = "";
-  readyState = WebSocketMock.CLOSED;
-  url = "";
+  binaryType: BinaryType = 'blob'
+  bufferedAmount = 0
+  extensions = ''
+  protocol = ''
+  readyState = WebSocketMock.CLOSED
+  url = ''
 
-  onclose = null;
-  onerror = null;
-  onmessage = null;
-  onopen = null;
+  onclose = null
+  onerror = null
+  onmessage = null
+  onopen = null
 
-  close = vi.fn();
-  send = vi.fn();
-  addEventListener = vi.fn();
-  removeEventListener = vi.fn();
-  dispatchEvent = vi.fn();
+  close = vi.fn()
+  send = vi.fn()
+  addEventListener = vi.fn()
+  removeEventListener = vi.fn()
+  dispatchEvent = vi.fn()
 }
 
-globalThis.WebSocket = WebSocketMock;
+globalThis.WebSocket = WebSocketMock
 
 // Mock History API
 const historyMock = {
@@ -188,36 +185,36 @@ const historyMock = {
   back: vi.fn(),
   forward: vi.fn(),
   state: null,
-};
+}
 
-Object.defineProperty(globalThis, "history", { value: historyMock });
+Object.defineProperty(globalThis, 'history', { value: historyMock })
 
 // Mock Location
 const locationMock = {
-  hash: "",
-  host: "localhost",
-  hostname: "localhost",
-  href: "http://localhost",
-  origin: "http://localhost",
-  pathname: "/",
-  port: "",
-  protocol: "http:",
-  search: "",
+  hash: '',
+  host: 'localhost',
+  hostname: 'localhost',
+  href: 'http://localhost',
+  origin: 'http://localhost',
+  pathname: '/',
+  port: '',
+  protocol: 'http:',
+  search: '',
   assign: vi.fn(),
   reload: vi.fn(),
   replace: vi.fn(),
-};
+}
 
-Object.defineProperty(globalThis, "location", { value: locationMock });
+Object.defineProperty(globalThis, 'location', { value: locationMock })
 
 // Mock MutationObserver
 class MutationObserverMock implements MutationObserver {
-  disconnect = vi.fn();
-  observe = vi.fn();
-  takeRecords = vi.fn(emptyRecords);
+  disconnect = vi.fn()
+  observe = vi.fn()
+  takeRecords = vi.fn(emptyRecords)
 }
 
-globalThis.MutationObserver = MutationObserverMock;
+globalThis.MutationObserver = MutationObserverMock
 
 // Mock Selection API
 const selectionMock = {
@@ -227,7 +224,7 @@ const selectionMock = {
   focusOffset: 0,
   isCollapsed: true,
   rangeCount: 0,
-  type: "None",
+  type: 'None',
   addRange: vi.fn(),
   collapse: vi.fn(),
   collapseToEnd: vi.fn(),
@@ -241,16 +238,16 @@ const selectionMock = {
   removeRange: vi.fn(),
   selectAllChildren: vi.fn(),
   setBaseAndExtent: vi.fn(),
-  toString: vi.fn(() => ""),
-};
+  toString: vi.fn(() => ''),
+}
 
-Object.defineProperty(globalThis, "getSelection", {
+Object.defineProperty(globalThis, 'getSelection', {
   value: () => selectionMock,
-});
+})
 
 // Mock crypto
 const cryptoMock = {
-  getRandomValues: vi.fn((array) => array),
+  getRandomValues: vi.fn(<T extends ArrayBufferView>(array: T): T => array),
   subtle: {
     encrypt: vi.fn(),
     decrypt: vi.fn(),
@@ -258,56 +255,58 @@ const cryptoMock = {
     verify: vi.fn(),
     digest: vi.fn(),
   },
-};
+}
 
-Object.defineProperty(globalThis, "crypto", { value: cryptoMock });
+Object.defineProperty(globalThis, 'crypto', { value: cryptoMock })
 
 // Extend existing globalThis with additional properties
-Object.defineProperty(globalThis, "isSecureContext", { value: true });
-Object.defineProperty(globalThis, "crossOriginIsolated", { value: false });
+Object.defineProperty(globalThis, 'isSecureContext', { value: true })
+Object.defineProperty(globalThis, 'crossOriginIsolated', { value: false })
 
 // Mock matchMedia
-globalThis.matchMedia = vi.fn().mockImplementation((query) => ({
+globalThis.matchMedia = vi.fn().mockImplementation((query: string) => ({
   matches: false,
   media: query,
   onchange: null,
   addEventListener: vi.fn(),
   removeEventListener: vi.fn(),
   dispatchEvent: vi.fn(),
-}));
+}))
 
 // Mock Navigator
 class NavigatorMock implements Navigator {
   // Required Navigator properties
-  userAgent = "node.js";
-  language = "en-US";
-  languages = ["en-US", "en"];
-  onLine = true;
-  cookieEnabled = true;
-  platform = "test";
-  maxTouchPoints = 0;
-  doNotTrack = null;
+  userAgent = 'node.js'
+  language = 'en-US'
+  languages = ['en-US', 'en']
+  onLine = true
+  cookieEnabled = true
+  platform = 'test'
+  maxTouchPoints = 0
+  doNotTrack = null
   geolocation = {
     getCurrentPosition: vi.fn(),
     watchPosition: vi.fn(),
     clearWatch: vi.fn(),
-  };
+  }
+
   credentials = {
     get: vi.fn(),
     store: vi.fn(),
     create: vi.fn(),
     preventSilentAccess: vi.fn(),
-  } as CredentialsContainer;
-  appCodeName = "Mozilla";
-  appName = "Netscape";
-  appVersion = "5.0";
-  connection = null;
-  hardwareConcurrency = 4;
-  product = "Gecko";
-  productSub = "20030107";
-  vendor = "Google Inc.";
-  vendorSub = "";
-  deviceMemory = 8;
+  } as CredentialsContainer
+
+  appCodeName = 'Mozilla'
+  appName = 'Netscape'
+  appVersion = '5.0'
+  connection = null
+  hardwareConcurrency = 4
+  product = 'Gecko'
+  productSub = '20030107'
+  vendor = 'Google Inc.'
+  vendorSub = ''
+  deviceMemory = 8
 
   // Mocked APIs
   clipboard = {
@@ -318,7 +317,7 @@ class NavigatorMock implements Navigator {
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
-  } as unknown as Clipboard;
+  } as unknown as Clipboard
 
   mediaDevices = {
     getUserMedia: vi.fn(),
@@ -328,11 +327,11 @@ class NavigatorMock implements Navigator {
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
     ondevicechange: null,
-  } as unknown as MediaDevices;
+  } as unknown as MediaDevices
 
   permissions = {
     query: vi.fn(),
-  } as unknown as Permissions;
+  } as unknown as Permissions
 
   // Additional required properties
   serviceWorker = {
@@ -345,68 +344,74 @@ class NavigatorMock implements Navigator {
     getRegistration: vi.fn(),
     getRegistrations: vi.fn(),
     startMessages: vi.fn(),
-  } as unknown as ServiceWorkerContainer;
+  } as unknown as ServiceWorkerContainer
+
   storage = {
     persist: vi.fn(),
     persisted: vi.fn(),
     estimate: vi.fn(),
-  } as unknown as StorageManager;
-  managed = null;
+  } as unknown as StorageManager
+
+  managed = null
   mediaCapabilities = {
     decodingInfo: vi.fn(),
     encodingInfo: vi.fn(),
-  } as unknown as MediaCapabilities;
+  } as unknown as MediaCapabilities
+
   mediaSession = {
     metadata: null,
-    playbackState: "none",
+    playbackState: 'none',
     setActionHandler: vi.fn(),
     setPositionState: vi.fn(),
-  } as MediaSession;
-  presentation = null;
-  scheduling = null;
-  usb = null;
+  } as MediaSession
+
+  presentation = null
+  scheduling = null
+  usb = null
   wakeLock = {
     request: vi.fn(),
-  } as unknown as WakeLock;
-  xr = null;
+  } as unknown as WakeLock
+
+  xr = null
   userActivation = {
     hasBeenActive: false,
     isActive: false,
-  } as UserActivation;
+  } as UserActivation
+
   plugins = {
     length: 0,
     item: () => null,
     namedItem: () => null,
     refresh: () => {},
-    [Symbol.iterator]: function* () {
-      yield* [];
+    *[Symbol.iterator]() {
+      yield * []
     },
-  } as unknown as PluginArray;
+  } as unknown as PluginArray
 
-  mimeTypes = [] as unknown as MimeTypeArray;
-  pdfViewerEnabled = false;
-  webdriver = false;
+  mimeTypes = [] as unknown as MimeTypeArray
+  pdfViewerEnabled = false
+  webdriver = false
   locks = {
     request: vi.fn(),
     query: vi.fn(),
-  } as unknown as LockManager;
+  } as unknown as LockManager
 
   // Methods
-  canShare = vi.fn();
-  share = vi.fn();
-  clearAppBadge = vi.fn();
-  setAppBadge = vi.fn();
-  registerProtocolHandler = vi.fn();
-  unregisterProtocolHandler = vi.fn();
-  getGamepads = vi.fn();
-  javaEnabled = vi.fn();
-  sendBeacon = vi.fn();
-  vibrate = vi.fn();
-  requestMIDIAccess = vi.fn();
-  requestMediaKeySystemAccess = vi.fn();
+  canShare = vi.fn()
+  share = vi.fn()
+  clearAppBadge = vi.fn()
+  setAppBadge = vi.fn()
+  registerProtocolHandler = vi.fn()
+  unregisterProtocolHandler = vi.fn()
+  getGamepads = vi.fn()
+  javaEnabled = vi.fn()
+  sendBeacon = vi.fn()
+  vibrate = vi.fn()
+  requestMIDIAccess = vi.fn()
+  requestMediaKeySystemAccess = vi.fn()
 }
 
-globalThis.navigator = new NavigatorMock();
+globalThis.navigator = new NavigatorMock()
 
 // Mock console methods
 globalThis.console = {
@@ -416,29 +421,31 @@ globalThis.console = {
   warn: vi.fn(),
   info: vi.fn(),
   debug: vi.fn(),
-};
-
-interface StorageMock extends Storage {
-  getItem: ReturnType<typeof vi.fn>;
-  setItem: ReturnType<typeof vi.fn>;
-  clear: ReturnType<typeof vi.fn>;
-  removeItem: ReturnType<typeof vi.fn>;
-  key: ReturnType<typeof vi.fn>;
 }
 
-const createStorageMock = (): StorageMock => ({
-  getItem: vi.fn(),
-  setItem: vi.fn(),
-  clear: vi.fn(),
-  removeItem: vi.fn(),
-  length: 0,
-  key: vi.fn(),
-});
+interface StorageMock extends Storage {
+  getItem: ReturnType<typeof vi.fn>
+  setItem: ReturnType<typeof vi.fn>
+  clear: ReturnType<typeof vi.fn>
+  removeItem: ReturnType<typeof vi.fn>
+  key: ReturnType<typeof vi.fn>
+}
+
+function createStorageMock(): StorageMock {
+  return {
+    getItem: vi.fn(),
+    setItem: vi.fn(),
+    clear: vi.fn(),
+    removeItem: vi.fn(),
+    length: 0,
+    key: vi.fn(),
+  }
+}
 
 // Helper to add more mocks as needed
-const extendNavigatorMock = (extensions: Partial<Navigator>): void => {
-  Object.assign(globalThis.navigator, extensions);
-};
+function extendNavigatorMock(extensions: Partial<Navigator>): void {
+  Object.assign(globalThis.navigator, extensions)
+}
 
 // Export all mocks for individual test customization
 export {
@@ -459,4 +466,4 @@ export {
   selectionMock,
   URLMock,
   WebSocketMock,
-};
+}

@@ -1,62 +1,64 @@
-import { afterAll, afterEach, beforeAll, vi } from 'vitest';
+import { afterAll, afterEach, beforeAll, vi } from 'vitest'
 
-import './setup-test-env';
+import './setup-test-env'
 
 // Global settings
 beforeAll(() => {
   // Disable console warnings during tests
-  vi.spyOn(console, 'warn').mockImplementation(() => {});
+  vi.spyOn(console, 'warn').mockImplementation(() => {})
 
   // Set default viewport size
   Object.defineProperty(globalThis.window, 'innerWidth', {
     value: 1024 /* *ANCHOR */,
-  });
+  })
   Object.defineProperty(globalThis.window, 'innerHeight', {
     value: 768 /* *ANCHOR */,
-  });
+  })
 
   // Set language settings
   Object.defineProperty(navigator, 'language', {
     value: 'en-US' /* *ANCHOR */,
-  });
-});
+  })
+})
 
 // Cleanup after each test
 afterEach(() => {
   // Clear all mocks
-  vi.clearAllMocks();
+  vi.clearAllMocks()
 
   // Clear localStorage and sessionStorage
-  localStorage.clear();
-  sessionStorage.clear();
+  localStorage.clear()
+  sessionStorage.clear()
 
   // Reset URL
-  globalThis.window.history.pushState({}, '', '/');
+  globalThis.window.history.pushState({}, '', '/')
 
   // Clear body of added elements
-  document.body.innerHTML = '';
+  document.body.innerHTML = ''
 
   // Reset all timers
-  vi.clearAllTimers();
-});
+  vi.clearAllTimers()
+})
 
 // Cleanup after all tests
 afterAll(() => {
-  vi.useRealTimers();
-  vi.restoreAllMocks();
-});
+  vi.useRealTimers()
+  vi.restoreAllMocks()
+})
 
 // Global test utilities
 declare global {
-  var sleep: (ms: number) => Promise<void>;
+  interface Window {
+    sleep: (ms: number) => Promise<void>
+  }
 }
 
-globalThis.sleep = async (ms: number): Promise<void> => await new Promise((resolve) => setTimeout(resolve, ms));
+window.sleep = async (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms))
 
 // Disable animations
 Object.defineProperty(globalThis, 'matchMedia', {
   writable: true,
-  value: vi.fn().mockImplementation((query) => ({
+  value: vi.fn().mockImplementation((query: string) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -66,4 +68,4 @@ Object.defineProperty(globalThis, 'matchMedia', {
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
   })),
-});
+})
