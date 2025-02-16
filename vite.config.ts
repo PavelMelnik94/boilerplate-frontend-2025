@@ -1,4 +1,3 @@
-/* eslint-disable ts/no-unsafe-call */
 import type { Plugin } from 'vite'
 import eslintPlugin from '@nabla/vite-plugin-eslint'
 import { visualizer } from 'rollup-plugin-visualizer'
