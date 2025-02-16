@@ -25,7 +25,6 @@ Welcome to **Boilerplate Frontend 2025**! A modern, feature-rich starter templat
   - [Lighthouse integration](https://www.npmjs.com/package/lighthouse) - Run Lighthouse audits
   - [Accessibility testing (axe-core)](https://www.npmjs.com/package/@axe-core/cli) - Check accessibility
 - 🔍 **Performance**:
-  - [Bundle size limits](https://www.npmjs.com/package/bundlesize) - Set size limits for assets
   - [Browser compatibility checks](https://www.npmjs.com/package/eslint-plugin-compat) - Ensure compatibility
   - [High-performance animations linting](https://www.npmjs.com/package/stylelint-high-performance-animation) - Check animations performance in styles
 - 🎛️ **Feature Management**:
@@ -168,21 +167,7 @@ function MyComponent() {
 - `npm run lighthouse` - Run Lighthouse audit for performance analysis
 - `npm run check-a11y` - Check application accessibility
 - `npm run bundle-analysis` - Analyze bundle size composition
-- `npm run size` - Check bundle size limits
 - `npm run check-web-vitals` - Monitor Core Web Vitals metrics
-
-## Bundle Size Limits via `bundlesize`(`npm run size`)
-
-```json
-{
-  "size-limit": [
-    {
-      "path": "dist/**/*.js",
-      "limit": "100 kb"
-    }
-  ]
-}
-```
 
 ### Setup & Maintenance
 
