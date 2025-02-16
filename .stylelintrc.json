@@ -6,14 +6,13 @@
     "stylelint-use-nesting",
     "stylelint-no-unsupported-browser-features",
     "stylelint-selector-bem-pattern",
-    "stylelint-prettier",
-    "stylelint-declaration-strict-value"
+    "stylelint-prettier"
   ],
   "customSyntax": "postcss-scss",
-  "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
+  "extends": [ "stylelint-config-standard", "stylelint-prettier/recommended" ],
   "overrides": [
     {
-      "files": ["**/*.scss"],
+      "files": [ "**/*.scss" ],
       "customSyntax": "postcss-scss"
     }
   ],
@@ -145,7 +144,7 @@
         "groupName": "Positioning",
         "emptyLineBefore": "always",
         "noEmptyLineBetween": true,
-        "properties": ["position", "z-index", "top", "right", "bottom", "left"]
+        "properties": [ "position", "z-index", "top", "right", "bottom", "left" ]
       },
       {
         "groupName": "Display & Box Model",
@@ -232,14 +231,7 @@
         "groupName": "Animation",
         "emptyLineBefore": "always",
         "noEmptyLineBetween": true,
-        "properties": ["transform", "transition", "animation"]
-      }
-    ],
-
-    "scale-unlimited/declaration-strict-value": [
-      ["color", "z-index", "font-size", "font-family"],
-      {
-        "ignoreKeywords": ["inherit", "transparent", "currentColor"]
+        "properties": [ "transform", "transition", "animation" ]
       }
     ]
   }

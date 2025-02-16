@@ -1,6 +1,12 @@
+/* eslint-disable ts/no-unsafe-call */
+import type { Plugin } from 'vite'
 import eslintPlugin from '@nabla/vite-plugin-eslint'
 import { visualizer } from 'rollup-plugin-visualizer'
+import imagemin from 'unplugin-imagemin/vite'
 import { defineConfig } from 'vite'
+import { compression } from 'vite-plugin-compression2'
+import { qrcode } from 'vite-plugin-qrcode'
+import stylelintPlugin from 'vite-plugin-stylelint'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 // Build mode constants definition
@@ -20,7 +26,12 @@ export default defineConfig(({ mode }) => {
     base,
     plugins: [
       tsconfigPaths(),
+      imagemin(),
       eslintPlugin(),
+      stylelintPlugin(),
+      compression(),
+      qrcode(),
+
       mode === MODES.ANALYZE
       && visualizer({
         open: true,
@@ -28,7 +39,7 @@ export default defineConfig(({ mode }) => {
         gzipSize: true,
         brotliSize: true,
         template: 'treemap', // or 'sunburst', 'network'
-      }),
+      }) as Plugin,
     ].filter(Boolean),
     // Resolve configuration
     // Sets up path aliases for simplified imports
