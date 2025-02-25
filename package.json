@@ -99,7 +99,7 @@
     "size-limit": "^11.2.0",
     "stylelint": "^16.14.1",
     "stylelint-config-standard": "^37.0.0",
-    "stylelint-declaration-strict-value": "^1.10.7",
+    "stylelint-declaration-strict-value": "^1.10.8",
     "stylelint-high-performance-animation": "^1.11.0",
     "stylelint-no-unsupported-browser-features": "^8.0.4",
     "stylelint-order": "^6.0.4",
