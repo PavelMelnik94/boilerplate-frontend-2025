@@ -64,7 +64,7 @@
     "fix:all": "cross-env npm run lint:fix && npm run style:fix"
   },
   "dependencies": {
-    "axios": "^1.8.4",
+    "axios": "^1.9.0",
     "crypto-js": "^4.2.0",
     "localforage": "^1.10.0"
   },
