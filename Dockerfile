@@ -1,5 +1,5 @@
 # Build stage
-FROM node:20.19.0-bookworm-slim AS builder
+FROM node:20.19.2-bookworm-slim AS builder
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build
 
 # Production stage
-FROM node:20.19.0-bookworm-slim
+FROM node:20.19.2-bookworm-slim
 
 WORKDIR /app
 
