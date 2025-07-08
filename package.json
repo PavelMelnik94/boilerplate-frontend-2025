@@ -97,7 +97,7 @@
     "prettier": "^3.5.3",
     "rollup-plugin-visualizer": "^5.14.0",
     "size-limit": "^11.2.0",
-    "stylelint": "^16.17.0",
+    "stylelint": "^16.21.1",
     "stylelint-config-standard": "^37.0.0",
     "stylelint-declaration-strict-value": "^1.10.11",
     "stylelint-high-performance-animation": "^1.11.0",
