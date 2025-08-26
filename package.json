@@ -91,7 +91,7 @@
     "husky": "^9.1.7",
     "lighthouse": "^12.5.1",
     "lint-staged": "^15.5.0",
-    "postcss": "^8.5.3",
+    "postcss": "^8.5.6",
     "postcss-preset-env": "^10.1.5",
     "postcss-scss": "^4.0.9",
     "prettier": "^3.5.3",
