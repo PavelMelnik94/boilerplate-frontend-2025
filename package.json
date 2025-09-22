@@ -82,7 +82,7 @@
     "autoprefixer": "^10.4.21",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.7",
-    "esbuild": "^0.25.2",
+    "esbuild": "^0.25.10",
     "eslint": "^9.23.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
